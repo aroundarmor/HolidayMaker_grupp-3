@@ -1,0 +1,10 @@
+07-09
+Hanna, Maltin och Ted medverkade.
+Vi träffades första gången. Under tillfället diskuterade vi och skrev ner User stories, samt Gherkin ställningar kring dessa
+.
+08-09
+Hanna, Maltin, Ted och Rafael medverkade vid detta tillfälle.
+Vi diskuterade upplägg och planering. Vi kom fram till att Rafael skulle skapa en Git-repository, i vilken. När denna repository så flyttar denna text, som nu är i en google docs-dokument, likväl skall Ted börja sätta upp en trello-styled board i denna Repository.
+
+Vi har beslutat att använda React, MySQL och Spring med ____ dependencies. Spelregler är ännu inte skrivna
+
