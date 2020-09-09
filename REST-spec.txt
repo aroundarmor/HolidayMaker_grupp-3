@@ -1,0 +1,20 @@
+/users			GET	Hämtar en lista med alla users
+/bookings		GET	Hämtar en lista med alla bookings
+/accomodations		GET	Hämtar en lista med alla boenden
+/ADDRESS ???
+
+/users/{id}		GET	Hämtar en användare med ett specifikt id
+/bookings/{id}		GET	Hämtar en bokning med ett specifikt id
+/accomodations/{id} 	GET	Hämtar ett boende med ett specifikt id
+
+/users			POST	Skapar en ny användare 
+/bookings		POST	Skapar en ny bokning
+/accomodations 		POST	Skapar ett nytt boende
+
+/users/{id}		PUT	Ersätter all information om användaren
+/bookings/{id}		PUT	Ersätter all information om bokningen
+/accomodations/{id} 	PUT	Ersätter all information om boendet
+
+/users/{id}		DELETE	Raderar användaren
+/bookings/{id}		DELETE	Raderar bokningen
+/accomodations/{id} 	DELETE	Raderar boendet
