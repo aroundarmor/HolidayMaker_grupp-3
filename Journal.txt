@@ -8,3 +8,7 @@ Vi diskuterade upplägg och planering. Vi kom fram till att Rafael skulle skapa 
 
 Vi har beslutat att använda React, MySQL och Spring med ____ dependencies. Spelregler är ännu inte skrivna
 
+09-09
+Hanna, Maltin, Ted och Rafael har medverkat.
+Idag har vi gjort REST-specifikation, UML-diagram, ER-diagram och en Wireframe.
+
