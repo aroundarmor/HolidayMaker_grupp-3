@@ -1,30 +1,70 @@
 package com.newton.holidaymaker.models;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.ManyToAny;
 
 @Entity
+@Table(name = "users")
 public class User {
     
     @Id
-    private int customer_id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int user_id;
+    private String username;
+    private String password;
     private String first_name;
     private String last_name;
     private int phone_no;
     private String email;
-    private String username;
-    private String password;
-    private Roll roll;
+    private boolean active;
 
-    public User(String first_name, String last_name, int phone_no, String email, String username, String password,
-            Roll roll) {
-        this.first_name = first_name;
-        this.last_name = last_name;
-        this.phone_no = phone_no;
-        this.email = email;
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(
+        name="user_roles",
+        joinColumns = @JoinColumn(name = "user_id"),
+        inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private Set<Role> roles = new HashSet<>();
+    
+    
+    public User() {
+    }
+
+    public int getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
         this.password = password;
-        this.roll = roll;
     }
 
     public String getFirst_name() {
@@ -59,31 +99,21 @@ public class User {
         this.email = email;
     }
 
-    public String getUsername() {
-        return username;
+    public boolean isActive() {
+        return active;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setActive(boolean active) {
+        this.active = active;
     }
 
-    public String getPassword() {
-        return password;
+    public Set<Role> getRoles() {
+        return roles;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
-
-    public Roll getRoll() {
-        return roll;
-    }
-
-    public void setRoll(Roll roll) {
-        this.roll = roll;
-    }
-
-    
 
     
 
