@@ -9,7 +9,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
             .authorizeRequests()
-            .anyRequest();
+            .anyRequest()
+            .permitAll();
 
     }
     
