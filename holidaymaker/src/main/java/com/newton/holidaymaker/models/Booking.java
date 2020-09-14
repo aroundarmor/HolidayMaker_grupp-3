@@ -81,7 +81,7 @@ public class Booking implements Serializable {
 			this.room_id = room_id;
 		}
 		
-		//getter method to retrieve the customer_id
+		//getter method to retrieve the customer_id ..
 	    public int getThisCustomerId() {
 	        return user.getCustomer_id();
 	    }
