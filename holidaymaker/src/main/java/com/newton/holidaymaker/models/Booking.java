@@ -53,8 +53,9 @@ public class Booking implements Serializable {
 //	    Constructors
 	    public Booking() { }
 	    
-	    public Booking(int customer, Date arrDate, Date depDate, Boolean bed, Boolean twoM, Boolean threeM, Boolean allIn)
+	    public Booking(int room, int customer, Date arrDate, Date depDate, Boolean bed, Boolean twoM, Boolean threeM, Boolean allIn)
 	    {
+	    	this.room_id = room;
 	    	this.customer_id = customer;
 	    	this.arrival_date = arrDate;
 	    	this.departure_date = depDate;
@@ -81,8 +82,8 @@ public class Booking implements Serializable {
 		}
 		
 		//getter method to retrieve the customer_id
-	    public Long getThisCustomer_id(){
-	        //return user.getClass()
+	    public int getThisCustomerId() {
+	        return user.getCustomer_id();
 	    }
 
 	    //lite oklart hur dessa två metoder behövs
