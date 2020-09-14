@@ -1,22 +1,24 @@
 package com.newton.holidaymaker.models;
 
-
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 @Entity
 public class Room {
 	@Id
-	private final long roomId;
-	private final String roomType;
-	private final long roomPrice;
-	private final long hotelId;
-	private final long bookingId;
-	private final boolean isBooked;
+	@GeneratedValue (strategy = GenerationType.IDENTITY)
+	private int roomId;
+	private String roomType;
+	private double roomPrice;
+	private int hotelId;
+	private int bookingId;
+	private boolean isBooked;
 
-	public Room(long roomId, String roomType, long roomPrice, long hotelId, long bookingId, boolean isBooked) {
-		super();
-		
-		this.roomId = roomId;
+	public Room() {
+	}
+
+	public Room(String roomType, double roomPrice, int hotelId, int bookingId, boolean isBooked) {
 		this.roomType = roomType;
 		this.roomPrice = roomPrice;
 		this.hotelId = hotelId;
@@ -24,28 +26,55 @@ public class Room {
 		this.isBooked = isBooked;
 	}
 
-	public long getRoomId() {
+	public int getRoomId() {
 		return roomId;
+	}
+
+	public void setRoomId(int roomId) {
+		this.roomId = roomId;
 	}
 
 	public String getRoomType() {
 		return roomType;
 	}
 
-	public long getRoomPrice() {
+	public void setRoomType(String roomType) {
+		this.roomType = roomType;
+	}
+
+	public double getRoomPrice() {
 		return roomPrice;
 	}
 
-	public long getHotelId() {
+	public void setRoomPrice(double roomPrice) {
+		this.roomPrice = roomPrice;
+	}
+
+	public int getHotelId() {
 		return hotelId;
 	}
 
-	public long getBookingId() {
+	public void setHotelId(int hotelId) {
+		this.hotelId = hotelId;
+	}
+
+	public int getBookingId() {
 		return bookingId;
+	}
+
+	public void setBookingId(int bookingId) {
+		this.bookingId = bookingId;
 	}
 
 	public boolean isBooked() {
 		return isBooked;
 	}
+
+	public void setBooked(boolean isBooked) {
+		this.isBooked = isBooked;
+	}
+
+	
+	
 }
 

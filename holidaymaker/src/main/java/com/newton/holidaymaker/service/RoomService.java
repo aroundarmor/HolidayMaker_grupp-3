@@ -23,8 +23,8 @@ public class RoomService {
 	RoomRepository roomRepository;
 
 	private static final List<Room> ROOMS = new ArrayList<>(Arrays.asList(
-			new Room(1, "room1", 3, 3, 4, false),
-			new Room(1, "room2", 4, 3, 4, false)
+			new Room("room1", 3, 3, 4, false),
+			new Room("room2", 4, 3, 4, false)
 			
 			
 //
