@@ -10,7 +10,7 @@ import javax.persistence.GenerationType;
 
 import javax.persistence.Id;
 
-//OBS måste kolla att datumobjektet fungerar med datumkolumnen i databasen /Hanna
+//OBS måste kolla att datumobjektet fungerar med datumkolumnen i databasen/Hanna
 
 @Entity
 public class Booking implements Serializable {
@@ -88,7 +88,7 @@ public class Booking implements Serializable {
 			this.departure_date = departure_date;
 		}
 
-		public boolean isExtra_bed() {
+		public boolean getExtra_bed() {
 			return extra_bed;
 		}
 
