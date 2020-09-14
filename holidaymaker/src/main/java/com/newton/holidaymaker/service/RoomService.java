@@ -27,7 +27,7 @@ public class RoomService {
 			new Room(1, "room2", 4, 3, 4, false)
 			
 			
-
+//
 			
 			));
 	public List<Room> getAllRooms()
