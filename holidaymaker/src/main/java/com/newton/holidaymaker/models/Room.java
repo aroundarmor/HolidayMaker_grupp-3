@@ -1,5 +1,6 @@
 package com.newton.holidaymaker.models;
 
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 @Entity
@@ -46,5 +47,5 @@ public class Room {
 	public boolean isBooked() {
 		return isBooked;
 	}
-//git
 }
+
