@@ -1,4 +1,4 @@
-package com.newton.holidaymaker.room;
+package com.newton.holidaymaker.models;
 
 public class Room {
 	private final long roomId;

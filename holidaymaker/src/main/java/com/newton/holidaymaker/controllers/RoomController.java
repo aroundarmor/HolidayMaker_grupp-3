@@ -1,4 +1,4 @@
-package com.newton.holidaymaker.room;
+package com.newton.holidaymaker.controllers;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
