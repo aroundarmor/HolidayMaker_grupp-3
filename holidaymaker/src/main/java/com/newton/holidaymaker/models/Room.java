@@ -1,6 +1,10 @@
-package com.newton.holidaymaker.room;
+package com.newton.holidaymaker.models;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+@Entity
 public class Room {
+	@Id
 	private final long roomId;
 	private final String roomType;
 	private final long roomPrice;
@@ -10,6 +14,7 @@ public class Room {
 
 	public Room(long roomId, String roomType, long roomPrice, long hotelId, long bookingId, boolean isBooked) {
 		super();
+		
 		this.roomId = roomId;
 		this.roomType = roomType;
 		this.roomPrice = roomPrice;
