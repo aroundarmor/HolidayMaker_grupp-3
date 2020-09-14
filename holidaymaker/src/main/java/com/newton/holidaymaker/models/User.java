@@ -33,6 +33,7 @@ public class User {
         this.password = password;
     }
 
+    
     public String getFirst_name() {
         return first_name;
     }
@@ -79,6 +80,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public int getCustomer_id() {
+        return customer_id;
+    }
+
+    public void setCustomer_id(int customer_id) {
+        this.customer_id = customer_id;
     }
 
 }

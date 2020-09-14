@@ -37,9 +37,8 @@ public class Booking implements Serializable {
 //	    Constructors
 	    public Booking() { }
 	    
-	    public Booking(int room, int customer, Date arrDate, Date depDate, Boolean bed, Boolean twoM, Boolean threeM, Boolean allIn)
+	    public Booking(int customer, Date arrDate, Date depDate, Boolean bed, Boolean twoM, Boolean threeM, Boolean allIn)
 	    {
-	    	this.room_id = room;
 	    	this.customer_id = customer;
 	    	this.arrival_date = arrDate;
 	    	this.departure_date = depDate;
