@@ -3,6 +3,7 @@ package com.newton.holidaymaker.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -58,9 +59,11 @@ public class BookingController {
        System.out.println("Booking deleted");
    }
    
-   /* Jobbar vidare på två ytterligare endpoints
-    * @GetMapping("/bookings/..")
-    */
+   //Ska returnera alla bookings för ett givet customer_id
+   @GetMapping("/bookings/get/{customer_id}") 
+   public List<Booking> getBookingsByCustomer(@PathVariable(value = "customer_id") Integer id ){
+    repository.findAll(id);
+   }
 
 }
 
