@@ -60,10 +60,10 @@ public class BookingController {
    }
    
    //Ska returnera alla bookings för ett givet customer_id
-   @GetMapping("/bookings/get/{customer_id}") 
+   /*@GetMapping("/bookings/get/{customer_id}") 
    public List<Booking> getBookingsByCustomer(@PathVariable(value = "customer_id") Integer id ){
     repository.findAll(id);
-   }
+   }*/
 
 }
 
