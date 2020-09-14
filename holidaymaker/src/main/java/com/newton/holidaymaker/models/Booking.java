@@ -15,7 +15,8 @@ import javax.persistence.Id;
 @Entity
 public class Booking implements Serializable {
 
-	    private @Id @GeneratedValue (strategy = GenerationType.IDENTITY) int id;
+	    @Id @GeneratedValue (strategy = GenerationType.IDENTITY) 
+	    private int id;
 	    @Column(name="room_id", columnDefinition = "VARCHAR(250) NOT NULL")
 	    private int room_id;
 	    @Column(name="customer_id", columnDefinition = "VARCHAR(250) NOT NULL")
