@@ -8,3 +8,4 @@ import com.newton.holidaymaker.models.Room;
 public interface RoomRepository extends JpaRepository<Room,  Integer>{
 
 }
+//
