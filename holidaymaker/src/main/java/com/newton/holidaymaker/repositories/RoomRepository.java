@@ -1,4 +1,4 @@
-package com.newton.holidaymaker.repository;
+package com.newton.holidaymaker.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;

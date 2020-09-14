@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.newton.holidaymaker.models.Room;
-import com.newton.holidaymaker.repository.RoomRepository;
+import com.newton.holidaymaker.repositories.RoomRepository;
 
 
 
