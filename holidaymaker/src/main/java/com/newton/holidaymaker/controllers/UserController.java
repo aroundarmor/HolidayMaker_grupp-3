@@ -11,18 +11,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
-
-
 @RestController
 @RequestMapping("/users")
 public class UserController {
 
     @Autowired
     private UserRepository userRepository;
-    
+
     @GetMapping("/")
-    public List<User> allUsers(){
+    public List<User> allUsers() {
         return userRepository.findAll();
     }
 
@@ -31,8 +28,5 @@ public class UserController {
 
         return userRepository.findById(id).get();
     }
-    
 
-    
-    
 }

@@ -1,4 +1,5 @@
 package com.newton.holidaymaker.controllers;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -12,30 +13,17 @@ import org.springframework.web.bind.annotation.RestController;
 import com.newton.holidaymaker.models.Room;
 import com.newton.holidaymaker.repositories.RoomRepository;
 
-
-
-
 @RestController
 @Service
 public class RoomController {
-	
-@Autowired RoomRepository roomRepository;
-	
-	
 
-		
-		
-	
-		
-@GetMapping("/rooms")
-public List<Room> getAllRooms(){
-return roomRepository.findAll();
+    @Autowired
+    RoomRepository roomRepository;
 
-	
-   
-}
+    @GetMapping("/rooms")
+    public List<Room> getAllRooms() {
+        return roomRepository.findAll();
 
-
-
+    }
 
 }
