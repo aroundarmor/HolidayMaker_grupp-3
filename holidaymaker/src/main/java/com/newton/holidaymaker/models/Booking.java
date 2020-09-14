@@ -5,18 +5,29 @@ import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 //OBS måste kolla att datumobjektet fungerar med datumkolumnen i databasen/Hanna
 
 @Entity
+@Table (name = "booking")
 public class Booking implements Serializable {
 
 	    @Id @GeneratedValue (strategy = GenerationType.IDENTITY) 
 	    private int id;
+	    
 	    @Column(name="room_id", columnDefinition = "VARCHAR(250) NOT NULL")
 	    private int room_id;
 	    @Column(name="customer_id", columnDefinition = "VARCHAR(250) NOT NULL")
@@ -33,6 +44,11 @@ public class Booking implements Serializable {
 	    private Boolean three_meals;
 	    @Column(name="all_inclusive", columnDefinition = "BOOL NOT NULL")
 	    private Boolean all_inclusive;
+	    
+	    @ManyToOne(fetch = FetchType.LAZY)
+	    @JoinColumn(name = "customer_id", nullable = false)
+	    @OnDelete(action = OnDeleteAction.CASCADE)
+	    private User user;
 	   
 //	    Constructors
 	    public Booking() { }
@@ -64,6 +80,22 @@ public class Booking implements Serializable {
 		public void setRoom_id(int room_id) {
 			this.room_id = room_id;
 		}
+		
+		//getter method to retrieve the customer_id
+	    public Long getThisCustomer_id(){
+	        //return user.getClass()
+	    }
+
+	    //lite oklart hur dessa två metoder behövs
+	    @JsonIgnore
+	    public User getThisUser() {
+	        return user;
+	    }
+
+	    @JsonIgnore
+	    public void setThisUser(User user) {
+	        this.user = user;
+	    }
 
 		public int getCustomer_id() {
 			return customer_id;
