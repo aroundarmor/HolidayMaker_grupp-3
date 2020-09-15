@@ -15,12 +15,13 @@ import com.newton.holidaymaker.models.Booking;
 import com.newton.holidaymaker.repositories.BookingRepository;
 
 @RestController
+//@RequiredArgsConstructor
 public class BookingController {
 
     @Autowired
     private final BookingRepository repository;
 
-    BookingController(BookingRepository repository) {
+    public BookingController(BookingRepository repository) {
         this.repository = repository;
     }
 
