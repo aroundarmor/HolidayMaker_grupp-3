@@ -12,30 +12,13 @@ import org.springframework.web.bind.annotation.RestController;
 import com.newton.holidaymaker.models.Room;
 import com.newton.holidaymaker.repositories.RoomRepository;
 
-
-
-
 @RestController
 @Service
 public class RoomController {
-	
-@Autowired RoomRepository roomRepository;
-	
-	
+    @Autowired RoomRepository roomRepository;
 
-		
-		
-	
-		
-@GetMapping("/rooms")
-public List<Room> getAllRooms(){
-return roomRepository.findAll();
-
-	
-   
-}
-
-
-
-
+    @GetMapping("/rooms")
+    public List<Room> getAllRooms(){
+        return roomRepository.findAll();
+    }
 }
