@@ -15,7 +15,9 @@ public class Room {
 	private int bookingId;
 	private boolean isBooked;
 
-	public Room() { }
+	public Room() {
+	}
+
 	public Room(String roomType, double roomPrice, int hotelId, int bookingId, boolean isBooked) {
 		this.roomType = roomType;
 		this.roomPrice = roomPrice;
@@ -71,4 +73,8 @@ public class Room {
 	public void setBooked(boolean isBooked) {
 		this.isBooked = isBooked;
 	}
+
+	
+	
 }
+
