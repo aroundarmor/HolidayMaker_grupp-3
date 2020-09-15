@@ -5,25 +5,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
 @Entity
 public class Room {
-
-@Id @GeneratedValue (strategy = GenerationType.IDENTITY) 
-	    private int id;
-	    
-	    @Column(name="roomId", columnDefinition = "VARCHAR(250) NOT NULL")
-	    private int roomId;
-	    @Column(name="roomType", columnDefinition = "VARCHAR(250) NOT NULL")
-	    private String roomType;
-	    @Column(name="roomPrice", columnDefinition = "DOUBLE(250) NOT NULL")
-	    private double roomPrice;
-	      @Column(name="hotelId", columnDefinition = "VARCHAR(250) NOT NULL")
-	    private int hotelId;
-	   @Column(name="bookingId", columnDefinition = "VARCHAR(250) NOT NULL")
-	    private int bookingId;
-	    @Column(name="isBooked", columnDefinition = "BOOL NOT NULL")
-	    private Boolean isBooked;
-
+    @Id @GeneratedValue (strategy = GenerationType.IDENTITY)                private int id;
+    @Column(name="roomId", columnDefinition = "VARCHAR(250) NOT NULL")      private int roomId;
+    @Column(name="roomType", columnDefinition = "VARCHAR(250) NOT NULL")    private String roomType;
+    @Column(name="roomPrice", columnDefinition = "DOUBLE(250) NOT NULL")    private double roomPrice;
+    @Column(name="hotelId", columnDefinition = "VARCHAR(250) NOT NULL")     private int hotelId;
+    @Column(name="bookingId", columnDefinition = "VARCHAR(250) NOT NULL")   private int bookingId;
+    @Column(name="isBooked", columnDefinition = "BOOL NOT NULL")            private Boolean isBooked;
 
 	public Room() { }
 	public Room(String roomType, double roomPrice, int hotelId, int bookingId, boolean isBooked) {
@@ -82,9 +73,12 @@ public class Room {
 		this.isBooked = isBooked;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 	
 	//
 >>>>>>> 8847359719db295f464c24e5d1f604bb1be0b681
+=======
+>>>>>>> 905175d00bc27160b26088db19685c3fb568eb67
 }
