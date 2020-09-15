@@ -8,11 +8,13 @@ package com.newton.holidaymaker.repositories;
 import com.newton.holidaymaker.models.Hotel;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author Ted
  */
+@Repository
 public interface HotelRepository extends JpaRepository<Hotel, Integer> {
 
 }
