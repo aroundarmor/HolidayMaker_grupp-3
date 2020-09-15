@@ -9,7 +9,7 @@ import javax.persistence.Table;
 @Entity
 @Table (name ="user")
 public class User {
-
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int customer_id;
@@ -20,7 +20,10 @@ public class User {
     private String username;
     private String password;
 
-    public User() { }
+    public User (){
+
+    }
+    
     public User(String first_name, String last_name, int phone_no, String email, String username, String password) {
         this.first_name = first_name;
         this.last_name = last_name;
@@ -30,6 +33,7 @@ public class User {
         this.password = password;
     }
 
+    
     public String getFirst_name() {
         return first_name;
     }
