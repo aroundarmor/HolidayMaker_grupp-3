@@ -1,5 +1,6 @@
 package com.newton.holidaymaker.models;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,78 +13,39 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int customer_id;
-    private String first_name;
-    private String last_name;
-    private int phone_no;
-    private String email;
-    private String username;
-    private String password;
+    @Column(name="customer_id") private int customerId;
+    @Column(name="phone_no")    private int phoneNumber;
+    @Column(name="first_name")  private String firstname;
+    @Column(name="last_name")   private String lastname;
+    @Column(name="email")       private String email;
+    @Column(name="username")    private String username;
+    @Column(name="password")    private String password;
 
     public User() { }
-    public User(String first_name, String last_name, int phone_no, String email, String username, String password) {
-        this.first_name = first_name;
-        this.last_name = last_name;
-        this.phone_no = phone_no;
+    public User(String firstname, String lastname, int phoneNumber, String email, String username, String password) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.phoneNumber = phoneNumber;
         this.email = email;
         this.username = username;
         this.password = password;
     }
 
-    public String getFirst_name() {
-        return first_name;
-    }
+    // Getters
+    public int getCustomerId()   { return customerId;  }
+    public int getPhoneNumber()  { return phoneNumber; }
+    public String getFirstname() { return firstname;   }
+    public String getLastname()  { return lastname;    }
+    public String getUsername()  { return username;    }
+    public String getPassword()  { return password;    }
+    public String getEmail()     { return email;       }
 
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
-    }
-
-    public String getLast_name() {
-        return last_name;
-    }
-
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
-    }
-
-    public int getPhone_no() {
-        return phone_no;
-    }
-
-    public void setPhone_no(int phone_no) {
-        this.phone_no = phone_no;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public int getCustomer_id() {
-        return customer_id;
-    }
-
-    public void setCustomer_id(int customer_id) {
-        this.customer_id = customer_id;
-    }
-
+    // Setters
+    public void setFirstname(String firstname)  { this.firstname    = firstname;   }
+    public void setLastname(String lastname)    { this.lastname     = lastname;    }
+    public void setUsername(String username)    { this.username     = username;    }
+    public void setEmail(String email)          { this.email        = email;       }
+    public void setPhoneNumber(int phoneNumber) { this.phoneNumber  = phoneNumber; }
+    public void setPassword(String password)    { this.password     = password;    }
+    public void setCustomerId(int customerId)   { this.customerId   = customerId;  }
 }

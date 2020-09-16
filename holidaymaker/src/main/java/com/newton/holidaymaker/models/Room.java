@@ -72,13 +72,4 @@ public class Room {
 	public void setBooked(boolean isBooked) {
 		this.isBooked = isBooked;
 	}
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-
-	
-	//
->>>>>>> 8847359719db295f464c24e5d1f604bb1be0b681
-=======
->>>>>>> 905175d00bc27160b26088db19685c3fb568eb67
 }

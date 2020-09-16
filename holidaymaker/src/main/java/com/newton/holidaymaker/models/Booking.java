@@ -24,24 +24,15 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table (name = "booking")
 public class Booking implements Serializable {
-    @Id @GeneratedValue (strategy = GenerationType.IDENTITY)
-    private int id;
-    @Column(name="room_id", columnDefinition = "VARCHAR(250) NOT NULL")
-    private int room_id;
-    @Column(name="customer_id", columnDefinition = "VARCHAR(250) NOT NULL")
-    private int customer_id;
-    @Column(name="arrival_date", columnDefinition = "DATE NOT NULL")
-    private Date arrival_date;
-    @Column(name="departure_date", columnDefinition = "DATE NOT NULL")
-    private Date departure_date;
-    @Column(name="extra_bed", columnDefinition = "BOOL NOT NULL")
-    private boolean extra_bed;
-    @Column(name="two_meals", columnDefinition = "BOOL NOT NULL")
-    private Boolean two_meals;
-    @Column(name="three_meals", columnDefinition = "BOOL NOT NULL")
-    private Boolean three_meals;
-    @Column(name="all_inclusive", columnDefinition = "BOOL NOT NULL")
-    private Boolean all_inclusive;
+    @Id @GeneratedValue (strategy = GenerationType.IDENTITY)                private int id;
+    @Column(name="room_id", columnDefinition = "VARCHAR(250) NOT NULL")     private int roomId;
+    @Column(name="customer_id", columnDefinition = "VARCHAR(250) NOT NULL") private int customerId;
+    @Column(name="arrival_date", columnDefinition = "DATE NOT NULL")        private Date arrivalDate;
+    @Column(name="departure_date", columnDefinition = "DATE NOT NULL")      private Date departureDate;
+    @Column(name="extra_bed", columnDefinition = "BOOL NOT NULL")           private boolean extraBed;
+    @Column(name="two_meals", columnDefinition = "BOOL NOT NULL")           private Boolean twoMeals;
+    @Column(name="three_meals", columnDefinition = "BOOL NOT NULL")         private Boolean threeMeals;
+    @Column(name="all_inclusive", columnDefinition = "BOOL NOT NULL")       private Boolean allInclusive;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "customer_id", nullable = false, insertable = false, updatable = false)
@@ -50,16 +41,17 @@ public class Booking implements Serializable {
 
     //	    Constructors
     public Booking() { }
-    public Booking(int room, int customer, Date arrDate, Date depDate, Boolean bed, Boolean twoM, Boolean threeM, Boolean allIn)
+    public Booking(int roomId, int customerId, Date arrivalDate, Date departureDate, Boolean extraBed, Boolean twoMeals, Boolean threeMeals, Boolean allInclusive)
     {
-    this.room_id = room;
-    this.customer_id = customer;
-    this.arrival_date = arrDate;
-    this.departure_date = depDate;
-    this.extra_bed = bed;
-    this.two_meals = twoM;
-    this.three_meals = threeM;
-    this.all_inclusive = allIn;
+        this.roomId         = roomId;
+        this.customerId     = customerId;
+        this.arrivalDate    = arrivalDate;
+        this.departureDate  = departureDate;
+        this.extraBed       = extraBed;
+        this.twoMeals       = twoMeals;
+        this.threeMeals     = threeMeals;
+        this.allInclusive   = allInclusive;
+
     }
 
     public int getId() {
@@ -70,17 +62,17 @@ public class Booking implements Serializable {
         this.id = id;
     }
 
-    public int getRoom_id() {
-        return room_id;
+    public int getRoomId() {
+        return roomId;
     }
 
-    public void setRoom_id(int room_id) {
-        this.room_id = room_id;
+    public void setRoomId(int roomId) {
+        this.roomId = roomId;
     }
 
     //getter method to retrieve the customer_id ..
     public int getThisCustomerId() {
-        return user.getCustomer_id();
+        return user.getCustomerId();
     }
 
     //lite oklart hur dessa två metoder behövs
@@ -94,59 +86,59 @@ public class Booking implements Serializable {
         this.user = user;
     }
 
-    public int getCustomer_id() {
-        return customer_id;
+    public int getCustomerId() {
+        return customerId;
     }
 
-    public void setCustomer_id(int customer_id) {
-        this.customer_id = customer_id;
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
     }
 
-    public Date getArrival_date() {
-        return arrival_date;
+    public Date getArrivalDate() {
+        return arrivalDate;
     }
 
-    public void setArrival_date(Date arrival_date) {
-        this.arrival_date = arrival_date;
+    public void setArrivalDate(Date arrivalDate) {
+        this.arrivalDate = arrivalDate;
     }
 
-    public Date getDeparture_date() {
-        return departure_date;
+    public Date getDepartureDate() {
+        return departureDate;
     }
 
-    public void setDeparture_date(Date departure_date) {
-        this.departure_date = departure_date;
+    public void setDepartureDate(Date departureDate) {
+        this.departureDate = departureDate;
     }
 
-    public boolean getExtra_bed() {
-        return extra_bed;
+    public boolean getExtraBed() {
+        return extraBed;
     }
 
-    public void setExtra_bed(boolean extra_bed) {
-        this.extra_bed = extra_bed;
+    public void setExtraBed(boolean extraBed) {
+        this.extraBed = extraBed;
     }
 
-    public Boolean getTwo_meals() {
-        return two_meals;
+    public Boolean getTwoMeals() {
+        return twoMeals;
     }
 
-    public void setTwo_meals(Boolean two_meals) {
-        this.two_meals = two_meals;
+    public void setTwoMeals(Boolean twoMeals) {
+        this.twoMeals = twoMeals;
     }
 
-    public Boolean getThree_meals() {
-        return three_meals;
+    public Boolean getThreeMeals() {
+        return threeMeals;
     }
 
-    public void setThree_meals(Boolean three_meals) {
-        this.three_meals = three_meals;
+    public void setThreeMeals(Boolean threeMeals) {
+        this.threeMeals = threeMeals;
     }
 
-    public Boolean getAll_inclusive() {
-        return all_inclusive;
+    public Boolean getAllInclusive() {
+        return allInclusive;
     }
 
-    public void setAll_inclusive(Boolean all_inclusive) {
-        this.all_inclusive = all_inclusive;
+    public void setAllInclusive(Boolean allInclusive) {
+        this.allInclusive = allInclusive;
     }
 }
