@@ -1,10 +1,13 @@
 package com.newton.holidaymaker.services;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import com.newton.holidaymaker.models.User;
 
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 public class MyUserDetails implements UserDetails {
@@ -13,30 +16,39 @@ public class MyUserDetails implements UserDetails {
      *
      */
     private static final long serialVersionUID = 1L;
+
     private User user;
     
-    public User getUser() {
-        return user;
-    }
-    
-    public void setUser(User user) {
+    public MyUserDetails(User user){
         this.user = user;
     }
     
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        List<GrantedAuthority> authorities = new ArrayList<>();
+
+        this.user.getPermissionList().forEach(permission ->{
+            GrantedAuthority authority = new SimpleGrantedAuthority(permission);
+            authorities.add(authority);
+        });
+        this.user.getRoleList().forEach(role ->{
+            GrantedAuthority authority = new SimpleGrantedAuthority("ROLE_"+role);
+            authorities.add(authority);
+        });
+        
+        
+        return authorities;
     }
 
     @Override
     public String getPassword() {
-        return user.getPassword();
+        return this.user.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return user.getUsername();
+        return this.user.getUsername();
     }
 
     @Override
@@ -56,7 +68,7 @@ public class MyUserDetails implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return true; //Needs to be changed to use field variable that has to be added to User entity ---> boolean isActive
     }
 
 }

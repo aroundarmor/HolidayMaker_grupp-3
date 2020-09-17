@@ -25,8 +25,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table (name = "booking")
 public class Booking implements Serializable {
     @Id @GeneratedValue (strategy = GenerationType.IDENTITY)                private int id;
-    @Column(name="room_id", columnDefinition = "VARCHAR(250) NOT NULL")     private int roomId;
-    @Column(name="customer_id", columnDefinition = "VARCHAR(250) NOT NULL") private int customerId;
+    @Column(name="room_id")                                                 private int roomId;
+    @Column(name="customer_id")                                             private int customerId;
     @Column(name="arrival_date", columnDefinition = "DATE NOT NULL")        private Date arrivalDate;
     @Column(name="departure_date", columnDefinition = "DATE NOT NULL")      private Date departureDate;
     @Column(name="extra_bed", columnDefinition = "BOOL NOT NULL")           private boolean extraBed;

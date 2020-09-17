@@ -1,8 +1,11 @@
 package com.newton.holidaymaker.security;
 
+import com.newton.holidaymaker.services.MyUserDetailsService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -16,33 +19,52 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     
-    @Autowired
-    private UserDetailsService userDetailsService;
+    MyUserDetailsService myUserDetailsService;
+
+    public SecurityConfiguration(MyUserDetailsService myUserDetailsService){
+        this.myUserDetailsService = myUserDetailsService;
+    }
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
        auth
-            .userDetailsService(userDetailsService).passwordEncoder(encodePass());
+            .authenticationProvider(authenticationProvider());
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
-        http.authorizeRequests()    
-            .antMatchers(
-                "/rest/**", 
-                "/users",
-                "/users/{id}"
-                )
-            .authenticated()
-            .antMatchers("/users/register").anonymous()
-            .anyRequest()
-            .permitAll()
+
+        http.authorizeRequests()
+            .antMatchers("/authenticated").authenticated()
+            .antMatchers("/users/**").hasRole("ADMIN")
             .and()
             .formLogin();
 
+        // http.authorizeRequests()    
+        //     .antMatchers(
+        //         "/rest/**", 
+        //         "/users",
+        //         "/users/{id}"
+        //         )
+        //     .authenticated()
+        //     .antMatchers("/users/register").anonymous()
+        //     .anyRequest()
+        //     .permitAll()
+        //     .and()
+        //     .formLogin();
+
     }
 
+    @Bean
+    DaoAuthenticationProvider authenticationProvider(){
+    DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+    authProvider.setPasswordEncoder(encodePass());
+    authProvider.setUserDetailsService(this.myUserDetailsService);
+
+        return authProvider;
+    }
 
     @Bean
     public BCryptPasswordEncoder encodePass(){
