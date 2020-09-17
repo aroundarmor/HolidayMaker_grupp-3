@@ -11,22 +11,22 @@ import javax.persistence.Table;
 @Table(name="room")
 public class Room {
     @Id @GeneratedValue (strategy = GenerationType.IDENTITY)                private int id;
-    @Column(name="roomId")												    private int roomId;
+/*    @Column(name="roomId")												    private int roomId;*/
     @Column(name="roomType")    											private String roomType;
     @Column(name="roomPrice")    											private double roomPrice;
     @Column(name="hotelId")     											private int hotelId;
-    @Column(name="bookingId")   											private int bookingId;
+    /*@Column(name="bookingId")   											private int bookingId;*/
     @Column(name="isBooked")            									private Boolean isBooked;
 
 	public Room() { }
-	public Room(String roomType, double roomPrice, int hotelId, int bookingId, boolean isBooked) {
+	public Room(String roomType, double roomPrice, int hotelId,/*int bookingId, */ boolean isBooked) {
 		this.roomType = roomType;
 		this.roomPrice = roomPrice;
 		this.hotelId = hotelId;
-		this.bookingId = bookingId;
+		//this.bookingId = bookingId;
 		this.isBooked = isBooked;
 	}
-
+/*
 	public int getRoomId() {
 		return roomId;
 	}
@@ -34,7 +34,7 @@ public class Room {
 	public void setRoomId(int roomId) {
 		this.roomId = roomId;
 	}
-
+*/
 	public String getRoomType() {
 		return roomType;
 	}
@@ -58,7 +58,7 @@ public class Room {
 	public void setHotelId(int hotelId) {
 		this.hotelId = hotelId;
 	}
-
+/*
 	public int getBookingId() {
 		return bookingId;
 	}
@@ -66,7 +66,7 @@ public class Room {
 	public void setBookingId(int bookingId) {
 		this.bookingId = bookingId;
 	}
-
+*/
 	public boolean isBooked() {
 		return isBooked;
 	}

@@ -26,6 +26,7 @@ public class Hotel implements Serializable {
     @Column(name = "hotelCountry", columnDefinition = "VARCHAR(250) NOT NULL")      private String hotelCountry;
     @Column(name = "hotelAddress", columnDefinition = "VARCHAR(250) NOT NULL")      private String hotelAddress;
 
+    public Hotel() {}
     public Hotel(int hotelID, String hotelName, String hotelCountry, String hotelAddress) {
         this.hotelId = hotelID;
         this.hotelName = hotelName;
