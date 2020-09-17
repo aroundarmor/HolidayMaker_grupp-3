@@ -39,22 +39,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
             .antMatchers("/authenticated").authenticated()
             .antMatchers("/users/**").hasRole("ADMIN")
+            .antMatchers("/rest/auth/process").hasAuthority("HOTEL_READ")
             .and()
             .formLogin();
-
-        // http.authorizeRequests()    
-        //     .antMatchers(
-        //         "/rest/**", 
-        //         "/users",
-        //         "/users/{id}"
-        //         )
-        //     .authenticated()
-        //     .antMatchers("/users/register").anonymous()
-        //     .anyRequest()
-        //     .permitAll()
-        //     .and()
-        //     .formLogin();
-
     }
 
     @Bean

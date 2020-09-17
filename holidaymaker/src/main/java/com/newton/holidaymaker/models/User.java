@@ -70,7 +70,8 @@ public class User {
     public void setEmail(String email)          { this.email        = email;       }
     public void setPhoneNumber(int phoneNumber) { this.phoneNumber  = phoneNumber; }
     public void setPassword(String password)    { this.password     = password;    }
-    public void setCustomerId(int id)           { this.id   = id;  }
+    public void setCustomerId(int id)           { this.id           = id;  }
+    
     
 
 }

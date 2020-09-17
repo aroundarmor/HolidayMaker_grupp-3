@@ -26,7 +26,7 @@ public class DatabaseInit implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        User user1 = new User("Rafael", "Milanes", 1234, "ra@gmail.com", "Raf", encoder.encode("pass123"), "ADMIN", " HOTEL_WRITE, HOTEL_READ, BOOKING_READ, BOOKING_WRITE, USER_READ, USER_WRITE, ROOM_READ, ROOM_WRITE");
+        User user1 = new User("Rafael", "Milanes", 1234, "ra@gmail.com", "Raf", encoder.encode("pass123"), "ADMIN", "HOTEL_WRITE,HOTEL_READ,BOOKING_READ,BOOKING_WRITE,USER_READ,USER_WRITE,ROOM_READ,ROOM_WRITE");
         User user2 = new User("John", "Smith", 1234, "johnny@gmail.com", "John", encoder.encode("pass1"), "USER", "USER_READ");
         User user3 = new User("Ernest", "Hemingway", 3245, "ernest@gmail.com", "Ernest", encoder.encode("pass12"), "USER", "USER_READ");
 
