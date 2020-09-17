@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import com.newton.holidaymaker.models.Room;
 
 @Repository
-public interface RoomRepository extends JpaRepository<Room,  Integer>{
+public interface RoomRepository extends JpaRepository<Room, Integer>{
 
 }
 //git problem

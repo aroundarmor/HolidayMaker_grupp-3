@@ -28,18 +28,18 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
-        // http.authorizeRequests()    
-        //     .antMatchers(
-        //         "/rest/**", 
-        //         "/users",
-        //         "/users/{id}"
-        //         )
-        //     .authenticated()
-        //     .antMatchers("/users/register").anonymous()
-        //     .anyRequest()
-        //     .permitAll()
-        //     .and()
-        //     .formLogin();
+        http.authorizeRequests()    
+            .antMatchers(
+                "/rest/**", 
+                "/users",
+                "/users/{id}"
+                )
+            .authenticated()
+            .antMatchers("/users/register").anonymous()
+            .anyRequest()
+            .permitAll()
+            .and()
+            .formLogin();
 
     }
 

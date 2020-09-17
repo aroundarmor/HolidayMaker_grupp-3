@@ -11,12 +11,12 @@ import javax.persistence.Table;
 @Table(name="room")
 public class Room {
     @Id @GeneratedValue (strategy = GenerationType.IDENTITY)                private int id;
-    @Column(name="roomId", columnDefinition = "VARCHAR(250) NOT NULL")      private int roomId;
-    @Column(name="roomType", columnDefinition = "VARCHAR(250) NOT NULL")    private String roomType;
-    @Column(name="roomPrice", columnDefinition = "DOUBLE(250) NOT NULL")    private double roomPrice;
-    @Column(name="hotelId", columnDefinition = "VARCHAR(250) NOT NULL")     private int hotelId;
-    @Column(name="bookingId", columnDefinition = "VARCHAR(250) NOT NULL")   private int bookingId;
-    @Column(name="isBooked", columnDefinition = "BOOL NOT NULL")            private Boolean isBooked;
+    @Column(name="roomId")												    private int roomId;
+    @Column(name="roomType")    											private String roomType;
+    @Column(name="roomPrice")    											private double roomPrice;
+    @Column(name="hotelId")     											private int hotelId;
+    @Column(name="bookingId")   											private int bookingId;
+    @Column(name="isBooked")            									private Boolean isBooked;
 
 	public Room() { }
 	public Room(String roomType, double roomPrice, int hotelId, int bookingId, boolean isBooked) {

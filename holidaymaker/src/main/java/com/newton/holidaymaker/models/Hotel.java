@@ -20,8 +20,8 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "hotel")
 public class Hotel implements Serializable {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) 
-    @Column(name = "hotelID", columnDefinition = "VARCHAR(250) NOT NULL")           private int hotelId;
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)                         
+    @Column(name = "hotelID")           private int hotelId;
     @Column(name = "hotelName", columnDefinition = "VARCHAR(250) NOT NULL")         private String hotelName;
     @Column(name = "hotelCountry", columnDefinition = "VARCHAR(250) NOT NULL")      private String hotelCountry;
     @Column(name = "hotelAddress", columnDefinition = "VARCHAR(250) NOT NULL")      private String hotelAddress;
