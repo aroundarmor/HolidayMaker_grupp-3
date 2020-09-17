@@ -13,7 +13,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="customer_id") private int customerId;
+    @Column(name="id")          private int id;
     @Column(name="phone_no")    private int phoneNumber;
     @Column(name="first_name")  private String firstname;
     @Column(name="last_name")   private String lastname;
@@ -32,7 +32,7 @@ public class User {
     }
 
     // Getters
-    public int getCustomerId()   { return customerId;  }
+    public int getCustomerId()   { return id;  }
     public int getPhoneNumber()  { return phoneNumber; }
     public String getFirstname() { return firstname;   }
     public String getLastname()  { return lastname;    }
@@ -47,5 +47,5 @@ public class User {
     public void setEmail(String email)          { this.email        = email;       }
     public void setPhoneNumber(int phoneNumber) { this.phoneNumber  = phoneNumber; }
     public void setPassword(String password)    { this.password     = password;    }
-    public void setCustomerId(int customerId)   { this.customerId   = customerId;  }
+    public void setCustomerId(int id)   { this.id   = id;  }
 }

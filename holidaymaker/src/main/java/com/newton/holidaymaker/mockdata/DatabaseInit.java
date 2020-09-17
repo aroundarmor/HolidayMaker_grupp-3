@@ -29,7 +29,9 @@ public class DatabaseInit implements CommandLineRunner {
 
         List<User> users = Arrays.asList(user1, user2, user3);
 
-        if(userRepository.findAll().isEmpty()){
+        boolean nothingInhere = userRepository.findAll().isEmpty();
+
+        if(nothingInhere){
             //Persist in DB
              userRepository.saveAll(users);
         }
