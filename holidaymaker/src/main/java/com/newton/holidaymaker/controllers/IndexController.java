@@ -13,19 +13,18 @@ import org.springframework.web.servlet.ModelAndView;
 public class IndexController extends PageControllerEssentials implements PageControllerInterface {
 
     @GetMapping("/")
-	public ModelAndView run(HttpServletRequest req, HttpServletResponse res, Principal principal) {
+    public ModelAndView run(HttpServletRequest req, HttpServletResponse res, Principal principal) {
         ModelAndView mv = initModelAndView("HolidayMaker | Welcome", null, "main");
 
         if(principal != null)
-        	mv.addObject("username", principal.getName());
+            mv.addObject("username", principal.getName());
 
         return mv;
-	}
+    }
 
     @GetMapping("/error")
     public ModelAndView error() {
         ModelAndView mv = new ModelAndView("error");
         return mv;
     }
-
 }
