@@ -16,5 +16,14 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface HotelRepository extends JpaRepository<Hotel, Integer> {
-
+    /*	boolean existsById(String hotelId);
+    	boolean existsByName(String hotelName);
+	boolean existsByCountry(String hotelCountry);
+	boolean existsByAddress(String hotelAddress);
+	
+    	Hotel findById(String hotelId);
+	Hotel findByName(String hotelName);
+	Hotel findByCountry(String hotelCountry);
+	Hotel findByAddress(String hotelAddress);
+   */
 }
