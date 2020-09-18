@@ -14,7 +14,7 @@ body{
 }
 
 
-.main-container {
+.login__main-container {
 	display: flex;
 	flex-direction: column;
 	/* align-items: center; */
@@ -31,7 +31,7 @@ body{
 
 
 
-.main-container p {
+.login__main-container p {
 	color: white;
 	/* text-align: center; */
 	background-color: #228d4d;

@@ -1,6 +1,6 @@
-<div class="main-container" th:fragment="login">
+<div class="login__main-container" th:fragment="login">
     <p th:text="'LOGIN PAGE'" />
-    <form id="loginForm" autocomplete="false" class="form-signin" method="post" action="/auth/login">
+    <form id="loginForm" class="form-signin" method="post" action="/login">
         <label for="username" class="sr-only">Username</label>
         <input type="text" id="username" name="username" class="form-control" placeholder="Username"required autofocus >
         <label for="password" class="sr-only">Password</label>
