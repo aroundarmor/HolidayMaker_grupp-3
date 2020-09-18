@@ -26,6 +26,15 @@ public class Room {
 		//this.bookingId = bookingId;
 		this.isBooked = isBooked;
 	}
+	
+	public void copy(Room r) {
+		this.id = r.id;
+		this.roomType = r.roomType;
+		this.roomPrice = r.roomPrice;
+		this.hotelId = r.hotelId;
+		//this.bookingId = r.bookingId;
+		this.isBooked = r.isBooked;
+	}
 /*
 	public int getRoomId() {
 		return roomId;
