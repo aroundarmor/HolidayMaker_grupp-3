@@ -65,10 +65,10 @@ public class DatabaseInit implements CommandLineRunner {
         // ----------------
         // Generate Hotels
         // ----------------
-        Hotel potato = new Hotel("Potato Hotel", "Potato Country", "Mashedpotatoes 32");
-        Hotel tomato = new Hotel("Tomato Hotel", "Tomato Country", "Rottentomato 531");
-        Hotel cookie = new Hotel("Cookie Hotel", "Cookie Country", "Cookiemonster 12");
-        Hotel pasta  = new Hotel("Pasta Hotel", "Pasta Country", "Pastalavista 2");
+        Hotel potato = new Hotel("Potato Hotel", "Sweden", "Mashedpotatoes 32");
+        Hotel tomato = new Hotel("Tomato Hotel", "Sweden", "Rottentomato 531");
+        Hotel cookie = new Hotel("Cookie Hotel", "Spain", "Cookiemonster 12");
+        Hotel pasta  = new Hotel("Pasta Hotel", "Cuba", "Pastalavista 2");
 
         List<Hotel> hotels = Arrays.asList(potato, tomato, cookie, pasta);
 

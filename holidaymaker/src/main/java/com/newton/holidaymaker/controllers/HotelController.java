@@ -10,6 +10,7 @@ import com.newton.holidaymaker.repositories.HotelRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -30,5 +31,10 @@ public class HotelController {
     public List<Hotel> getHotels() {
         System.out.println("Hotels received");
         return repository.findAll();
+    }
+    @GetMapping("/hotels/{country}")
+    public List<Hotel> getByCountry(@PathVariable String country) {
+        List<Hotel> hotels = repository.findByHotelCountry(country);
+        return hotels;
     }
 }
