@@ -25,6 +25,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     private SuccessHandler customSuccessHandler;
 
+    private MyUserDetailsService myUserDetailsService;
+
     public SecurityConfiguration(MyUserDetailsService myUserDetailsService){
         this.myUserDetailsService = myUserDetailsService;
     }
