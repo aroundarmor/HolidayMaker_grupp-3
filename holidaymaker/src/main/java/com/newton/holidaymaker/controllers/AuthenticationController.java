@@ -102,6 +102,8 @@ public class AuthenticationController {
         registerForm.setLastname(registerForm.getLastname().trim().toLowerCase());
         registerForm.setEmail(registerForm.getEmail().trim().toLowerCase());
         registerForm.setUsername(registerForm.getUsername().trim().toLowerCase());
+        registerForm.setRoles(registerForm.getRoles().trim());
+        registerForm.setPermissions(registerForm.getPermissions().trim());
 
         // Make sure there are no invalid characters ( anything other than a-zA-Z )
         // Only a-zA-Z allowed in first-, lastname fields.

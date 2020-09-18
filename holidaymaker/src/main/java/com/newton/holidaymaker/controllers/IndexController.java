@@ -1,27 +1,27 @@
-package com.newton.holidaymaker.controllers;
+// package com.newton.holidaymaker.controllers;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
+// import org.springframework.stereotype.Controller;
+// import org.springframework.web.bind.annotation.GetMapping;
+// import org.springframework.web.bind.annotation.RequestMapping;
+// import org.springframework.web.bind.annotation.RestController;
+// import org.springframework.web.servlet.ModelAndView;
 
-@Controller
-public class IndexController {
+// @Controller
+// public class IndexController {
 
-    @GetMapping("/")
-    public ModelAndView run(){
-        ModelAndView mv = new ModelAndView("index");
+//     @GetMapping("/")
+//     public ModelAndView run(){
+//         ModelAndView mv = new ModelAndView("index");
 
-        // sample variable
-        mv.addObject("title", "Holidaymaker | Welcome");
+//         // sample variable
+//         mv.addObject("title", "Holidaymaker | Welcome");
 
-        return mv;
-    }
+//         return mv;
+//     }
 
-    @GetMapping("/error")
-    public ModelAndView error() {
-        ModelAndView mv = new ModelAndView("error");
-        return mv;
-    }
-}
+//     @GetMapping("/error")
+//     public ModelAndView error() {
+//         ModelAndView mv = new ModelAndView("error");
+//         return mv;
+//     }
+// }
