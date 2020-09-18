@@ -6,6 +6,8 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.validator.routines.EmailValidator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -30,23 +32,23 @@ public class AuthenticationController {
     * */
     @PostMapping("/login")
     @ResponseBody
-    public String loginUser(@RequestBody User loginForm, HttpServletRequest req) {
+    public ResponseEntity loginUser(@RequestBody User loginForm, HttpServletRequest req) {
         HttpSession session = req.getSession();
         // The login process should be stopped when there's an active session.
         if(session.getAttribute("username") != null)
-            return "err#activeSession";
+            return new ResponseEntity("err#activeSession", HttpStatus.OK);
 
         if(userRepository.existsByUsername(loginForm.getUsername()) == false)
-            return "err#wuop"; // wrong username or password
+            return new ResponseEntity("err#wuop", HttpStatus.OK); // wrong username or password
 
         // compare password
         User u = userRepository.findByUsername(loginForm.getUsername());
         boolean isCorrectPassword = BCrypt.checkpw(loginForm.getPassword(), u.getPassword());
         if(isCorrectPassword == false)
-            return "err#wuop";
+            return new ResponseEntity("err#wuop", HttpStatus.OK);
 
         session.setAttribute("username", loginForm.getUsername());
-        return "success";
+        return new ResponseEntity("success", HttpStatus.OK);
     }
 
     /**

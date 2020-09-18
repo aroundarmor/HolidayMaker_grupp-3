@@ -15,9 +15,13 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @Configuration
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
-    
+
     @Autowired
     private UserDetailsService userDetailsService;
+
+    @Autowired
+    private SuccessHandler customSuccessHandler;
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
@@ -28,9 +32,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
-        http.authorizeRequests()    
+
+        http.authorizeRequests()
             .antMatchers(
-                "/rest/**", 
+                "/rest/**",
                 "/users",
                 "/users/{id}"
                 )
@@ -39,7 +44,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .anyRequest()
             .permitAll()
             .and()
-            .formLogin();
+
+            // use custom login page
+            .formLogin()
+            //.loginPage("/login")
+            .successHandler(customSuccessHandler);
 
     }
 
@@ -48,7 +57,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     public BCryptPasswordEncoder encodePass(){
         return new BCryptPasswordEncoder();
     }
-    
 
-    
+
+
 }

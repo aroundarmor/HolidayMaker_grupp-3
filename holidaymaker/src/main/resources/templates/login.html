@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title th:text="${title}"></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <script src="/js/vendor/jquery351.js" charset="utf-8"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('#loginForm').submit(function(event) {
+                    event.preventDefault();
+                    $.ajax({
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json'
+                        },
+                        url: '/auth/login',
+                        type:'POST',
+                        data: getFormData($(this)),
+                        dataType: 'json',
+                        success: function(response) {
+                            console.log(response);
+                        }
+                    });
+                });
+
+                function getFormData(element, excludeElements = null) {
+                    let formData = {};
+                    $.each(element.serializeArray(), function(key, obj) {
+                        // skip unwanted elements
+                        if(excludeElements != null)
+                            if(excludeElements.includes(obj.name))
+                                return true;
+
+                        formData[obj.name] = obj.value;
+                    });
+                    return JSON.stringify(formData);
+                }
+            });
+        </script>
+    </head>
+    <body>
+        <p th:text="'LOGIN PAGE'" />
+        <form id="loginForm" class="form-signin" method="post" action="/auth/login">
+            <h2 class="form-signin-heading">Please sign in</h2>
+            <p>
+                <label for="username" class="sr-only">Username</label>
+                <input type="text" id="username" name="username" class="form-control" placeholder="Username" required autofocus>
+            </p>
+            <p>
+                <label for="password" class="sr-only">Password</label>
+                <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+            </p>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        </form>
+    </body>
+</html>
