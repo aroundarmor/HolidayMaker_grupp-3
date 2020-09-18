@@ -3,12 +3,15 @@ package com.newton.holidaymaker.models;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -17,15 +20,18 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")          private int id;
-    @Column(name="phone_no")    private int phoneNumber;
-    @Column(name="first_name")  private String firstname;
-    @Column(name="last_name")   private String lastname;
-    @Column(name="email")       private String email;
-    @Column(name="username")    private String username;
-    @Column(name="password")    private String password;
-    @Column(name="roles")          private String roles = "";
-    @Column(name="permissions")    private String permissions = "";
+    @Column(name="customer_id")         private int customerId;
+    @Column(name="phone_no")    		private int phoneNumber;
+    @Column(name="first_name")  		private String firstname;
+    @Column(name="last_name")   		private String lastname;
+    @Column(name="email")       		private String email;
+    @Column(name="username")    		private String username;
+    @Column(name="password")    		private String password;
+    @Column(name="roles")          		private String roles = "";
+    @Column(name="permissions")    		private String permissions = "";
+    
+    @OneToMany(mappedBy = "user")
+    private Set<Booking> usersBookings;   
 
     public User() { }
     public User(String firstname, String lastname, int phoneNumber, String email, String username, String password, String roles, String permissions) {
@@ -40,7 +46,7 @@ public class User {
     }
 
     // Getters
-    public int getCustomerId()   { return id;  }
+    public int getCustomerId()   { return customerId;  }
     public int getPhoneNumber()  { return phoneNumber; }
     public String getFirstname() { return firstname;   }
     public String getLastname()  { return lastname;    }
@@ -70,10 +76,8 @@ public class User {
     public void setEmail(String email)          { this.email        = email;       }
     public void setPhoneNumber(int phoneNumber) { this.phoneNumber  = phoneNumber; }
     public void setPassword(String password)    { this.password     = password;    }
-    public void setCustomerId(int id)           { this.id           = id;  }
+    public void setCustomerId(int id)           { this.customerId   = id;  }
     public void setRoles(String roles)          {this.roles         = roles;}
     public void setPermissions(String permissions)          {this.permissions         = permissions;}
-    
-    
 
 }
