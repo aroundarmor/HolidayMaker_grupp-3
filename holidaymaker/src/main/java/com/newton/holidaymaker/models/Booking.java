@@ -24,27 +24,24 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table (name = "booking")
 public class Booking implements Serializable {
-    @Id @GeneratedValue (strategy = GenerationType.IDENTITY)                private int id;
+    @Id @GeneratedValue (strategy = GenerationType.IDENTITY)                private int bookingId;
     @Column(name="room_id")                                                 private int roomId;
-    @Column(name="customer_id")                                             private int customerId;
+    //@Column(name="customer_id", insertable=false, updatable=false)          private int customerId;
     @Column(name="arrival_date", columnDefinition = "DATE NOT NULL")        private Date arrivalDate;
     @Column(name="departure_date", columnDefinition = "DATE NOT NULL")      private Date departureDate;
     @Column(name="extra_bed", columnDefinition = "BOOL NOT NULL")           private boolean extraBed;
-    @Column(name="two_meals", columnDefinition = "BOOL NOT NULL")           private Boolean twoMeals;
-    @Column(name="three_meals", columnDefinition = "BOOL NOT NULL")         private Boolean threeMeals;
-    @Column(name="all_inclusive", columnDefinition = "BOOL NOT NULL")       private Boolean allInclusive;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "customer_id", nullable = false, insertable = false, updatable = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
+    @Column(name="two_meals", columnDefinition = "BOOL NOT NULL")           private boolean twoMeals;
+    @Column(name="three_meals", columnDefinition = "BOOL NOT NULL")         private boolean threeMeals;
+    @Column(name="all_inclusive", columnDefinition = "BOOL NOT NULL")       private boolean allInclusive;
+    
+    @ManyToOne
+    @JoinColumn(name="customer_id", nullable=false)
     private User user;
 
-    //	    Constructors
     public Booking() { }
-    public Booking(int roomId, int customerId, Date arrivalDate, Date departureDate, Boolean extraBed, Boolean twoMeals, Boolean threeMeals, Boolean allInclusive)
+    public Booking(int roomId, Date arrivalDate, Date departureDate, Boolean extraBed, Boolean twoMeals, Boolean threeMeals, Boolean allInclusive)
     {
         this.roomId         = roomId;
-        this.customerId     = customerId;
         this.arrivalDate    = arrivalDate;
         this.departureDate  = departureDate;
         this.extraBed       = extraBed;
@@ -55,11 +52,7 @@ public class Booking implements Serializable {
     }
 
     public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+        return bookingId;
     }
 
     public int getRoomId() {
@@ -68,30 +61,6 @@ public class Booking implements Serializable {
 
     public void setRoomId(int roomId) {
         this.roomId = roomId;
-    }
-
-    //getter method to retrieve the customer_id ..
-    public int getThisCustomerId() {
-        return user.getCustomerId();
-    }
-
-    //lite oklart hur dessa två metoder behövs
-    @JsonIgnore
-    public User getThisUser() {
-        return user;
-    }
-
-    @JsonIgnore
-    public void setThisUser(User user) {
-        this.user = user;
-    }
-
-    public int getCustomerId() {
-        return customerId;
-    }
-
-    public void setCustomerId(int customerId) {
-        this.customerId = customerId;
     }
 
     public Date getArrivalDate() {
@@ -141,4 +110,5 @@ public class Booking implements Serializable {
     public void setAllInclusive(Boolean allInclusive) {
         this.allInclusive = allInclusive;
     }
+ 
 }
