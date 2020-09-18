@@ -86,7 +86,8 @@ body{
 }
 .form-control:focus {
     background-color: #7dcc99;
-    transition: #5dbf82 1.5s ease-in
+    transition: #5dbf82 1.5s ease-in;
+    border: none;
 }
 
 

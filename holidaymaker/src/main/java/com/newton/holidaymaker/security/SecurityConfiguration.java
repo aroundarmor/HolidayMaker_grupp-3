@@ -46,7 +46,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .antMatchers("/rest/auth/process").hasAuthority("HOTEL_READ")
             .antMatchers("/secure/auth/**").hasRole("ADMIN")
             .and()
-            .formLogin().loginPage("/views/login");
+            .formLogin().loginPage("/views/login").defaultSuccessUrl("/", true);
     }
 
     @Bean
