@@ -25,7 +25,11 @@ public class RoomController {
     }
     @GetMapping("/room/{id}")
     public Room getRoomById(@PathVariable Integer id){
-        return roomRepository.getOne(id);
+    	  if(roomRepository.existsById(id)){
+    	    	return roomRepository.findById(id).get();
+    	        }
+    	          return null;
+        
     }
    
 }
