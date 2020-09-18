@@ -23,6 +23,11 @@ public class DatabaseInit implements CommandLineRunner {
     @Autowired private RoomRepository roomRepository;
     @Autowired private BCryptPasswordEncoder encoder;
 
+    public DatabaseInit(UserRepository userRepository, BCryptPasswordEncoder encoder){
+        this.userRepository = userRepository;
+        this.encoder = encoder;
+    }
+
     @Override
     public void run(String... args) throws Exception {
         generateUsers();
@@ -36,14 +41,14 @@ public class DatabaseInit implements CommandLineRunner {
     * */
     public void generateUsers() {
         List<User> users = Arrays.asList(
-            new User("Rafael",  "Milanes",   1234, "ra@gmail.com",       "Raf",         encoder.encode("pass123")),
-            new User("John",    "Smith",     1234, "johnny@gmail.com",   "John",        encoder.encode("pass1")),
-            new User("Ernest",  "Hemingway", 3245, "ernest@gmail.com",   "Ernest",      encoder.encode("pass12")),
-            new User("Donald",  "Duck",      1111, "donald@duck.com",    "donduck",     encoder.encode("120")),
-            new User("Bugs",    "Bunny",     1112, "bugs@bunny.com",     "bugsbunny",   encoder.encode("121")),
-            new User("Cookie",  "Monster",   1113, "cookie@monster.com", "como1",       encoder.encode("122")),
-            new User("Pepe",    "Greenfrog", 1113, "pepe@reee.com",      "pepe",        encoder.encode("123")),
-            new User("Racecar", "McQueen",   1114, "idk@mail.com",       "rcar",        encoder.encode("124"))
+            new User("Rafael",  "Milanes",   1234, "ra@gmail.com",       "Raf",       encoder.encode("111"), "ADMIN","HOTEL_WRITE,HOTEL_READ,BOOKING_READ,BOOKING_WRITE,USER_READ,USER_WRITE,ROOM_READ,ROOM_WRITE"),
+            new User("John",    "Smith",     1234, "johnny@gmail.com",   "John",      encoder.encode("112"), "USER", "USER_READ"),
+            new User("Ernest",  "Hemingway", 3245, "ernest@gmail.com",   "Ernest",    encoder.encode("113"), "USER", "USER_READ"),
+            new User("Donald",  "Duck",      1111, "donald@duck.com",    "donduck",   encoder.encode("120"), "USER", "USER_READ"),
+            new User("Bugs",    "Bunny",     1112, "bugs@bunny.com",     "bugsbunny", encoder.encode("121"), "USER", "USER_READ"),
+            new User("Cookie",  "Monster",   1113, "cookie@monster.com", "como1",     encoder.encode("122"), "USER", "USER_READ"),
+            new User("Pepe",    "Greenfrog", 1113, "pepe@reee.com",      "pepe",      encoder.encode("123"), "USER", "USER_READ"),
+            new User("Racecar", "McQueen",   1114, "idk@mail.com",       "rcar",      encoder.encode("124"), "USER", "USER_READ")
         );
 
         if(userRepository.count() == 0)

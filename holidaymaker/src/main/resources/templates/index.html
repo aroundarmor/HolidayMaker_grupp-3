@@ -1,10 +1,12 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title>Getting Started: Serving Web Content</title>
+        <title th:text="${title}"></title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="stylesheet" href="/css/default.css">
+        <link rel="stylesheet" th:if="${pageCss != null}" th:href="'/css/pages/'+${pageCss}+'.css'">
     </head>
     <body>
-        <p th:text="Hello" />
+        <div th:replace="'views/'+${page}"/>
     </body>
 </html>
