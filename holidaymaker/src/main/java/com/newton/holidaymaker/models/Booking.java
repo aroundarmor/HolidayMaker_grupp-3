@@ -26,7 +26,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Booking implements Serializable {
     @Id @GeneratedValue (strategy = GenerationType.IDENTITY)                private int bookingId;
     @Column(name="room_id")                                                 private int roomId;
-    @Column(name="customer_id")                                             private int customerId;
+    //@Column(name="customer_id", insertable=false, updatable=false)          private int customerId;
     @Column(name="arrival_date", columnDefinition = "DATE NOT NULL")        private Date arrivalDate;
     @Column(name="departure_date", columnDefinition = "DATE NOT NULL")      private Date departureDate;
     @Column(name="extra_bed", columnDefinition = "BOOL NOT NULL")           private boolean extraBed;
@@ -39,10 +39,9 @@ public class Booking implements Serializable {
     private User user;
 
     public Booking() { }
-    public Booking(int roomId, int customerId, Date arrivalDate, Date departureDate, Boolean extraBed, Boolean twoMeals, Boolean threeMeals, Boolean allInclusive)
+    public Booking(int roomId, Date arrivalDate, Date departureDate, Boolean extraBed, Boolean twoMeals, Boolean threeMeals, Boolean allInclusive)
     {
         this.roomId         = roomId;
-        this.customerId     = customerId;
         this.arrivalDate    = arrivalDate;
         this.departureDate  = departureDate;
         this.extraBed       = extraBed;
@@ -62,14 +61,6 @@ public class Booking implements Serializable {
 
     public void setRoomId(int roomId) {
         this.roomId = roomId;
-    }
-
-    public int getCustomerId() {
-        return customerId;
-    }
-
-    public void setCustomerId(int customerId) {
-        this.customerId = customerId;
     }
 
     public Date getArrivalDate() {
