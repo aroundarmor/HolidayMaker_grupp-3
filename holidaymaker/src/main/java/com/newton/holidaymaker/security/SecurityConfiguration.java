@@ -41,12 +41,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
 
         http.authorizeRequests()
-            .antMatchers("/").authenticated()
+            .antMatchers("/").permitAll()
             .antMatchers("/users/**").hasRole("ADMIN")
             .antMatchers("/rest/auth/process").hasAuthority("HOTEL_READ")
             .antMatchers("/secure/auth/**").hasRole("ADMIN")
             .and()
-            .formLogin();
+            .formLogin().loginPage("/views/login");
     }
 
     @Bean
