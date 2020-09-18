@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -26,6 +28,9 @@ public class User {
     @Column(name="password")    private String password;
     @Column(name="roles")          private String roles = "";
     @Column(name="permissions")    private String permissions = "";
+    
+    @OneToMany(mappedBy = "booking", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Booking> usersBookings = new ArrayList<>();   
 
     public User() { }
     public User(String firstname, String lastname, int phoneNumber, String email, String username, String password, String roles, String permissions) {
@@ -74,6 +79,12 @@ public class User {
     public void setRoles(String roles)          {this.roles         = roles;}
     public void setPermissions(String permissions)          {this.permissions         = permissions;}
     
-    
+    public void addBooking(Booking booking) {
+        usersBookings.add(booking);
+    }
+ 
+    public void removeBooking(Booking booking) {
+        usersBookings.remove(booking);
+    }
 
 }

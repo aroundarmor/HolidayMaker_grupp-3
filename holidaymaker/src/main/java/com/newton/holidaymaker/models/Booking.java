@@ -30,13 +30,11 @@ public class Booking implements Serializable {
     @Column(name="arrival_date", columnDefinition = "DATE NOT NULL")        private Date arrivalDate;
     @Column(name="departure_date", columnDefinition = "DATE NOT NULL")      private Date departureDate;
     @Column(name="extra_bed", columnDefinition = "BOOL NOT NULL")           private boolean extraBed;
-    @Column(name="two_meals", columnDefinition = "BOOL NOT NULL")           private Boolean twoMeals;
-    @Column(name="three_meals", columnDefinition = "BOOL NOT NULL")         private Boolean threeMeals;
-    @Column(name="all_inclusive", columnDefinition = "BOOL NOT NULL")       private Boolean allInclusive;
-
+    @Column(name="two_meals", columnDefinition = "BOOL NOT NULL")           private boolean twoMeals;
+    @Column(name="three_meals", columnDefinition = "BOOL NOT NULL")         private boolean threeMeals;
+    @Column(name="all_inclusive", columnDefinition = "BOOL NOT NULL")       private boolean allInclusive;
+    
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "customer_id", nullable = false, insertable = false, updatable = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
     private User user;
 
     //	    Constructors
@@ -68,22 +66,6 @@ public class Booking implements Serializable {
 
     public void setRoomId(int roomId) {
         this.roomId = roomId;
-    }
-
-    //getter method to retrieve the customer_id ..
-    public int getThisCustomerId() {
-        return user.getCustomerId();
-    }
-
-    //lite oklart hur dessa två metoder behövs
-    @JsonIgnore
-    public User getThisUser() {
-        return user;
-    }
-
-    @JsonIgnore
-    public void setThisUser(User user) {
-        this.user = user;
     }
 
     public int getCustomerId() {
@@ -140,5 +122,17 @@ public class Booking implements Serializable {
 
     public void setAllInclusive(Boolean allInclusive) {
         this.allInclusive = allInclusive;
+    }
+    
+    /*@Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Booking )) return false;
+        return id != null && id.equals(((Boooking) o).getId());
+    }*/
+ 
+    @Override
+    public int hashCode() {
+        return 31;
     }
 }
