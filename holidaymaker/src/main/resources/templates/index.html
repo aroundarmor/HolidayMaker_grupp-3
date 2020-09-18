@@ -1,0 +1,13 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title th:text="${title}"></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="stylesheet" href="/css/default.css">
+        <link th:href="@{/css/login.css}" rel="stylesheet" />
+        <link rel="stylesheet" th:if="${pageCss != null}" th:href="'/css/pages/'+${pageCss}+'.css'">
+    </head>
+    <body>
+        <div th:replace="'views/'+${page}"/>
+    </body>
+</html>

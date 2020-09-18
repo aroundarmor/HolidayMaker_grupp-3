@@ -1,91 +1,83 @@
 package com.newton.holidaymaker.models;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table (name = "user")
 public class User {
-    
+
     @Id
-    private int customer_id;
-    private String first_name;
-    private String last_name;
-    private int phone_no;
-    private String email;
-    private String username;
-    private String password;
-    private Roll roll;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="customer_id")         private int customerId;
+    @Column(name="phone_no")    		private int phoneNumber;
+    @Column(name="first_name")  		private String firstname;
+    @Column(name="last_name")   		private String lastname;
+    @Column(name="email")       		private String email;
+    @Column(name="username")    		private String username;
+    @Column(name="password")    		private String password;
+    @Column(name="roles")          		private String roles = "";
+    @Column(name="permissions")    		private String permissions = "";
+    
+    @OneToMany(mappedBy = "user")
+    private Set<Booking> usersBookings;   
 
-    public User(String first_name, String last_name, int phone_no, String email, String username, String password,
-            Roll roll) {
-        this.first_name = first_name;
-        this.last_name = last_name;
-        this.phone_no = phone_no;
+    public User() { }
+    public User(String firstname, String lastname, int phoneNumber, String email, String username, String password, String roles, String permissions) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.phoneNumber = phoneNumber;
         this.email = email;
         this.username = username;
         this.password = password;
-        this.roll = roll;
+        this.roles = roles;
+        this.permissions = permissions;
     }
 
-    public String getFirst_name() {
-        return first_name;
+    // Getters
+    public int getCustomerId()   { return customerId;  }
+    public int getPhoneNumber()  { return phoneNumber; }
+    public String getFirstname() { return firstname;   }
+    public String getLastname()  { return lastname;    }
+    public String getUsername()  { return username;    }
+    public String getPassword()  { return password;    }
+    public String getEmail()     { return email;       }
+    public String getRoles()     {return roles;}
+    public String getPermissions()     {return permissions;}
+
+    public List<String> getRoleList(){
+        if(this.roles.length() > 0){
+            return Arrays.asList(this.roles.split(","));
+        }
+        return new ArrayList<>();
+    }
+    public List<String> getPermissionList(){
+        if(this.permissions.length() > 0){
+            return Arrays.asList(this.permissions.split(","));
+        }
+        return new ArrayList<>();
     }
 
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
-    }
-
-    public String getLast_name() {
-        return last_name;
-    }
-
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
-    }
-
-    public int getPhone_no() {
-        return phone_no;
-    }
-
-    public void setPhone_no(int phone_no) {
-        this.phone_no = phone_no;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public Roll getRoll() {
-        return roll;
-    }
-
-    public void setRoll(Roll roll) {
-        this.roll = roll;
-    }
-
-    
-
-    
-
+    // Setters
+    public void setFirstname(String firstname)  { this.firstname    = firstname;   }
+    public void setLastname(String lastname)    { this.lastname     = lastname;    }
+    public void setUsername(String username)    { this.username     = username;    }
+    public void setEmail(String email)          { this.email        = email;       }
+    public void setPhoneNumber(int phoneNumber) { this.phoneNumber  = phoneNumber; }
+    public void setPassword(String password)    { this.password     = password;    }
+    public void setCustomerId(int id)           { this.customerId   = id;  }
+    public void setRoles(String roles)          {this.roles         = roles;}
+    public void setPermissions(String permissions)          {this.permissions         = permissions;}
 
 }

@@ -5,25 +5,29 @@
  */
 package com.newton.holidaymaker.models;
 
+import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  *
  * @author Ted
  */
 @Entity
-public class Hotel {
+@Table(name = "hotel")
+public class Hotel implements Serializable {
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)                         
+    @Column(name = "hotelID")                                                       private int hotelID;
+    @Column(name = "hotelName", columnDefinition = "VARCHAR(250) NOT NULL")         private String hotelName;
+    @Column(name = "hotelCountry", columnDefinition = "VARCHAR(250) NOT NULL")      private String hotelCountry;
+    @Column(name = "hotelAddress", columnDefinition = "VARCHAR(250) NOT NULL")      private String hotelAddress;
 
-    @Id
-    private int hotelID;
-
-    private String hotelName;
-    private String hotelCountry;
-    private String hotelAddress;
-
-    public Hotel(int hotelID, String hotelName, String hotelCountry, String hotelAddress) {
-        this.hotelID = hotelID;
+    public Hotel() {}
+    public Hotel(String hotelName, String hotelCountry, String hotelAddress) {
         this.hotelName = hotelName;
         this.hotelCountry = hotelCountry;
         this.hotelAddress = hotelAddress;
@@ -31,10 +35,6 @@ public class Hotel {
 
     public int getHotelID() {
         return hotelID;
-    }
-
-    public void setHotelID(int hotelID) {
-        this.hotelID = hotelID;
     }
 
     public String getHotelName() {
