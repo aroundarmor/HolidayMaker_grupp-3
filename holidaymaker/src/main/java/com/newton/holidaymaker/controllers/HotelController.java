@@ -37,4 +37,9 @@ public class HotelController {
         List<Hotel> hotels = repository.findByHotelCountry(country);
         return hotels;
     }
+    @GetMapping("/hotels/{name}")
+    public List<Hotel> getByName(@PathVariable String name) {
+        List<Hotel> hotels = repository.findByHotelName(name);
+        return hotels;
+    }
 }
