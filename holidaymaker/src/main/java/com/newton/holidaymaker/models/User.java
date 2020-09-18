@@ -71,6 +71,8 @@ public class User {
     public void setPhoneNumber(int phoneNumber) { this.phoneNumber  = phoneNumber; }
     public void setPassword(String password)    { this.password     = password;    }
     public void setCustomerId(int id)           { this.id           = id;  }
+    public void setRoles(String roles)          {this.roles         = roles;}
+    public void setPermissions(String permissions)          {this.permissions         = permissions;}
     
     
 

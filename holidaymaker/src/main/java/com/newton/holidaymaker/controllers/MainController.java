@@ -1,17 +1,15 @@
 package com.newton.holidaymaker.controllers;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-@RestController
-@RequestMapping("/rest/auth")
+
+@Controller
 public class MainController {
 
-    @GetMapping("/process")
-    public String process(){
-        return "FOUND";
+    @RequestMapping("/")
+    public String showHome(){
+        return "main";
     }
 
     
