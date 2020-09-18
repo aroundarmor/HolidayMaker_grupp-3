@@ -1,35 +1,31 @@
 package com.newton.holidaymaker.controllers;
 
-import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
 
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class IndexController {
+public class IndexController extends PageControllerEssentials implements PageControllerInterface {
 
     @GetMapping("/")
-    public ModelAndView run(HttpServletRequest req, Authentication authentication){
-        ModelAndView mv = new ModelAndView("index");
+	public ModelAndView run(HttpServletRequest req, HttpServletResponse res, Principal principal) {
+        ModelAndView mv = initModelAndView("HolidayMaker | Welcome", null, "main");
 
-
-        // sample variable
-        mv.addObject("title", "Holidaymaker | Welcome");
-        mv.addObject("username", req.getSession().getAttribute("username"));
-
-        System.out.println(SecurityContextHolder.getContext().getAuthentication().getAuthorities());
+        if(principal != null)
+        	mv.addObject("username", principal.getName());
 
         return mv;
-    }
+	}
 
     @GetMapping("/error")
     public ModelAndView error() {
         ModelAndView mv = new ModelAndView("error");
         return mv;
     }
+
 }

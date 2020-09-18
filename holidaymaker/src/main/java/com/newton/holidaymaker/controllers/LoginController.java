@@ -1,5 +1,7 @@
 package com.newton.holidaymaker.controllers;
 
+import java.security.Principal;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -9,21 +11,20 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 @RestController
-public class LoginController {
-	
+public class LoginController extends PageControllerEssentials implements PageControllerInterface {
+
 	@GetMapping("/login")
-	public ModelAndView login(HttpServletRequest req, HttpServletResponse res) {
-		HttpSession session = req.getSession();
-		ModelAndView mv = new ModelAndView("login");
-		String title = "HolidayMaker | Login";
-		
-		if(session.getAttribute("username") != null) {
-			System.out.println("session is active");
-			mv.setViewName("index");
-			mv.addObject("title", "HolidayMaker | Welcome");
-			mv.addObject("username", session.getAttribute("username"));
-		}
-		
+	@Override
+	public ModelAndView run(HttpServletRequest req, HttpServletResponse res, Principal principal) {
+
+        // Redirect already-logged-in users to index
+        if(principal != null)
+            redirect("/", res);
+
+		ModelAndView mv = initModelAndView("HolidayMaker | Login", null, "login");
+		if(principal != null)
+			mv.addObject("username", principal.getName());
+
 		return mv;
 	}
 }
