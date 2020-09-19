@@ -1,0 +1,24 @@
+.register-container {
+    background-color: var(--background-primary);
+	width: 400px;
+    padding: 10px;
+    border-bottom: 1px solid #d2d2d2;
+    border-right: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+.btn-register {
+    border: 1px solid #0d79d7;
+    margin-top: 1em;
+    font-size: 1.5em;
+    background: #2a9cff;
+    color: #fff;
+    padding: 10px 5px;
+    border-radius: 3px;
+}
+
+.btn-register:hover { background: #2191f2; }
+
+#registerForm {
+    padding: 10px;
+}
