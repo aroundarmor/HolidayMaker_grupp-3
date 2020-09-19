@@ -4,8 +4,7 @@
         <title th:text="${title}"></title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <link rel="stylesheet" href="/css/default.css">
-        <link rel="stylesheet" href="/css/login.css">
-        <link rel="stylesheet" th:if="${pageCss != null}" th:href="'/css/pages/'+${pageCss}+'.css'">
+        <link rel="stylesheet" th:if="${pageCss != null}" th:href="${pageCss}">
         <script src="/js/vendor/jquery351.js" charset="utf-8"></script>
     </head>
     <body>
