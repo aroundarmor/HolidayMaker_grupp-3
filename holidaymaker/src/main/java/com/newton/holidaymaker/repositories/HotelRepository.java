@@ -6,6 +6,7 @@
 package com.newton.holidaymaker.repositories;
 
 import com.newton.holidaymaker.models.Hotel;
+import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Repository;
  * @author Ted
  */
 @Repository
-public interface HotelRepository extends JpaRepository<Hotel, Integer> {
-
+public interface HotelRepository extends JpaRepository<Hotel, Integer>{
+	List<Hotel> findByHotelCountry(String hotelCountry);
+	List<Hotel> findByHotelName(String hotelName);
 }

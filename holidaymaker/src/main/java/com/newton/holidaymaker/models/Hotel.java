@@ -21,25 +21,20 @@ import javax.persistence.Table;
 @Table(name = "hotel")
 public class Hotel implements Serializable {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)                         
-    @Column(name = "hotelID")                                                       private int hotelId;
+    @Column(name = "hotelID")                                                       private int hotelID;
     @Column(name = "hotelName", columnDefinition = "VARCHAR(250) NOT NULL")         private String hotelName;
     @Column(name = "hotelCountry", columnDefinition = "VARCHAR(250) NOT NULL")      private String hotelCountry;
     @Column(name = "hotelAddress", columnDefinition = "VARCHAR(250) NOT NULL")      private String hotelAddress;
 
     public Hotel() {}
-    public Hotel(int hotelID, String hotelName, String hotelCountry, String hotelAddress) {
-        this.hotelId = hotelID;
+    public Hotel(String hotelName, String hotelCountry, String hotelAddress) {
         this.hotelName = hotelName;
         this.hotelCountry = hotelCountry;
         this.hotelAddress = hotelAddress;
     }
 
     public int getHotelID() {
-        return hotelId;
-    }
-
-    public void setHotelID(int hotelID) {
-        this.hotelId = hotelID;
+        return hotelID;
     }
 
     public String getHotelName() {

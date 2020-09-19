@@ -22,10 +22,9 @@ public class LoginController extends PageControllerEssentials implements PageCon
             redirect("/", res);
             return null;
         }
-        
+
         ModelAndView mv = initModelAndView("HolidayMaker | Login", null, "login");
-        if(principal != null)
-            mv.addObject("username", principal.getName());
+
 
         return mv;
     }

@@ -1,0 +1,127 @@
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    width: 1902px;
+    height: 934px;
+
+    background-color: #2fcc71;
+    display: flex;
+    align-items: center;
+
+
+
+}
+
+
+.login__main-container {
+	display: flex;
+	flex-direction: column;
+	/* align-items: center; */
+	/* border: 2px solid black; */
+	height: 400px;
+	width: 500px;
+	/* padding: 20px; */
+    margin:  auto;
+    background-color: #27ae60;
+    /* border-radius: 10px; */
+
+    /* box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.33); */
+}
+
+
+
+.login__main-container p {
+	color: white;
+	/* text-align: center; */
+	background-color: #228d4d;
+	/* padding: 0; */
+	margin: 0;
+	height: 65px;
+	/* padding: 15px; */
+	display: flex;
+	justify-content: center;
+	/* margin-top: ; */
+	align-items: center;
+	font-size: 25px;
+    /* font-style: arial; */
+    /* border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+     */
+}
+
+.form-signin {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.sr-only {
+	margin-bottom: 8px;
+	color: white;
+	font-size: 16px;
+	/* margin: auto; */
+	margin-left: 28px;
+	margin-top: 10px;
+}
+
+.form-control {
+	background: #5dbf82;
+	border: none;
+	/* border-bottom: 1px solid darkblue; */
+	height: 45px;
+	width: 400px;
+	/* display: flex; */
+	/* justify-content: center; */
+	/* align-items: center; */
+	/* align-items: center; */
+    margin: auto;
+    color: lightcyan;
+    
+}
+.form-control::placeholder {
+    color: transparent;
+    
+}
+.form-control:focus {
+    background-color: #7dcc99;
+    transition: #5dbf82 1.5s ease-in;
+    border: none;
+}
+
+
+
+
+.btn-lg {
+	background: none;
+	border: none;
+	display: flex;
+	/* align-items: center; */
+	justify-content: center;
+	margin-top: 50px;
+	font-size: 25px;
+	color: white;
+}
+
+.register {
+	position: absolute;
+	bottom: 250px;
+	left: 770px;
+	font-size: 20px;
+	/* text-decoration: none; */
+	/* color: white; */
+    top: 680px;
+    display: flex;
+}
+
+.register a, div{
+    margin-right: 20px;
+    margin-left: 20px;
+    text-decoration: none;
+    color: white;
+}
+
+.register a:hover{
+    color: grey;
+}
