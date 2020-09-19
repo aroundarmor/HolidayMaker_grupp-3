@@ -10,38 +10,61 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
 
 import com.newton.holidaymaker.models.Booking;
 import com.newton.holidaymaker.models.Room;
 import com.newton.holidaymaker.repositories.RoomRepository;
+import com.newton.holidaymaker.services.RoomService;
 
 @RestController
-@RequestMapping("/rooms")
+@RequestMapping("/")
 public class RoomController {
-    
-    @Autowired RoomRepository roomRepository;
-   /* public Room getRoom(Integer id) {
-     Room updateTarget = roomRepository.getOne(id);
-     return updateTarget;*/
-    
-  
+        
+        @Autowired
+        private RoomService roomService;
+        
+       
+        @RequestMapping(method = RequestMethod.GET, value = "/all")
+        public List<Room> findAll(){
+            return roomService.findAll();
+        }
+        
+       
+        
+        @RequestMapping(method = RequestMethod.GET, value = "/get-room/{id}")
+        public Room getRoomById(@PathVariable Integer id){
+            Room room = roomService.getRoomById(id);
+            if (room != null){
+            return roomService.getRoomById(id);
+            }
+            return null;
+        }
 
-    @GetMapping("/")
-    public List<Room> getAllRooms(){
-        return roomRepository.findAll();
-    }
-    @GetMapping("/room/{id}")
-    public Room getRoomById(@PathVariable Integer id){
-    	     Room updateTarget = roomRepository.getOne(id);
-    	     return updateTarget;
-    	     
-    	    }
-    @PostMapping("/bookings/post")
-    public Room saveBooking(@RequestBody Room room) {
-      return  roomRepository.save(room);
-    }
-    	 
+       
+        @RequestMapping(method = RequestMethod.POST, value = "/add-room")
+        public Room addRoom(@RequestBody Room room){
+               return roomService.addRoom(room);
+           
+        }
+        
+        
+             
+    
+        
+        
+        	
+        	
+        
+                
+      
+      
+       
+       
+
+  	 
     
 
     

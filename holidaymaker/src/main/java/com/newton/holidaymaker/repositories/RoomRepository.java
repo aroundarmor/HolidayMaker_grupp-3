@@ -7,6 +7,8 @@ import com.newton.holidaymaker.models.Room;
 
 @Repository
 public interface RoomRepository extends JpaRepository<Room, Integer>{
+//find roomtype
+//find roomprice
 
 }
 //git problem

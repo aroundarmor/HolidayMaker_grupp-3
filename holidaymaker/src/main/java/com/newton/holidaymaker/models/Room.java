@@ -19,7 +19,8 @@ public class Room {
     @Column(name="isBooked")            									private Boolean isBooked;
 
 	public Room() { }
-	public Room(String roomType, double roomPrice, int hotelId,/*int bookingId, */ boolean isBooked) {
+	public Room(Integer id,String roomType, double roomPrice, int hotelId, /*int bookingId, */ boolean isBooked) {
+		this.id = id;
 		this.roomType = roomType;
 		this.roomPrice = roomPrice;
 		this.hotelId = hotelId;
@@ -35,6 +36,7 @@ public class Room {
 		//this.bookingId = r.bookingId;
 		this.isBooked = r.isBooked;
 	}
+	
 /*
 	public int getRoomId() {
 		return roomId;
@@ -82,5 +84,10 @@ public class Room {
 
 	public void setBooked(boolean isBooked) {
 		this.isBooked = isBooked;
+	}
+	public void getId() {
+		this.id = id;
+		// TODO Auto-generated method stub
+		
 	}
 }
