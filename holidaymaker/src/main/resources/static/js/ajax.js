@@ -1,4 +1,10 @@
 $(document).ready(function() {
+
+    /**
+    *
+    *   REGISTER FORM
+    *
+    */
     $('#registerForm').submit(function(event) {
         event.preventDefault();
 
@@ -22,6 +28,30 @@ $(document).ready(function() {
             }
         });
     });
+
+    /**
+    *
+    *   LOGIN FORM
+    *
+    */
+    $('#loginForm').submit(function(event) {
+        event.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: '/login',
+            data: getFormData($('#loginForm')),
+            cache: false,
+            dataType: "json",
+            crossDomain: false,
+            success: function (data) {
+                console.log(data);
+            },
+            error: function (data) {
+                console.error("Login failure");
+            }
+        });
+    });
+
 
     /**
     Parses form data into a JSON object
