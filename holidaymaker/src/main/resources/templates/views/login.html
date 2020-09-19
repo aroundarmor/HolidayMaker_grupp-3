@@ -1,18 +1,18 @@
-<div class="login__main-container" th:fragment="login">
-    <p th:text="'LOGIN PAGE'" />
-    <form id="loginForm" class="form-signin" method="post" action="/login">
-        <label for="username" class="sr-only">Username</label>
-        <input type="text" id="username" name="username" class="form-control" placeholder="Username"required autofocus >
-        <label for="password" class="sr-only">Password</label>
-        <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-    </form>
-
-    <!-- Vet inte hur man kopplar de här länkarna -->
-    <div class="register">
-        <a href="#">Register</a>
-        <div>|</div>
-        <a href="#">Lost Your Password?</a>
+<div class="main-container flex-content-center flex-align-center" th:fragment="login">
+    <div class="login-container flex-row">
+        <form id="loginForm" class="form-signin flex-row" method="post" action="/login">
+            <div class="form-title">Sign In</div>
+            <div class="form-group flex-row">
+                <input type="text" id="username" name="username" class="form-control" placeholder="Username" required autofocus>
+                <input type="password" id="password" name="password" class="form-control" placeholder="••••••••" required>
+            </div>
+            <div class="form-group flex-row">
+                <button class="btn btn-login btn-primary btn-block" type="submit">Sign in</button>
+            </div>
+            <div class="form-group flex-row">
+                <span>Don't have an account? <a href="/auth/recoverpassword">Create one!</a></span>
+                <span>Lost password? <a href="/auth/recoverpassword">Recover now</a></span>
+            </div>
+        </form>
     </div>
-
 </div>

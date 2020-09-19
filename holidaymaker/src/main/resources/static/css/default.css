@@ -1,4 +1,61 @@
+:root {
+    --background-primary: #fff;
+    --background-secondary: #eee;
+}
+
 body {
     padding: 0;
     margin: 0;
+    font-family: 'arial',sans-serif;
 }
+
+a:hover, button:hover, input[type="submit"]:hover, .btn:hover, .button:hover {
+    cursor: pointer;
+}
+
+a {
+    color: #1473c6;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #0c5ea6;
+}
+
+.main-container {
+    width: 1200px;
+    margin: 3em auto;
+}
+
+.form-title {
+    font-size: 2em;
+    font-family: 'Arial', san-serif;
+    margin-bottom: 10px;
+}
+
+.form-group {
+    margin: 2.5px 0px;
+    padding: 2.5px 0px;
+}
+
+.flex,
+.flex-align-center,
+.flex-content-center,
+.flex-content-start,
+.flex-content-end,
+.flex-content-space-between,
+.flex-content-space-around,
+.flex-row,
+.flex-column,
+.flex-grow { display: flex !important; }
+
+.flex-align-center { align-items: center; }
+.flex-content-center { justify-content: center; }
+.flex-content-start { justify-content: flex-start; }
+.flex-content-end { justify-content: flex-end; }
+.flex-content-space-between { justify-content: space-between; }
+.flex-content-space-around { justify-content: space-around; }
+.flex-grow { flex-grow: 1; }
+
+.flex-row    { flex-direction: column; }
+.flex-column { flex-direction: row; }
