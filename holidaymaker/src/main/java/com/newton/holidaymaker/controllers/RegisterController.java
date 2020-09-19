@@ -1,10 +1,12 @@
 package com.newton.holidaymaker.controllers;
 
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.apache.commons.validator.routines.EmailValidator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,8 +51,9 @@ public class RegisterController extends PageControllerEssentials implements Page
     * */
     @PostMapping("/register")
     @ResponseBody
-    public String registerUser(@RequestBody User registerForm) {
-
+    public HashMap<String, String> registerUser(@RequestBody User registerForm) {
+        HashMap<String, String> response = new HashMap<String, String>();
+        List<String> errors = new ArrayList<String>();
         // TODO : Implement config for better maintenance
 
         // Matches a-zA-Z
@@ -73,45 +76,48 @@ public class RegisterController extends PageControllerEssentials implements Page
         registerForm.setLastname(registerForm.getLastname().trim().toLowerCase());
         registerForm.setEmail(registerForm.getEmail().trim().toLowerCase());
         registerForm.setUsername(registerForm.getUsername().trim().toLowerCase());
-        reigsterForm.setPhoneNumber(registerForm.getPhoneNumber().trim());
+        registerForm.setPhoneNumber(registerForm.getPhoneNumber());
 
         // Make sure there are no invalid characters ( anything other than a-zA-Z )
         // Only a-zA-Z allowed in first-, lastname fields.
         if(registerForm.getFirstname().matches(nameRegex) == false)
-            return "err#fnameInvalid";
+            errors.add("fname");
 
         if(registerForm.getLastname().matches(nameRegex) == false)
-            return "err#lnameInvalid";
+            errors.add("lname");
 
         if(registerForm.getUsername().matches(usernameRegex) == false)
-            return "err#unameInvalid";
-
-        if(registerForm.getPhoneNumber().matches(onlyNumbers) == false)
-            return "err#invalidPhone";
+            errors.add("uname");
 
         // validate email with apache-commons validator
         // NOTE : returns valid on '€##/&/email@abc.xyz', might need to use regex later.
         EmailValidator emailValidator = EmailValidator.getInstance();
         if(emailValidator.isValid(registerForm.getEmail()) == false)
-            return "err#emailInvalid";
+            errors.add("email");
 
         // Email & usernames must be unique or conflicts may arise.
         if(userRepository.existsByUsername(registerForm.getUsername()))
-            return "err#usernameTaken";
-        else if(userRepository.existsByEmail(registerForm.getEmail()))
-            return "err#emailTaken";
+            errors.add("unameTaken");
+
+        if(userRepository.existsByEmail(registerForm.getEmail()))
+            errors.add("emailTaken");
 
         // Encrypt & update password
         String pw_hash = BCrypt.hashpw(registerForm.getPassword(), BCrypt.gensalt());
         registerForm.setPassword(pw_hash);
 
-        // Everything seems OK !
 
         // TODO : set default roles & permissions
+        // register account if there are no errors found.
+        if(errors.size() == 0) {
+            userRepository.save(registerForm);
+            System.out.println("Created: " + registerForm.getFirstname());
+        }
 
-        // register account
-        userRepository.save(registerForm);
-        System.out.println("Created: " + registerForm.getFirstname());
-        return "success";
+        // prepare and return response object
+        response.put("status", (errors.size() > 0 ? "failure":"success"));
+        response.put("errors", errors.toString());
+
+        return response;
     }
 }
