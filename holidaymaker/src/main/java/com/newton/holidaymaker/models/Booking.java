@@ -33,7 +33,7 @@ public class Booking implements Serializable {
     @Column(name="two_meals", columnDefinition = "BOOL NOT NULL")           private boolean twoMeals;
     @Column(name="three_meals", columnDefinition = "BOOL NOT NULL")         private boolean threeMeals;
     @Column(name="all_inclusive", columnDefinition = "BOOL NOT NULL")       private boolean allInclusive;
-    
+
     @ManyToOne
     @JoinColumn(name="customer_id", nullable=false)
     private User user;
@@ -110,5 +110,5 @@ public class Booking implements Serializable {
     public void setAllInclusive(Boolean allInclusive) {
         this.allInclusive = allInclusive;
     }
- 
+
 }

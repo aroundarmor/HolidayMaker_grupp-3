@@ -1,0 +1,22 @@
+<div class="main-container flex-content-center flex-align-center" th:fragment="register">
+    <div class="register-container flex-row">
+        <form id="registerForm" class="form-signin flex-row" method="post" action="/register">
+            <div class="form-title flex-content-center flex-align-center">Register Account</div>
+            <div class="form-group flex-row">
+                <input type="text" name="firstname" class="form-control" placeholder="Firstname" required>
+                <input type="text" name="lastname" class="form-control" placeholder="Lastname" required>
+                <input type="text" id="username" name="username" class="form-control" placeholder="Username" required autofocus>
+                <input type="password" id="password" name="password" class="form-control" placeholder="••••••••" required>
+                <input type="text" name="email" placeholder="email@company.xyz" class="form-control" required>
+                <input type="text" name="phoneNumber" placeholder="e.g: 0701234567" class="form-control" required>
+            </div>
+            <div class="form-group flex-row">
+                <button class="btn btn-register btn-primary btn-block" type="submit">Sign in</button>
+            </div>
+            <div class="form-group flex-row">
+                <span>Don't have an account? <a href="/auth/recoverpassword">Create one!</a></span>
+                <span>Lost password? <a href="/auth/recoverpassword">Recover now</a></span>
+            </div>
+        </form>
+    </div>
+</div>

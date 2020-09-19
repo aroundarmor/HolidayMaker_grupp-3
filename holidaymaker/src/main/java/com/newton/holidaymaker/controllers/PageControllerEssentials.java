@@ -15,7 +15,7 @@ public class PageControllerEssentials {
     public ModelAndView initModelAndView(String title, String pageCss, String viewName) {
         ModelAndView m = new ModelAndView();
         m.addObject("title", title);
-        m.addObject("pageCss", (pageCss == null ? null:"/css/pages/"+pageCss));
+        m.addObject("pageCss", (pageCss == null ? null:"/css/pages/"+pageCss+".css"));
         m.addObject("page", viewName);
         m.setViewName("index");
         return m;
