@@ -17,13 +17,13 @@ public class Room {
         @Column(name="roomPrice")    				    private double roomPrice;
         @Column(name="hotelId")     				    private int hotelId;
         @Column(name="isBooked")            			    private Boolean isBooked;
-        /*@Column(name="bookingId")   				    private int bookingId;
+        /*@Column(name="bookingId")   				    private int bookingId;*
         @Column(name="roomId")					    private int roomId;*/
     
         @ManyToOne
         @JoinColumn(name = "hotelId", insertable = false, updatable = false)
         private Hotel hotels;
-    
+     
         public Room() { }
         public Room(String roomType, double roomPrice, int hotelId,/*int bookingId, */ boolean isBooked) {
                 this.roomType = roomType;
