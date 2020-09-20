@@ -43,7 +43,7 @@ public class HotelController {
         return hotels;
     }
     @GetMapping("/hotels/id/{hotelId}")
-    public List<Hotel> getById(@PathVariable String hotelId) {
+    public List<Hotel> getById(@PathVariable int hotelId) {
         List<Hotel> hotels = repository.findByHotelId(hotelId);
         return hotels;
     }
