@@ -42,4 +42,9 @@ public class HotelController {
         List<Hotel> hotels = repository.findByHotelName(name);
         return hotels;
     }
+    @GetMapping("/hotels/id/{hotelId}")
+    public List<Hotel> getById(@PathVariable String hotelId) {
+        List<Hotel> hotels = repository.findByHotelId(hotelId);
+        return hotels;
+    }
 }
