@@ -9,6 +9,7 @@ import com.newton.holidaymaker.models.Hotel;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -19,4 +20,7 @@ import org.springframework.stereotype.Repository;
 public interface HotelRepository extends JpaRepository<Hotel, Integer>{
 	List<Hotel> findByHotelCountry(String hotelCountry);
 	List<Hotel> findByHotelName(String hotelName);
+	
+	@Query(value="SELECT DISTINCT hotelCountry FROM Hotel")
+	List<String> findAllCountries();
 }
