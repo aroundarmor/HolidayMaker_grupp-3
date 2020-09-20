@@ -20,13 +20,14 @@ import org.hibernate.annotations.OnDeleteAction;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 //OBS måste kolla att datumobjektet fungerar med datumkolumnen i databasen/Hanna
+//Kolumnerna för customer_id och room_id är bortkommaterade eftersom de är joinade med user respektive room
 
 @Entity
 @Table (name = "booking")
 public class Booking implements Serializable {
     @Id @GeneratedValue (strategy = GenerationType.IDENTITY)                private int bookingId;
-    @Column(name="room_id")                                                 private int roomId;
-    //@Column(name="customer_id", insertable=false, updatable=false)          private int customerId;
+    //@Column(name="room_id")                                               private int roomId;
+    //@Column(name="customer_id", insertable=false, updatable=false)        private int customerId;
     @Column(name="arrival_date", columnDefinition = "DATE NOT NULL")        private Date arrivalDate;
     @Column(name="departure_date", columnDefinition = "DATE NOT NULL")      private Date departureDate;
     @Column(name="extra_bed", columnDefinition = "BOOL NOT NULL")           private boolean extraBed;
@@ -37,11 +38,14 @@ public class Booking implements Serializable {
     @ManyToOne
     @JoinColumn(name="customer_id", nullable=false)
     private User user;
+    
+    @ManyToOne
+    @JoinColumn(name="roomId", nullable=false)
+    private Room room;
 
     public Booking() { }
-    public Booking(int roomId, Date arrivalDate, Date departureDate, Boolean extraBed, Boolean twoMeals, Boolean threeMeals, Boolean allInclusive)
+    public Booking(Date arrivalDate, Date departureDate, Boolean extraBed, Boolean twoMeals, Boolean threeMeals, Boolean allInclusive)
     {
-        this.roomId         = roomId;
         this.arrivalDate    = arrivalDate;
         this.departureDate  = departureDate;
         this.extraBed       = extraBed;
@@ -53,14 +57,6 @@ public class Booking implements Serializable {
 
     public int getId() {
         return bookingId;
-    }
-
-    public int getRoomId() {
-        return roomId;
-    }
-
-    public void setRoomId(int roomId) {
-        this.roomId = roomId;
     }
 
     public Date getArrivalDate() {

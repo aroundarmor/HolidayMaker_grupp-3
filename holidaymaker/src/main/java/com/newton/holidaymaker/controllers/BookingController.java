@@ -40,7 +40,7 @@ public class BookingController {
     @PutMapping("/bookings/put/{id}")
     public void updateBooking(@RequestBody Booking booking, @PathVariable(value = "id") Integer id) {
         Booking updateTarget = repository.getOne(id);
-        updateTarget.setRoomId(booking.getRoomId());
+        //updateTarget.setRoomId(booking.getRoomId());
         //updateTarget.setCustomerId(booking.getCustomerId());
         updateTarget.setArrivalDate(booking.getArrivalDate());
         updateTarget.setDepartureDate(booking.getDepartureDate());
