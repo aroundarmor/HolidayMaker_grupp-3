@@ -1,5 +1,8 @@
 <div class="main-container flex-content-center flex-align-center" th:fragment="register">
     <div class="register-container flex-row">
+        <div class="register-status">
+
+        </div>
         <form id="registerForm" class="form-signin flex-row" method="post" action="/register">
             <div class="form-title flex-content-center flex-align-center">Register Account</div>
             <div class="form-group flex-row">
@@ -11,11 +14,11 @@
                 <input type="text" name="phoneNumber" placeholder="e.g: 0701234567" class="form-control" required>
             </div>
             <div class="form-group flex-row">
-                <button class="btn btn-register btn-primary btn-block" type="submit">Sign in</button>
+                <button class="btn btn-register btn-primary btn-block" type="submit">Register Account</button>
+                <a class="button button-default" name="button" href="/">Cancel</a>
             </div>
             <div class="form-group flex-row">
-                <span>Don't have an account? <a href="/auth/recoverpassword">Create one!</a></span>
-                <span>Lost password? <a href="/auth/recoverpassword">Recover now</a></span>
+                <span>Already have an account? <a href="/login">Sign in</a></span>
             </div>
         </form>
     </div>

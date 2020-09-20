@@ -46,7 +46,7 @@ public class RegisterController extends PageControllerEssentials implements Page
     * Handles register requests.<br>
     * an account will be created if all conditions are met.
     *
-    * @return status message; "err#<i>statusMessageSample</i>" or "success"
+    * @return HashMap<String, String>; contains 'response' & 'errors'
     *
     * */
     @PostMapping("/register")
@@ -64,7 +64,7 @@ public class RegisterController extends PageControllerEssentials implements Page
         // Matches only numbers in a string.
         String onlyNumbers = "^[0-9]*$";
 
-        // Matches (a-zA-Z) (0-9) (. -)
+        // Matches (a-zA-Z) (0-9) (. _ )
         // allowed username patterns;
         // us.er_name, user_name1, user.name.1
         // user.name.1, 1user.name, user_name_1
@@ -76,7 +76,6 @@ public class RegisterController extends PageControllerEssentials implements Page
         registerForm.setLastname(registerForm.getLastname().trim().toLowerCase());
         registerForm.setEmail(registerForm.getEmail().trim().toLowerCase());
         registerForm.setUsername(registerForm.getUsername().trim().toLowerCase());
-        registerForm.setPhoneNumber(registerForm.getPhoneNumber());
 
         // Make sure there are no invalid characters ( anything other than a-zA-Z )
         // Only a-zA-Z allowed in first-, lastname fields.
