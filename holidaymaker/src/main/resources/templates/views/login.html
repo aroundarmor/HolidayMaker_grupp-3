@@ -1,5 +1,8 @@
 <div class="main-container flex-content-center flex-align-center" th:fragment="login">
     <div class="login-container flex-row">
+        <div class="login-status">
+
+        </div>
         <form id="loginForm" class="form-signin flex-row" method="post" action="/login">
             <div class="form-title flex-content-center flex-align-center">Sign In</div>
             <div class="form-group flex-row">
@@ -10,7 +13,7 @@
                 <button class="btn btn-login btn-primary btn-block" type="submit">Sign in</button>
             </div>
             <div class="form-group flex-row">
-                <span>Don't have an account? <a href="/auth/recoverpassword">Create one!</a></span>
+                <span>Don't have an account? <a href="/register">Create one!</a></span>
                 <span>Lost password? <a href="/auth/recoverpassword">Recover now</a></span>
             </div>
         </form>

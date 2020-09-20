@@ -1,6 +1,37 @@
 :root {
-    --background-primary: #fff;
-    --background-secondary: #f2f2f2;
+    --background-primary:       #fff;
+    --background-secondary:     #f2f2f2;
+
+    --alert-background-info:    #e3ebff;
+    --alert-background-success: #e3ffe7;
+    --alert-background-warning: #fff0e3;
+    --alert-background-danger:  #ffe3e3;
+    --alert-color-default:      #333;
+    --alert-color-info:         #245e91;
+    --alert-color-success:      #087d10;
+    --alert-color-warning:      #7d5508;
+    --alert-color-danger:       #7d0808;
+    --alert-border-default:     #ddd;
+    --alert-border-info:        #96ceff;
+    --alert-border-success:     #a5ff9e;
+    --alert-border-warning:     #ffd59e;
+    --alert-border-danger:      #ff9e9e;
+
+    --button-background-default: #eee;
+    --button-background-info:    #1c7fff;
+    --button-background-success: #05c605;
+    --button-background-warning: #ffa704;
+    --button-background-danger:  #fd2828;
+    --button-color-default:      #333;
+    --button-color-info:         #fff;
+    --button-color-success:      #fff;
+    --button-color-warning:      #fff;
+    --button-color-danger:       #fff;
+    --button-border-default:     #ddd;
+    --button-border-info:        #116ee6;
+    --button-border-success:     #1ca41c;
+    --button-border-warning:     #c89b47;
+    --button-border-danger:      #db0606;
 }
 
 body {
@@ -19,7 +50,7 @@ a {
     text-decoration: none;
 }
 
-a:hover {
+a:hover:not(.button) {
     color: #0c5ea6;
 }
 
