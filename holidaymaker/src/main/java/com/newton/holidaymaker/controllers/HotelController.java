@@ -32,12 +32,12 @@ public class HotelController {
         System.out.println("Hotels received");
         return repository.findAll();
     }
-    @GetMapping("/hotels/{country}")
+    @GetMapping("/hotels/country/{country}")
     public List<Hotel> getByCountry(@PathVariable String country) {
         List<Hotel> hotels = repository.findByHotelCountry(country);
         return hotels;
     }
-    @GetMapping("/hotels/{name}")
+    @GetMapping("/hotels/name/{name}")
     public List<Hotel> getByName(@PathVariable String name) {
         List<Hotel> hotels = repository.findByHotelName(name);
         return hotels;
