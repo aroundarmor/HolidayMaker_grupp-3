@@ -20,7 +20,7 @@ import org.hibernate.annotations.OnDeleteAction;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 //OBS måste kolla att datumobjektet fungerar med datumkolumnen i databasen/Hanna
-//Kolumnerna för customer_id och room_id är bortkommaterade eftersom de är joinade med user respektive room
+//Kolumnerna för customer_id och room_id är bortkommaterade eftersom de är joinade med user respektive room.
 
 @Entity
 @Table (name = "booking")

@@ -54,6 +54,6 @@ public class Room {
 /*
        public void setRoomId(int roomId) {this.roomId = roomId;}
         public int getBookingId() {return bookingId;
-       public void setBookingId(int bookingId) {this.bookingId = bookingId;}
-*/    
+       public void setBookingId(int bookingId) {this.bookingId = bookingId;}*/
+    
 }
