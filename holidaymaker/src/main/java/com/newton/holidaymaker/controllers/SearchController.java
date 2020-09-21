@@ -29,7 +29,7 @@ public class SearchController {
         return hotelRepo.findByHotelCountry(country);
     }
 
-    @GetMapping("/price-asc")
+    @GetMapping("/price-esc")
     public List<Room> findByPriceAsc(){
         return roomRepo.findAllByOrderByRoomPriceAsc();
     }
@@ -42,14 +42,23 @@ public class SearchController {
     public List<Room> availableRooms(){
         return roomRepo.findAllByIsBookedFalse();
     }
-    // @GetMapping("/available/price-asc")
-    // public List<Room> availableRoomsByPriceAsc(){
-    //     return roomRepo.findAllByIsBookedFalseOrderByRoomPriceAsc();
-    // }
+    
     @GetMapping("/available/price-asc")
     public List<Room> availableRoomsByPriceAsc(){
         return roomRepo.findAllByIsBookedFalseOrderByRoomPriceAsc();
     }
+    @GetMapping("/{hotelname}/price-asc")
+    public List<Room> roomsByHotelNameAsc(@PathVariable String hotelname){
+        return roomRepo.findAllByHotelsHotelNameOrderByRoomPriceAsc(hotelname);
+    }
+    @GetMapping("/{hotelname}/price-desc")
+    public List<Room> roomsByHotelNameDesc(@PathVariable String hotelname){
+        return roomRepo.findAllByHotelsHotelNameOrderByRoomPriceDesc(hotelname);
+    }
+    // @GetMapping("/available/{hotelname}/price-desc")
+    // public List<Room> availableRoomsByHotelNameDesc(@PathVariable String hotelname){
+    //     return roomRepo.findAllByHotelsHotelNameOrderByRoomPriceDesc_IsBookedFalse(hotelname);
+    // }
     @GetMapping("/available/price-desc")
     public List<Room> availableRoomsByPriceDesc(){
         return roomRepo.findAllByIsBookedFalseOrderByRoomPriceDesc();

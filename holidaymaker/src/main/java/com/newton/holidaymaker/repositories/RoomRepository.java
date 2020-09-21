@@ -1,7 +1,6 @@
 package com.newton.holidaymaker.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.newton.holidaymaker.models.Room;
@@ -17,6 +16,11 @@ public interface RoomRepository extends JpaRepository<Room, Integer>{
 	List<Room> findAllByIsBookedFalse();
 	List<Room> findAllByIsBookedFalseOrderByRoomPriceAsc();
 	List<Room> findAllByIsBookedFalseOrderByRoomPriceDesc();
+	// List<Room> findAllByHotelsHotelIdOrderByRoomPriceAsc(int hotelId);
+	List<Room> findAllByHotelsHotelNameOrderByRoomPriceAsc(String hotelName);
+	List<Room> findAllByHotelsHotelNameOrderByRoomPriceDesc(String hotelName);
+	
+	// List<Room> findAllByHotelsHotelNameOrderByRoomPriceDesc_IsBookedFalse(String hotelName);
 
 
 }
