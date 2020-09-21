@@ -98,7 +98,7 @@ function clearRoomDisplay()  { $('.result-rooms > .result-body').html('');  }
 *   @return a Promise containing hotels
 */
 function retrieveAllHotels() {
-    return new Promise((reject, resolve) => {
+    return new Promise((resolve, reject) => {
         $.ajax({
             headers: {
                 'Accept': 'application/json',
