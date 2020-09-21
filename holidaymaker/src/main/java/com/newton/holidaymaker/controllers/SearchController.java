@@ -40,7 +40,7 @@ public class SearchController {
 
     @GetMapping("/available")
     public List<Room> availableRooms(){
-        return roomRepo.findAllByIsBookedTrue();
+        return roomRepo.findAllByIsBookedFalse();
     }
     // @GetMapping("/available/price-asc")
     // public List<Room> availableRoomsByPriceAsc(){
@@ -48,11 +48,11 @@ public class SearchController {
     // }
     @GetMapping("/available/price-asc")
     public List<Room> availableRoomsByPriceAsc(){
-        return roomRepo.findAllByIsBookedTrueOrderByRoomPriceAsc();
+        return roomRepo.findAllByIsBookedFalseOrderByRoomPriceAsc();
     }
     @GetMapping("/available/price-desc")
     public List<Room> availableRoomsByPriceDesc(){
-        return roomRepo.findAllByIsBookedTrueOrderByRoomPriceDesc();
+        return roomRepo.findAllByIsBookedFalseOrderByRoomPriceDesc();
     }
     
 

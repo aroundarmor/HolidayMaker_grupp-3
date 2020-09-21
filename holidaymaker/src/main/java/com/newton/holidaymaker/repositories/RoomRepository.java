@@ -14,9 +14,9 @@ public interface RoomRepository extends JpaRepository<Room, Integer>{
 	List<Room> getRoomsByIsBooked(Boolean getRoomsByIsBooked);
 	List<Room> findAllByOrderByRoomPriceAsc();
 	List<Room> findAllByOrderByRoomPriceDesc();
-	List<Room> findAllByIsBookedTrue();
-	List<Room> findAllByIsBookedTrueOrderByRoomPriceAsc();
-	List<Room> findAllByIsBookedTrueOrderByRoomPriceDesc();
+	List<Room> findAllByIsBookedFalse();
+	List<Room> findAllByIsBookedFalseOrderByRoomPriceAsc();
+	List<Room> findAllByIsBookedFalseOrderByRoomPriceDesc();
 
 
 }
