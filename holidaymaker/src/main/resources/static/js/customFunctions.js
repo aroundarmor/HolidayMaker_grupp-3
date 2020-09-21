@@ -76,7 +76,7 @@ function displayHotelRooms(rooms) {
     $('.room-sort').attr('data-hotel-id', rooms[0].hotelId);
     $.each(rooms, (key, room) => {
         let html = `
-            <a class="room flex-column flex-content-space-between" data-room-id="${room.roomId}" data-hotel-id="${room.hotelId}">
+            <a class="room ${room.isBooked ? 'isBooked':''} flex-column flex-content-space-between" data-room-id="${room.roomId}" data-hotel-id="${room.hotelId}">
                 <div class="room-number">${room.roomId}</div>
                 <div class="room-type">${room.roomType}</div>
                 <div class="room-price">${room.roomPrice}</div>

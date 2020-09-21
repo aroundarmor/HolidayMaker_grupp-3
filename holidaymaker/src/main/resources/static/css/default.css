@@ -315,7 +315,7 @@ nav li {
     padding: 5px 5px;
     border: 1px solid #e3e3e3;
     border-radius: 3px;
-    color: #1281e3;
+    color: #5e5e5e;
 }
 
 a.hotel {
@@ -329,6 +329,19 @@ a.hotel {
     border-radius: 3px;
     margin: 0px 2px;
     color: #7b7977;
+}
+
+.room.isBooked::before {
+    content: "booked";
+    position: absolute;
+    left: 3em;
+    padding: 0px 6px;
+    background: white;
+    border-radius: 3px;
+}
+.room.isBooked {
+    background: #e1e1e1;
+    position: relative;
 }
 
 .flex,
