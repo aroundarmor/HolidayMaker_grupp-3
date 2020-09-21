@@ -25,7 +25,8 @@ public interface RoomRepository extends JpaRepository<Room, Integer>{
 	// List<Room> findAllByHotelsHotelIdOrderByRoomPriceAsc(int hotelId);
 	List<Room> findAllByHotelsHotelNameOrderByRoomPriceAsc(String hotelName);
 	List<Room> findAllByHotelsHotelNameOrderByRoomPriceDesc(String hotelName);
-	
+	List<Room> findAllByHotelsHotelIdOrderByRoomPriceAsc(int hotelid);
+	List<Room> findAllByHotelsHotelIdOrderByRoomPriceDesc(int hotelid);
 	// List<Room> findAllByHotelsHotelNameOrderByRoomPriceDesc_IsBookedFalse(String hotelName);
 
 
