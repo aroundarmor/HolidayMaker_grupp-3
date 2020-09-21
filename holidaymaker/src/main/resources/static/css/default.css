@@ -318,6 +318,10 @@ nav li {
     color: #1281e3;
 }
 
+a.hotel {
+    display: block;
+}
+
 .room-sort {
     padding: 0px 5px;
     background: #e8e8e8;

@@ -3,18 +3,36 @@ $(document).ready(function() {
 
     // disable room filters by default
     // roomFilters('disabled');
-    // $('select.hotelCountry').change(function() {
-    //     let countryName = $(this).val();
-    //     if(countryName == 'none')
-    //         roomFilters('disabled');
-    //     else
-    //         roomFilters('enabled');
-    // });
+    $('select.hotelCountry').change(function() {
+        // clear room & hotel display before fetching new hotels
+        clearHotelDisplay();
+        clearRoomDisplay();
 
-    $('#searchFilterButton').click(function() {
-        console.log("???");
-        let formData = getFormData($('#filterForm'));
-        console.log(formData);
+        let countryName = $(this).val();
+        if(countryName == 'none') {
+            retrieveAllHotels()
+            .then((hotels) => {
+                displayHotels(hotels);
+            }).catch((err) => {
+                console.log(err);
+            })
+        } else {
+            retrieveHotelsByCountry(countryName)
+            .then((hotels) => {
+                displayHotels(hotels);
+            }).catch((err) => {
+                console.log(err);
+            })
+
+        }
+    });
+
+    $('.result-hotels .result-body').on('click', 'a.hotel', function() {
+        retrieveAllHotelRoomsByHotelId($(this).data('hotel-id')).
+        then((rooms) => {
+            console.log(rooms);
+            displayHotelRooms(rooms);
+        });
     });
 
     /**
