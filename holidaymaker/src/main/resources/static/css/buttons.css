@@ -2,8 +2,9 @@
     padding: 5px;
     border-radius: 3px;
     border:1px solid var(--background-secondary);
-    margin: 2px 0px;
+    margin: 5px;
     text-align: center;
+    display: inline-block;
 }
 
 .button-default {
@@ -32,6 +33,10 @@
     color: var(--button-color-danger);
 }
 
-.btn-small {}
-.btn-medium {}
-.btn-large {}
+.button-small  { font-size: 12px; }
+.button-medium { font-size: 16px; }
+.button-large  { font-size: 25px; }
+
+.button-grow {
+    display: block !important;
+}

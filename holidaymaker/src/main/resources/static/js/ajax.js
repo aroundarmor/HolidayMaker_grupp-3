@@ -1,4 +1,42 @@
 $(document).ready(function() {
+    console.log("JQuery Ready.");
+
+    $('.room-sort').click(function() {
+        let hotelId = parseInt($(this).attr('data-hotel-id'));
+        let sortAction = $(this).attr('data-action');
+
+        if(hotelId === NaN)
+            return;
+
+        retrieveHotelRoomsSorted(hotelId, sortAction)
+        .then((rooms) => displayHotelRooms(rooms))
+        .catch((err) => console.log(err));
+    });
+
+    // disable room filters by default
+    // roomFilters('disabled');
+    $('select.hotelCountry').change(function() {
+        // clear room & hotel display before fetching new hotels
+        clearHotelDisplay();
+        clearRoomDisplay();
+
+        let countryName = $(this).val();
+        if(countryName === 'none') {
+            console.log("val none");
+            retrieveAllHotels()
+            .then((hotels) => displayHotels(hotels))
+            .catch((err)   => console.log("error: "+err));
+        } else {
+            retrieveHotelsByCountry(countryName)
+            .then((hotels) => displayHotels(hotels))
+            .catch((err)   => console.log("error: "+err));
+        }
+    });
+
+    $('.result-hotels .result-body').on('click', 'a.hotel', function() {
+        retrieveAllHotelRoomsByHotelId($(this).attr('data-hotel-id')).
+        then((rooms) => { displayHotelRooms(rooms); });
+    });
 
     /**
     *

@@ -1,0 +1,12 @@
+<nav>
+    <div class="nav-container flex-content-space-between flex-align-center">
+        <span class="title">HolidayMaker</span>
+        <ul>
+            <li><a th:if="${username == null}" href="/login">Sign In</a> </li>
+            <li><a th:if="${username == null}" href="/register">Register</a> </li>
+
+            <li><a th:if="${username != null}" th:text="'Welcome '+${username}"></a> </li>
+            <li><a th:if="${username != null}" href="/logout">Logout</a> </li>
+        </ul>
+    </div>
+</nav>

@@ -14,7 +14,6 @@ import com.newton.holidaymaker.repositories.RoomRepository;
 import org.springframework.web.bind.annotation.PathVariable;
 
 @RestController
-@RequestMapping("/rooms")
 public class RoomController {
     
     @Autowired RoomRepository roomRepository;
