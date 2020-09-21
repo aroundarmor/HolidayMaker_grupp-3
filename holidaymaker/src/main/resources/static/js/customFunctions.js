@@ -73,6 +73,7 @@ function displayHotels(hotels) {
 function displayHotelRooms(rooms) {
     clearRoomDisplay();
 
+    $('.room-sort').attr('data-hotel-id', rooms[0].hotelId);
     $.each(rooms, (key, room) => {
         let html = `
             <a class="room flex-column flex-content-space-between" data-room-id="${room.roomId}" data-hotel-id="${room.hotelId}">
@@ -89,8 +90,14 @@ function displayHotelRooms(rooms) {
 *   Clears both hotel & room display
 *   This is useful for when updating both displays.
 */
-function clearHotelDisplay() { $('.result-hotels > .result-body').html(''); }
-function clearRoomDisplay()  { $('.result-rooms > .result-body').html('');  }
+function clearHotelDisplay() {
+    $('.result-hotels > .result-body').html('');
+    $('.room-sort').attr('data-hotel-id', '');
+}
+function clearRoomDisplay()  {
+    $('.result-rooms > .result-body').html('');
+    $('.room-sort').attr('data-hotel-id', '');
+}
 
 /**
 *   Ajax method to retrieve all hotels

@@ -1,5 +1,17 @@
 $(document).ready(function() {
-    console.log("ready?");
+    console.log("JQuery Ready.");
+
+    $('.room-sort').click(function() {
+        let hotelId = parseInt($(this).data('hotel-id'));
+        let sortAction = $(this).data('action');
+
+        if(hotelId === NaN)
+            return;
+
+        retrieveHotelRoomsSorted(hotelId, sortAction)
+        .then((rooms) => displayHotelRooms(rooms))
+        .catch((err) => console.log(err));
+    });
 
     // disable room filters by default
     // roomFilters('disabled');
@@ -9,30 +21,21 @@ $(document).ready(function() {
         clearRoomDisplay();
 
         let countryName = $(this).val();
-        if(countryName == 'none') {
+        if(countryName === 'none') {
+            console.log("val none");
             retrieveAllHotels()
-            .then((hotels) => {
-                displayHotels(hotels);
-            }).catch((err) => {
-                console.log(err);
-            })
+            .then((hotels) => displayHotels(hotels))
+            .catch((err)   => console.log("error: "+err));
         } else {
             retrieveHotelsByCountry(countryName)
-            .then((hotels) => {
-                displayHotels(hotels);
-            }).catch((err) => {
-                console.log(err);
-            })
-
+            .then((hotels) => displayHotels(hotels))
+            .catch((err)   => console.log("error: "+err));
         }
     });
 
     $('.result-hotels .result-body').on('click', 'a.hotel', function() {
         retrieveAllHotelRoomsByHotelId($(this).data('hotel-id')).
-        then((rooms) => {
-            console.log(rooms);
-            displayHotelRooms(rooms);
-        });
+        then((rooms) => { displayHotelRooms(rooms); });
     });
 
     /**
