@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class HotelController {
-
+    
     @Autowired
     private final HotelRepository repository;
 
@@ -40,6 +40,11 @@ public class HotelController {
     @GetMapping("/hotels/name/{name}")
     public List<Hotel> getByName(@PathVariable String name) {
         List<Hotel> hotels = repository.findByHotelName(name);
+        return hotels;
+    }
+    @GetMapping("/hotels/id/{hotelId}")
+    public List<Hotel> getById(@PathVariable int hotelId) {
+        List<Hotel> hotels = repository.findByHotelId(hotelId);
         return hotels;
     }
 }

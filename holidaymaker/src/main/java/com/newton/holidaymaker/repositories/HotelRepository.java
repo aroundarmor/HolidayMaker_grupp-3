@@ -20,7 +20,8 @@ import org.springframework.stereotype.Repository;
 public interface HotelRepository extends JpaRepository<Hotel, Integer>{
 	List<Hotel> findByHotelCountry(String hotelCountry);
 	List<Hotel> findByHotelName(String hotelName);
-	
+
 	@Query(value="SELECT DISTINCT hotelCountry FROM Hotel")
 	List<String> findAllCountries();
+	List<Hotel> findByHotelId(int hotelId);
 }

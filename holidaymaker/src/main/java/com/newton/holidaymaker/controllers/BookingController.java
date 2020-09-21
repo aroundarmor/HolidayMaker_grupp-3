@@ -40,7 +40,7 @@ public class BookingController {
     @PutMapping("/bookings/put/{id}")
     public void updateBooking(@RequestBody Booking booking, @PathVariable(value = "id") Integer id) {
         Booking updateTarget = repository.getOne(id);
-        updateTarget.setRoomId(booking.getRoomId());
+        //updateTarget.setRoomId(booking.getRoomId());
         //updateTarget.setCustomerId(booking.getCustomerId());
         updateTarget.setArrivalDate(booking.getArrivalDate());
         updateTarget.setDepartureDate(booking.getDepartureDate());
@@ -58,7 +58,7 @@ public class BookingController {
         System.out.println("Booking deleted");
     }
 
-    //Ska returnera alla bookings för ett givet customer_id
+    //Implementera metod för att returnera alla bookings för ett givet customer_id
     /*@GetMapping("/bookings/get/{customer_id}")
     public List<Booking> getBookingsByCustomer(@PathVariable(value = "customer_id") Integer id ){
     repository.findAll(id);
