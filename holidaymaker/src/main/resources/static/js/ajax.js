@@ -2,8 +2,8 @@ $(document).ready(function() {
     console.log("JQuery Ready.");
 
     $('.room-sort').click(function() {
-        let hotelId = parseInt($(this).data('hotel-id'));
-        let sortAction = $(this).data('action');
+        let hotelId = parseInt($(this).attr('data-hotel-id'));
+        let sortAction = $(this).attr('data-action');
 
         if(hotelId === NaN)
             return;
@@ -34,7 +34,7 @@ $(document).ready(function() {
     });
 
     $('.result-hotels .result-body').on('click', 'a.hotel', function() {
-        retrieveAllHotelRoomsByHotelId($(this).data('hotel-id')).
+        retrieveAllHotelRoomsByHotelId($(this).attr('data-hotel-id')).
         then((rooms) => { displayHotelRooms(rooms); });
     });
 
