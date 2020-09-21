@@ -198,3 +198,29 @@ function retrieveAllHotelRoomsByHotelId(hotelId) {
         });
     });
 }
+
+/**
+*   Ajax method to retrieve a specific hotel by given hotelId
+*
+*   @return a Promise containing hotel
+*/
+function retrieveHotelRoomsSorted(hotelId, sortAction) {
+    console.log('/search/id/'+hotelId+'/price-'+sortAction);
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            url:'/search/id/'+hotelId+'/price-'+sortAction,
+            type: 'get',
+            dataType: 'json',
+            success: function(response) {
+                resolve(response);
+            },
+            error: function(err) {
+                resolve(err);
+            }
+        });
+    });
+}
