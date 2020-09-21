@@ -1,5 +1,5 @@
 /**
-Parses form data into a JSON object
+    Parses form data into a JSON object
 */
 function getFormData(element, excludeElements = null) {
     let formData = {};
@@ -28,4 +28,21 @@ function newAlertBox(type, msg) {
 //    alertBox.append(alertBoxClose);
 
     return alertBox;
+}
+
+/**
+    Depending on given parameter 'mode',
+    enables or disables room filters.
+    @param {String} mode < enabled | disabled >
+*/
+function roomFilters(mode) {
+    if(mode == 'enabled') {
+        $('select.roomPriceOrder')  .attr('disabled', false);
+        $('select.roomType')        .attr('disabled', false);
+        $('select.roomAvailability').attr('disabled', false);
+    } else {
+        $('select.roomPriceOrder')  .attr('disabled', true).val('none').change();
+        $('select.roomType')        .attr('disabled', true).val('none').change();
+        $('select.roomAvailability').attr('disabled', true).val('none').change();
+    }
 }

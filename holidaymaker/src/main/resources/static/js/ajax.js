@@ -1,4 +1,21 @@
 $(document).ready(function() {
+    console.log("ready?");
+
+    // disable room filters by default
+    // roomFilters('disabled');
+    // $('select.hotelCountry').change(function() {
+    //     let countryName = $(this).val();
+    //     if(countryName == 'none')
+    //         roomFilters('disabled');
+    //     else
+    //         roomFilters('enabled');
+    // });
+
+    $('#searchFilterButton').click(function() {
+        console.log("???");
+        let formData = getFormData($('#filterForm'));
+        console.log(formData);
+    });
 
     /**
     *
