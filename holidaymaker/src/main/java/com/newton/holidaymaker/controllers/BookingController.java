@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.newton.holidaymaker.models.Booking;
+import com.newton.holidaymaker.models.Room;
 import com.newton.holidaymaker.repositories.BookingRepository;
+import com.newton.holidaymaker.repositories.RoomRepository;
 import com.newton.holidaymaker.repositories.UserRepository;
 
 @RestController
@@ -23,6 +25,9 @@ public class BookingController {
 
     @Autowired
     private final BookingRepository repository;
+    
+    @Autowired 
+    RoomRepository roomRepo;
 
     @Autowired
     UserRepository userRepo;
@@ -50,6 +55,11 @@ public class BookingController {
     	int customerId = userRepo.findByUsername(principal.getName()).getCustomerId();
     	booking.setCustomerId(customerId);
         repository.save(booking);
+        
+        // update room status 'isBooked' to true
+        Room room = roomRepo.findByRoomId(booking.getRoomId());
+        room.setBooked(true);
+        roomRepo.save(room);
 
         response.put("message", "success");
         return response;
