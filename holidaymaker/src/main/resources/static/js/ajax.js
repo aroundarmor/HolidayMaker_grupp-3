@@ -31,9 +31,9 @@ $(document).ready(function() {
         .then((response) => {
             $('.new-booking-status').html('');
 
-            if(response.message == 'invalidSession') {
+            if(response.message === 'invalidSession') {
                 $('.new-booking-status').append(newAlertBox('warning', 'You need to be signed in.'));
-            } else if (response.message = 'success') {
+            } else if (response.message === 'success') {
                 $('.new-booking-status').append(newAlertBox('success', 'Booking successful.'));
             }
         })
