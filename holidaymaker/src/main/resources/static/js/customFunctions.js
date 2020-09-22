@@ -224,3 +224,42 @@ function retrieveHotelRoomsSorted(hotelId, sortAction) {
         });
     });
 }
+
+/**
+*
+*/
+function displayNewBooking(roomId, hotelName) {
+    // update header
+    $('.selected-room > .selected-room-info').html(`
+        <span>${hotelName}</span>
+        <span>Room #${roomId}</span>
+    `);
+
+    $('.selected-room-extras > form > input[name="roomId"]').val(roomId);
+
+    // reset extras
+    $('.selected-room input[type="checkbox"]').prop('checked', false)
+
+    $('.selected-room').show();
+}
+
+function createNewBooking(formData) {
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            url:'/bookings/post',
+            type:'post',
+            dataType:'json',
+            data: formData,
+            success: function(response) {
+                resolve(response);
+            },
+            error: function(err) {
+                resolve(err);
+            }
+        });
+    });
+}

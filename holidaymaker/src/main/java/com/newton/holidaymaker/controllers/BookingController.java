@@ -1,9 +1,12 @@
 package com.newton.holidaymaker.controllers;
 
+import java.security.Principal;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,12 +16,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.newton.holidaymaker.models.Booking;
 import com.newton.holidaymaker.repositories.BookingRepository;
+import com.newton.holidaymaker.repositories.UserRepository;
 
 @RestController
 public class BookingController {
 
     @Autowired
     private final BookingRepository repository;
+
+    @Autowired
+    UserRepository userRepo;
 
     BookingController(BookingRepository repository) {
         this.repository = repository;
@@ -31,10 +38,21 @@ public class BookingController {
     }
 
     @PostMapping("/bookings/post")
-    public int saveBooking(@RequestBody Booking booking) {
+    public HashMap<String, String> saveBooking(@RequestBody Booking booking, Principal principal) {
+    	HashMap<String, String> response = new HashMap<String, String>();
+
+    	// user must be logged in
+    	if(principal == null) {
+    		response.put("message", "invalidSession");
+    		return response;
+    	}
+        
+    	int customerId = userRepo.findByUsername(principal.getName()).getCustomerId();
+    	booking.setCustomerId(customerId);
         repository.save(booking);
-        System.out.println("Person saved");
-        return booking.getId();
+
+        response.put("message", "success");
+        return response;
     }
 
     @PutMapping("/bookings/put/{id}")

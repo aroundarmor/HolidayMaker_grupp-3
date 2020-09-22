@@ -1,6 +1,73 @@
 $(document).ready(function() {
     console.log("JQuery Ready.");
 
+    new Pikaday({ field: $('#arrivalDate')[0] });
+    new Pikaday({ field: $('#departureDate')[0] });
+
+    $('#book-room-form').submit(function(event) {
+        event.preventDefault();
+
+        // convert dates to integer
+        const arrival   = new Date($('#arrivalDate').val()).getTime()   / 1000;
+        const departure = new Date($('#departureDate').val()).getTime() / 1000;
+
+        const extraBed   = $('input[name="extraBed"]').val()     == 0 ? false:true;
+        const twoMeals   = $('input[name="twoMeals"]').val()     == 0 ? false:true;
+        const threeMeals = $('input[name="threeMeals"]').val()   == 0 ? false:true;
+        const all        = $('input[name="allInclusive"]').val() == 0 ? false:true;
+
+        // put integer values of dates into JSON object
+        let formData = {};
+        formData['roomId'] = parseInt($('input[name="roomId"]').val());
+        formData['arrivalDate'] = arrival;
+        formData['departureDate'] = departure;
+        formData['extraBed'] = extraBed;
+        formData['twoMeals'] = twoMeals;
+        formData['threeMeals'] = threeMeals;
+        formData['allInclusive'] = all;
+
+        // stringify and send to server
+        createNewBooking(JSON.stringify(formData))
+        .then((response) => {
+            $('.new-booking-status').html('');
+
+            if(response.message == 'invalidSession') {
+                $('.new-booking-status').append(newAlertBox('warning', 'You need to be signed in.'));
+            } else if (response.message = 'success') {
+                $('.new-booking-status').append(newAlertBox('success', 'Booking successful.'));
+            }
+        })
+        .catch((error) => {
+            $('.new-booking-status').html('');
+            $('.new-booking-status').append(newAlertBox('danger', 'Something went wrong, contact web admin.'));
+
+           console.log("ERROR: " + error);
+        });
+    });
+
+    // {
+    //     "roomId":"1",
+    //     "customer_id":"",
+    //     "arrivalDate":"2020-09-01",
+    //     "departureDate":"2020-09-26",
+    //     "extraBed":"1",
+    //     "twoMeals":"2",
+    //     "threeMeals":"3"
+    // }
+
+    $('.result-rooms .result-body').on('click', '.add-room', function() {
+        if($(this).children('i').hasClass('fa-plus')) {
+            $(this).html('<i class="fas fa-minus"></i>');
+
+            let hotelName = $(this).attr('data-hotel-name');
+            let roomId = $(this).attr('data-room-id');
+            displayNewBooking(roomId, hotelName);
+
+        } else {
+            $(this).html('<i class="fas fa-plus"></i>');
+        }
+    });
+
     $('.room-sort').click(function() {
         let hotelId = parseInt($(this).attr('data-hotel-id'));
         let sortAction = $(this).attr('data-action');
@@ -34,8 +101,9 @@ $(document).ready(function() {
     });
 
     $('.result-hotels .result-body').on('click', 'a.hotel', function() {
+        let hotelName = $(this).attr("data-hotel-name");
         retrieveAllHotelRoomsByHotelId($(this).attr('data-hotel-id')).
-        then((rooms) => { displayHotelRooms(rooms); });
+        then((rooms) => { displayHotelRooms(rooms, hotelName); });
     });
 
     /**
