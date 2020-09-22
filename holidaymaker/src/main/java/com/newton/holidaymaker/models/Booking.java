@@ -107,4 +107,20 @@ public class Booking implements Serializable {
         this.allInclusive = allInclusive;
     }
 
+    public int getCustomerId() {
+    	return this.customerId;
+    }
+
+    public void setCustomerId(Integer customerId) {
+    	this.customerId = customerId;
+    }
+
+    public int getRoomId() {
+    	return this.roomId;
+    }
+
+    public void setRoomId(Integer roomId) {
+    	this.roomId = roomId;
+    }
+
 }
