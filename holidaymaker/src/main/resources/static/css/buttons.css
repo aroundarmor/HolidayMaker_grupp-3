@@ -39,4 +39,5 @@
 
 .button-grow {
     display: block !important;
+    width: 100%;
 }

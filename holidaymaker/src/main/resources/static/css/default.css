@@ -344,6 +344,52 @@ a.hotel {
     position: relative;
 }
 
+.hotel-room-preview {
+    width:60%;
+}
+
+.add-room {
+    font-size: 25px;
+    color: #0980c8;
+}
+
+.create-booking-contrainer,
+.filter-form-container {
+    width: 50%;
+}
+
+.selected-room {
+    padding: 5px;
+    background: #f9f9f9;
+    margin: 5px;
+    border-radius: 3px;
+    border: 3px solid #1d83f0;
+    display: none;
+}
+
+.selected-room-extras input {
+    font-size: 1em;
+    padding: 7px 6px;
+    border: none;
+}
+
+.selected-room-info {
+    background: #eee;
+    padding: 5px;
+    font-size: 1.3em;
+}
+
+.selected-room-info span:nth-child(2) {
+    background: #0a72ce;
+    padding: 4px;
+    border-radius: 3px;
+    color: #fff;
+}
+
+.add-room .fa-minus {
+    color: red;
+}
+
 .flex,
 .flex-align-center,
 .flex-content-center,
