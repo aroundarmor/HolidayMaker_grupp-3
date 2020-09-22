@@ -45,16 +45,6 @@ $(document).ready(function() {
         });
     });
 
-    // {
-    //     "roomId":"1",
-    //     "customer_id":"",
-    //     "arrivalDate":"2020-09-01",
-    //     "departureDate":"2020-09-26",
-    //     "extraBed":"1",
-    //     "twoMeals":"2",
-    //     "threeMeals":"3"
-    // }
-
     $('.result-rooms .result-body').on('click', '.add-room', function() {
         if($(this).children('i').hasClass('fa-plus')) {
             $(this).html('<i class="fas fa-minus"></i>');
