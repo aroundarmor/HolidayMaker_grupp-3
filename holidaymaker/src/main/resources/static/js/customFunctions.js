@@ -249,7 +249,7 @@ function displayNewBooking(roomId, hotelName) {
     // reset extras
     $('.selected-room input[type="checkbox"]').prop('checked', false)
 
-    $('.selected-room').show();
+    $('.selected-room').fadeIn();
 }
 
 function createNewBooking(formData) {
@@ -271,4 +271,17 @@ function createNewBooking(formData) {
             }
         });
     });
+}
+
+function resetBookingForm() {
+    $('.selected-room').fadeOut();
+
+    $('#book-room-form input[name="roomId"]').val('');
+    $('#book-room-form input[name="hotelId"]').val('');
+
+    $('input#extraBed').prop('checked', false);
+    $('input#twoMeals').prop('checked', false);
+    $('input#threeMeals').prop('checked', false);
+
+    $('input#all').prop('checked', false);
 }

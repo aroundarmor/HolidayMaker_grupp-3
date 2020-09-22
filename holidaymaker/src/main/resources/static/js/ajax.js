@@ -75,6 +75,8 @@ $(document).ready(function() {
 
     $('.result-rooms .result-body').on('click', '.add-room', function() {
         if($(this).children('i').hasClass('fa-plus')) {
+
+            $('.add-room').children('i').removeClass('fa-minus').addClass('fa-plus');
             $(this).html('<i class="fas fa-minus"></i>');
 
             $('input[name="hotelId"]').val($(this).attr('data-hotel-id'));
@@ -84,6 +86,7 @@ $(document).ready(function() {
             displayNewBooking(roomId, hotelName);
 
         } else {
+            resetBookingForm();
             $(this).html('<i class="fas fa-plus"></i>');
         }
     });
