@@ -30,8 +30,8 @@ public class User {
     @Column(name="roles")       private String roles = "USER";
     @Column(name="permissions") private String permissions = "USER_READ";
 
-    @OneToMany(mappedBy = "user")
-    private Set<Booking> usersBookings;
+    // @OneToMany(mappedBy = "user")
+    // private Set<Booking> usersBookings;
 
     public User() { }
     public User(String firstname, String lastname, int phoneNumber, String email, String username, String password, String roles, String permissions) {

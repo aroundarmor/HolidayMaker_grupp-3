@@ -25,11 +25,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table (name = "booking")
 public class Booking implements Serializable {
-    @Id @GeneratedValue (strategy = GenerationType.IDENTITY)                private int bookingId;
-    //@Column(name="room_id")                                               private int roomId;
-    //@Column(name="customer_id", insertable=false, updatable=false)        private int customerId;
-    @Column(name="arrival_date", columnDefinition = "DATE NOT NULL")        private Date arrivalDate;
-    @Column(name="departure_date", columnDefinition = "DATE NOT NULL")      private Date departureDate;
+    @Id @GeneratedValue (strategy = GenerationType.IDENTITY)                private Integer bookingId;
+    @Column(name="roomId")                                                  private Integer roomId;
+    @Column(name="customer_id")                                             private Integer customerId;
     @Column(name="arrival_date")                                            private Integer arrivalDate;
     @Column(name="departure_date")                                          private Integer departureDate;
     @Column(name="extra_bed", columnDefinition = "BOOL NOT NULL")           private boolean extraBed;
@@ -37,13 +35,13 @@ public class Booking implements Serializable {
     @Column(name="three_meals", columnDefinition = "BOOL NOT NULL")         private boolean threeMeals;
     @Column(name="all_inclusive", columnDefinition = "BOOL NOT NULL")       private boolean allInclusive;
 
-    @ManyToOne
-    @JoinColumn(name="customer_id", nullable=false)
-    private User user;
-    
-    @ManyToOne
-    @JoinColumn(name="roomId", nullable=false)
-    private Room room;
+    // @ManyToOne
+    // @JoinColumn(name="customer_id", nullable=false)
+    // private User user;
+
+    // @ManyToOne
+    // @JoinColumn(name="roomId", nullable=false)
+    // private Room room;
 
     public Booking() { }
     public Booking(int arrivalDate, int departureDate, Boolean extraBed, Boolean twoMeals, Boolean threeMeals, Boolean allInclusive)
