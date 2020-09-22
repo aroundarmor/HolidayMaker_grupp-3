@@ -59,14 +59,14 @@ $(document).ready(function() {
             $('.new-booking-status').html('');
 
             if(response.message === 'invalidSession') {
-                $('.new-booking-status').append(newAlertBox('warning', 'You need to be signed in.'));
+                $('.new-booking-status').append(newAlertBox('warning', 'You need to be signed in.').hide().fadeIn());
             } else if (response.message === 'success') {
-                $('.new-booking-status').append(newAlertBox('success', 'Booking successful.'));
+                $('.new-booking-status').append(newAlertBox('success', 'Booking successful.').hide().fadeIn());
             }
         })
         .catch((error) => {
             $('.new-booking-status').html('');
-            $('.new-booking-status').append(newAlertBox('danger', 'Something went wrong, contact web admin.'));
+            $('.new-booking-status').append(newAlertBox('danger', 'Something went wrong, contact web admin.').hide().fadeIn());
 
            console.log("ERROR: " + error);
         });
@@ -148,7 +148,7 @@ $(document).ready(function() {
                 $('.register-status').html('');
 
                 if(response.status == 'success') {
-                    $('.register-status').append(newAlertBox('success', 'Your account has been created. Redirecting ...'));
+                    $('.register-status').append(newAlertBox('success', 'Your account has been created. Redirecting ...').hide().fadeIn());
 
                     // redirect user to login page
                     setTimeout(() => {
@@ -168,7 +168,7 @@ $(document).ready(function() {
                         errorMessages += "<div>" + REGISTER_FORM_ERROR[errors[i]] + "</div>";
                     }
 
-                    $('.register-status').append(newAlertBox('warning', errorMessages));
+                    $('.register-status').append(newAlertBox('warning', errorMessages).hide().fadeIn());
                 }
             },
 
@@ -198,7 +198,7 @@ $(document).ready(function() {
                 $('.login-status').html('');
 
                 if(data.status == "success") {
-                    $('.login-status').append( newAlertBox('success', 'Login successful, you will soon be redirected ...') );
+                    $('.login-status').append( newAlertBox('success', 'Login successful, you will soon be redirected ...').hide().fadeIn() );
 
                     // redirect user in 2s
                     setTimeout(() => {
@@ -206,7 +206,7 @@ $(document).ready(function() {
                     }, 2000);
 
                 } else {
-                    $('.login-status').prepend( newAlertBox('warning', 'Wrong username or password.') );
+                    $('.login-status').prepend( newAlertBox('warning', 'Wrong username or password.').hide().fadeIn() );
                 }
 
             },
