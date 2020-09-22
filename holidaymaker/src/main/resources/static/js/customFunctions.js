@@ -214,7 +214,6 @@ function retrieveAllHotelRoomsByHotelId(hotelId) {
 *   @return a Promise containing hotel
 */
 function retrieveHotelRoomsSorted(hotelId, sortAction) {
-    console.log('/search/id/'+hotelId+'/price-'+sortAction);
     return new Promise((resolve, reject) => {
         $.ajax({
             headers: {
@@ -225,6 +224,7 @@ function retrieveHotelRoomsSorted(hotelId, sortAction) {
             type: 'get',
             dataType: 'json',
             success: function(response) {
+                $('.sort-buttons').attr('data-latest-action', sortAction);
                 resolve(response);
             },
             error: function(err) {

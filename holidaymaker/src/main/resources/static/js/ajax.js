@@ -56,6 +56,13 @@ $(document).ready(function() {
                 $('.new-booking-status').append(newAlertBox('warning', 'You need to be signed in.').hide().fadeIn());
             } else if (response.message === 'success') {
                 $('.new-booking-status').append(newAlertBox('success', 'Booking successful.').hide().fadeIn());
+
+                let latestSortAction = $('.sort-buttons').attr('data-latest-action');
+                let latestHotelId = $('input[name="hotelId"]').val();
+
+                retrieveHotelRoomsSorted(latestHotelId, latestSortAction)
+                .then((rooms) => displayHotelRooms(rooms))
+                .catch((err) => console.log(err));
             }
         })
         .catch((error) => {
@@ -69,6 +76,8 @@ $(document).ready(function() {
     $('.result-rooms .result-body').on('click', '.add-room', function() {
         if($(this).children('i').hasClass('fa-plus')) {
             $(this).html('<i class="fas fa-minus"></i>');
+
+            $('input[name="hotelId"]').val($(this).attr('data-hotel-id'));
 
             let hotelName = $(this).attr('data-hotel-name');
             let roomId = $(this).attr('data-room-id');

@@ -109,6 +109,7 @@
                         <div class="selected-room-extras">
                             <form id="book-room-form" action="index.html" method="post">
                                 <input type="hidden" name="roomId" value="">
+                                <input type="hidden" name="hotelId" value="">
                                 <div class="form-group flex-row">
                                     <input id="arrivalDate" type="text" name="arrivalDate" placeholder="from e.g: 2020-01-25">
                                     <input id="departureDate" type="text" name="departureDate" placeholder="to e.g: 2020-02-13">
@@ -153,7 +154,7 @@
                 <div class="result-rooms">
                     <div class="result-title flex-content-space-between">
                         <span>Rooms</span>
-                        <div class="flex-column flex-align-center">
+                        <div class="flex-column flex-align-center sort-buttons" data-latest-action="asc">
                             <span style="font-size:12px;">Sort By Price</span>
                             <a class="room-sort sort-asc" data-hotel-id="" data-action="asc"><i class="fas fa-arrow-up"></i></a>
                             <a class="room-sort sort-desc" data-hotel-id="" data-action="desc"><i class="fas fa-arrow-down"></i></a>
