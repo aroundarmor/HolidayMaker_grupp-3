@@ -45,9 +45,10 @@ public class Hotel implements Serializable {
         public String getHotelName()    {return hotelName;}
         public String getHotelCountry() {return hotelCountry;}
         public String getHotelAddress() {return hotelAddress;}
-
+		public Set<Room> getRooms()     {return rooms;}
         public void setHotelName(String hotelName)       {this.hotelName = hotelName;}
         public void setHotelCountry(String hotelCountry) {this.hotelCountry = hotelCountry;}
         public void setHotelAddress(String hotelAddress) {this.hotelAddress = hotelAddress;}
+        public void setRooms(Set<Room> rooms) 			 {this.rooms = rooms;}
 
 }
