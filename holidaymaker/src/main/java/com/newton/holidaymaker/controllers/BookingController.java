@@ -29,6 +29,10 @@ public class BookingController {
         System.out.println("Bookings retrieved");
         return repository.findAll();
     }
+    @GetMapping("/bookings/{customerId}/allbookings")
+    public List<Booking> getAllBookingsByUserId(@PathVariable int customerId){
+        return repository.findAllByCustomerId(customerId);
+    }
 
     @PostMapping("/bookings/post")
     public int saveBooking(@RequestBody Booking booking) {
