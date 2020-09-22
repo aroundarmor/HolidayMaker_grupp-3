@@ -57,7 +57,7 @@ function displayHotels(hotels) {
     $.each(hotels, (key, hotel) => {
         console.log(key, hotel.hotelName);
         let html = `
-            <a class="hotel" data-hotel-id="${hotel.hotelID}">
+            <a class="hotel" data-hotel-id="${hotel.hotelID}" data-hotel-name="${hotel.hotelName}">
                 <div class="hotel-name">${hotel.hotelName}</div>
             </a>
         `;
@@ -68,19 +68,23 @@ function displayHotels(hotels) {
 /**
 *   Shows rooms in room display.
 *
-*   @param {Object} hotels - list containing hotels
+*   @param {String} hotelName
+*   @param {Object} rooms - list containing rooms
 */
-function displayHotelRooms(rooms) {
+function displayHotelRooms(rooms, hotelName) {
     clearRoomDisplay();
 
     $('.room-sort').attr('data-hotel-id', rooms[0].hotelId);
     $.each(rooms, (key, room) => {
         let html = `
-            <a class="room ${room.isBooked ? 'isBooked':''} flex-column flex-content-space-between" data-room-id="${room.roomId}" data-hotel-id="${room.hotelId}">
-                <div class="room-number">${room.roomId}</div>
-                <div class="room-type">${room.roomType}</div>
-                <div class="room-price">${room.roomPrice}</div>
-            </a>
+            <div class="room ${room.isBooked ? 'isBooked':''} flex-column flex-content-space-between flex-align-center" data-room-id="${room.roomId}" data-hotel-id="${room.hotelId}">
+                <div class="room-select">${ room.isBooked ? '':`<a class="add-room" data-room-id="${room.roomId}" data-hotel-id="${room.hotelId}" data-hotel-name="${hotelName}"><i class="fas fa-plus"></i></a>` }</div>
+                <div class="flex-column flex-content-space-between hotel-room-preview">
+                    <div class="room-number">#${room.roomId}</div>
+                    <div class="room-type">${room.roomType}</div>
+                    <div class="room-price">${room.roomPrice}$</div>
+                </div>
+            </div>
         `;
         $('.result-rooms > .result-body').append(html);
     });
@@ -127,16 +131,17 @@ function retrieveAllHotels() {
 /**
 *   Ajax method to retrieve all hotels by country
 *
+*   @param {String} countryName
 *   @return a Promise containing hotels
 */
-function retrieveHotelsByCountry(country) {
+function retrieveHotelsByCountry(countryName) {
     return new Promise((resolve, reject) => {
         $.ajax({
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            url:'/hotels/country/'+country,
+            url:'/hotels/country/'+countryName,
             type: 'get',
             dataType: 'json',
             success: function(response) {
@@ -152,16 +157,17 @@ function retrieveHotelsByCountry(country) {
 /**
 *   Ajax method to retrieve all hotels by countryName
 *
+*   @param {String} countryName
 *   @return a Promise containing hotels
 */
-function retrieveHotelByName(countryName) {
+function retrieveHotelByName(hotelName) {
     return new Promise((resolve, reject) => {
         $.ajax({
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            url:'/hotels/name/'+countryName,
+            url:'/hotels/name/'+hotelName,
             type: 'get',
             dataType: 'json',
             success: function(response) {
@@ -177,6 +183,7 @@ function retrieveHotelByName(countryName) {
 /**
 *   Ajax method to retrieve a specific hotel by given hotelId
 *
+*   @param {Number} hotelId
 *   @return a Promise containing hotel
 */
 function retrieveAllHotelRoomsByHotelId(hotelId) {
@@ -200,8 +207,10 @@ function retrieveAllHotelRoomsByHotelId(hotelId) {
 }
 
 /**
-*   Ajax method to retrieve a specific hotel by given hotelId
+*   Ajax method to retrieve rooms sorted by price based on given sortAction
 *
+*   @param {Number} hotelId
+*   @param {String} sortAction - <asc | desc>
 *   @return a Promise containing hotel
 */
 function retrieveHotelRoomsSorted(hotelId, sortAction) {
