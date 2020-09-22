@@ -20,34 +20,35 @@ import org.hibernate.annotations.OnDeleteAction;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 //OBS måste kolla att datumobjektet fungerar med datumkolumnen i databasen/Hanna
-//Kolumnerna för customer_id och room_id är bortkommaterade eftersom de är joinade med user respektive room.
+//Kolumnerna för customer_id och room_id skulle varit bortkommaterade eftersom de skulle vara joinade med user respektive room. /*, insertable=false, updatable=false*/
 
 @Entity
 @Table (name = "booking")
 public class Booking implements Serializable {
-    @Id @GeneratedValue (strategy = GenerationType.IDENTITY)                private int bookingId;
-    //@Column(name="room_id")                                               private int roomId;
-    //@Column(name="customer_id", insertable=false, updatable=false)        private int customerId;
-    @Column(name="arrival_date", columnDefinition = "DATE NOT NULL")        private Date arrivalDate;
-    @Column(name="departure_date", columnDefinition = "DATE NOT NULL")      private Date departureDate;
-    @Column(name="extra_bed", columnDefinition = "BOOL NOT NULL")           private boolean extraBed;
-    @Column(name="two_meals", columnDefinition = "BOOL NOT NULL")           private boolean twoMeals;
-    @Column(name="three_meals", columnDefinition = "BOOL NOT NULL")         private boolean threeMeals;
-    @Column(name="all_inclusive", columnDefinition = "BOOL NOT NULL")       private boolean allInclusive;
+    @Id @GeneratedValue (strategy = GenerationType.IDENTITY)                	private int bookingId;
+    //@Column(name="room_id")                                               	private int roomId;
+    @Column(name="customer_id", columnDefinition = "INT NOT NULL")        	    private int customerId;
+    @Column(name="arrival_date", columnDefinition = "INT NOT NULL")   			private int arrivalDate;
+    @Column(name="departure_date", columnDefinition = "INT NOT NULL") 			private int departureDate;
+    @Column(name="extra_bed", columnDefinition = "BOOL NOT NULL")           	private boolean extraBed;
+    @Column(name="two_meals", columnDefinition = "BOOL NOT NULL")           	private boolean twoMeals;
+    @Column(name="three_meals", columnDefinition = "BOOL NOT NULL")         	private boolean threeMeals;
+    @Column(name="all_inclusive", columnDefinition = "BOOL NOT NULL")       	private boolean allInclusive;
 
-    @ManyToOne
+    /*@ManyToOne
     @JoinColumn(name="customer_id", nullable=false)
-    private User user;
+    private User user;*/
     
     @ManyToOne
     @JoinColumn(name="roomId", nullable=false)
     private Room room;
 
     public Booking() { }
-    public Booking(Date arrivalDate, Date departureDate, Boolean extraBed, Boolean twoMeals, Boolean threeMeals, Boolean allInclusive)
+    public Booking(int customerId, int date, int date2, boolean extraBed, boolean twoMeals, boolean threeMeals, boolean allInclusive)
     {
-        this.arrivalDate    = arrivalDate;
-        this.departureDate  = departureDate;
+        this.customerId		= customerId;
+    	this.arrivalDate    = date;
+        this.departureDate  = date2;
         this.extraBed       = extraBed;
         this.twoMeals       = twoMeals;
         this.threeMeals     = threeMeals;
@@ -55,23 +56,29 @@ public class Booking implements Serializable {
 
     }
 
-    public int getId() {
+   	public int getId() {
         return bookingId;
     }
 
-    public Date getArrivalDate() {
+    public int getCustomerId() {
+		return customerId;
+	}
+	public void setCustomerId(int customerId) {
+		this.customerId = customerId;
+	}
+	public int getArrivalDate() {
         return arrivalDate;
     }
 
-    public void setArrivalDate(Date arrivalDate) {
+    public void setArrivalDate(int arrivalDate) {
         this.arrivalDate = arrivalDate;
     }
 
-    public Date getDepartureDate() {
+    public int getDepartureDate() {
         return departureDate;
     }
 
-    public void setDepartureDate(Date departureDate) {
+    public void setDepartureDate(int departureDate) {
         this.departureDate = departureDate;
     }
 

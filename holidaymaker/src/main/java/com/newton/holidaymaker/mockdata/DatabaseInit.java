@@ -1,11 +1,15 @@
 package com.newton.holidaymaker.mockdata;
 
 import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
+import com.newton.holidaymaker.models.Booking;
 import com.newton.holidaymaker.models.Hotel;
 import com.newton.holidaymaker.models.Room;
 import com.newton.holidaymaker.models.User;
+import com.newton.holidaymaker.repositories.BookingRepository;
 import com.newton.holidaymaker.repositories.HotelRepository;
 import com.newton.holidaymaker.repositories.RoomRepository;
 import com.newton.holidaymaker.repositories.UserRepository;
@@ -21,6 +25,7 @@ public class DatabaseInit implements CommandLineRunner {
     @Autowired private UserRepository userRepository;
     @Autowired private HotelRepository hotelRepository;
     @Autowired private RoomRepository roomRepository;
+    @Autowired private BookingRepository bookingRepository;
     @Autowired private BCryptPasswordEncoder encoder;
 
     public DatabaseInit(UserRepository userRepository, BCryptPasswordEncoder encoder){
@@ -126,5 +131,24 @@ public class DatabaseInit implements CommandLineRunner {
             roomRepository.saveAll(pastaRooms);
         }
     }
+    
+    /**
+    *
+    * Generates sample booking - Linked to user 1 (if exists?) but no room as the code is now.
+    *
+    * */
+    public void generateBookings() {
+		List<Booking> bookings = Arrays.asList(
+            new Booking(1, 20210713, 20210716, true, false, false, true),
+            new Booking(1, 20210813, 20210814, true, false, false, true),
+            new Booking(1, 20210701, 20210703, true, false, false, true),
+            new Booking(1, 20210729, 20210730, true, false, false, true),
+            new Booking(1, 20210805, 20210812, true, false, false, true)
+        );
+
+        if(bookingRepository.count() == 0)
+            bookingRepository.saveAll(bookings);
+    }
+
 
 }

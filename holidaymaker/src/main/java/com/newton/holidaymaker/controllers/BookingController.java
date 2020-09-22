@@ -33,7 +33,7 @@ public class BookingController {
     @PostMapping("/bookings/post")
     public int saveBooking(@RequestBody Booking booking) {
         repository.save(booking);
-        System.out.println("Person saved");
+        System.out.println("Booking saved");
         return booking.getId();
     }
 
@@ -41,7 +41,7 @@ public class BookingController {
     public void updateBooking(@RequestBody Booking booking, @PathVariable(value = "id") Integer id) {
         Booking updateTarget = repository.getOne(id);
         //updateTarget.setRoomId(booking.getRoomId());
-        //updateTarget.setCustomerId(booking.getCustomerId());
+        updateTarget.setCustomerId(booking.getCustomerId());
         updateTarget.setArrivalDate(booking.getArrivalDate());
         updateTarget.setDepartureDate(booking.getDepartureDate());
         updateTarget.setExtraBed(booking.getExtraBed());
