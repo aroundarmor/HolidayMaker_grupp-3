@@ -30,6 +30,8 @@ public class Booking implements Serializable {
     //@Column(name="customer_id", insertable=false, updatable=false)        private int customerId;
     @Column(name="arrival_date", columnDefinition = "DATE NOT NULL")        private Date arrivalDate;
     @Column(name="departure_date", columnDefinition = "DATE NOT NULL")      private Date departureDate;
+    @Column(name="arrival_date")                                            private Integer arrivalDate;
+    @Column(name="departure_date")                                          private Integer departureDate;
     @Column(name="extra_bed", columnDefinition = "BOOL NOT NULL")           private boolean extraBed;
     @Column(name="two_meals", columnDefinition = "BOOL NOT NULL")           private boolean twoMeals;
     @Column(name="three_meals", columnDefinition = "BOOL NOT NULL")         private boolean threeMeals;
@@ -44,7 +46,7 @@ public class Booking implements Serializable {
     private Room room;
 
     public Booking() { }
-    public Booking(Date arrivalDate, Date departureDate, Boolean extraBed, Boolean twoMeals, Boolean threeMeals, Boolean allInclusive)
+    public Booking(int arrivalDate, int departureDate, Boolean extraBed, Boolean twoMeals, Boolean threeMeals, Boolean allInclusive)
     {
         this.arrivalDate    = arrivalDate;
         this.departureDate  = departureDate;
@@ -59,19 +61,19 @@ public class Booking implements Serializable {
         return bookingId;
     }
 
-    public Date getArrivalDate() {
+    public int getArrivalDate() {
         return arrivalDate;
     }
 
-    public void setArrivalDate(Date arrivalDate) {
+    public void setArrivalDate(int arrivalDate) {
         this.arrivalDate = arrivalDate;
     }
 
-    public Date getDepartureDate() {
+    public int getDepartureDate() {
         return departureDate;
     }
 
-    public void setDepartureDate(Date departureDate) {
+    public void setDepartureDate(int departureDate) {
         this.departureDate = departureDate;
     }
 
