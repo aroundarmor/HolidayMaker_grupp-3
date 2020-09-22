@@ -4,6 +4,20 @@ $(document).ready(function() {
     new Pikaday({ field: $('#arrivalDate')[0] });
     new Pikaday({ field: $('#departureDate')[0] });
 
+    $('input#all').click(function() {
+        let allInclusiveChecked = $(this).prop('checked');
+
+        if(allInclusiveChecked === true) {
+            $('input#extraBed').prop('checked', true);
+            $('input#twoMeals').prop('checked', true);
+            $('input#threeMeals').prop('checked', true);
+        } else {
+            $('input#extraBed').prop('checked', false);
+            $('input#twoMeals').prop('checked', false);
+            $('input#threeMeals').prop('checked', false);
+        }
+    });
+
     $('#book-room-form').submit(function(event) {
         event.preventDefault();
 
