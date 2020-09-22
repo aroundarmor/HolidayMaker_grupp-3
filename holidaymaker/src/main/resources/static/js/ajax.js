@@ -21,6 +21,19 @@ $(document).ready(function() {
     $('#book-room-form').submit(function(event) {
         event.preventDefault();
 
+        // "xxxx-yy-zz".length == 10
+        const DATE_LENGTH = 10;
+
+        // make sure a date is set
+        if(($('#arrivalDate').val().length < DATE_LENGTH)
+        || ($('#departureDate').val().length < DATE_LENGTH)) {
+            $('.new-booking-status').html('');
+            $('.new-booking-status').append(
+                newAlertBox('warning', 'You need to provide arrival & departure dates.').hide().fadeIn()
+            );
+            return;
+        }
+
         // convert dates to integer
         const arrival   = new Date($('#arrivalDate').val()).getTime()   / 1000;
         const departure = new Date($('#departureDate').val()).getTime() / 1000;
