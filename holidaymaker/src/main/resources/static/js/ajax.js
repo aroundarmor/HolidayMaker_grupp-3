@@ -73,6 +73,9 @@ $(document).ready(function() {
                 retrieveHotelRoomsSorted(latestHotelId, latestSortAction)
                 .then((rooms) => displayHotelRooms(rooms))
                 .catch((err) => console.log(err));
+
+                // update bookings display
+                fetchUserBookings();
             }
         })
         .catch((error) => {
