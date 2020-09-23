@@ -315,7 +315,7 @@ function newUserBookingBox(booking) {
         <div id="hotel-${booking.hotelId}" class="booking">
             <div class="booked-hotel flex-content-space-between flex-align-center">
                 <span><i class="far fa-building"></i> ${booking.hotelName}</span>
-                <a class="deleteClusterBooking"><i class="far fa-times-circle"></i></a>
+                <a class="deleteClusterBooking" data-hotel-id="${booking.hotelId}"><i class="far fa-times-circle"></i></a>
             </div>
             <div class="booked-rooms">
                 <div id="room-${booking.roomId}" class="room flex-column">
@@ -368,6 +368,22 @@ function deleteRoomFromBookings(roomId) {
     return new Promise((resolve, reject) => {
         $.ajax({
             url:'/bookings/remove/'+roomId,
+            type:'delete',
+            dataType:'json',
+            success: function(response) {
+                resolve();
+            },
+            error: function(err) {
+                reject(err);
+            }
+        });
+    });
+}
+
+function deleteAllHotelRooms(hotelId) {
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            url:'/bookings/deleteall/'+hotelId,
             type:'delete',
             dataType:'json',
             success: function(response) {

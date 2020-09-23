@@ -2,6 +2,15 @@ $(document).ready(function() {
 
     fetchUserBookings();
 
+    $('.user-bookings').on('click', '.booking > .booked-hotel > a.deleteClusterBooking', function() {
+        let proceedDeletion = confirm("Are you sure you want to remove ALL of your bookings in this hotel?");
+        if(proceedDeletion) {
+            deleteAllHotelRooms($(this).attr('data-hotel-id'))
+            .then(() => fetchUserBookings())
+            .catch((err) => console.log("err: "+err));
+        }
+    });
+
     $('.user-bookings').on('click', '.booking > .booked-rooms > div > .booked-room-primary > a.deleteRoomBooking', function() {
         let proceedDeletion = confirm("Are you sure you want to remove this room?");
         if(proceedDeletion) {
