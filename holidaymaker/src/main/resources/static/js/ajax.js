@@ -1,5 +1,6 @@
 $(document).ready(function() {
-    console.log("JQuery Ready.");
+
+    fetchUserBookings();
 
     new Pikaday({ field: $('#arrivalDate')[0] });
     new Pikaday({ field: $('#departureDate')[0] });
@@ -29,8 +30,8 @@ $(document).ready(function() {
         }
 
         // convert dates to integer
-        const arrival   = new Date($('#arrivalDate').val()).getTime()   / 1000;
-        const departure = new Date($('#departureDate').val()).getTime() / 1000;
+        const arrival   = new Date($('#arrivalDate').val()).getTime();
+        const departure = new Date($('#departureDate').val()).getTime();
 
         const extraBed   = $('input[name="extraBed"]').val()     == 0 ? false:true;
         const twoMeals   = $('input[name="twoMeals"]').val()     == 0 ? false:true;

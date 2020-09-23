@@ -1,11 +1,15 @@
 package com.newton.holidaymaker.controllers;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.persistence.Persistence;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +18,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.newton.holidaymaker.dto.UserBooking;
 import com.newton.holidaymaker.models.Booking;
 import com.newton.holidaymaker.models.Room;
 import com.newton.holidaymaker.repositories.BookingRepository;
@@ -21,7 +27,7 @@ import com.newton.holidaymaker.repositories.RoomRepository;
 import com.newton.holidaymaker.repositories.UserRepository;
 
 @RestController
-public class BookingController {
+public class BookingController extends PageControllerEssentials {
 
     @Autowired
     private final BookingRepository repository;
@@ -40,6 +46,11 @@ public class BookingController {
     public List<Booking> getBookings() {
         System.out.println("Bookings retrieved");
         return repository.findAll();
+    }
+
+    @GetMapping("/bookings/{cid}")
+    public List<Booking> getBookingsAsd(@PathVariable int cid) {
+        return repository.findAllByCustomerId(cid);
     }
 
     @PostMapping("/bookings/post")
@@ -84,6 +95,18 @@ public class BookingController {
     public void deleteBooking(@PathVariable(value = "id") Integer id) {
         repository.deleteById(id);
         System.out.println("Booking deleted");
+    }
+
+    @GetMapping("/bookings/getUserBookings")
+    public List<UserBooking> asd(Principal p) {
+
+    	if(p == null)
+    		return null;
+    	
+    	int customerId = userRepo.findByUsername(p.getName()).getCustomerId();
+    	List<Object[]> objectList = repository.getUserBookingsByCustomerId(customerId);
+
+    	return rowMapUserBookings(objectList);
     }
 
     //Implementera metod för att returnera alla bookings för ett givet customer_id

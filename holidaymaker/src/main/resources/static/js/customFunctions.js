@@ -285,3 +285,83 @@ function resetBookingForm() {
 
     $('input#all').prop('checked', false);
 }
+
+function fetchUserBookings() {
+    $.ajax({
+        url:'/bookings/getUserBookings',
+        type:'get',
+        dataType:'json',
+        success: function(data) {
+            console.log(data);
+            for (var i = 0; i < data.length; i++) {
+                let booking = data[i];
+                let userBookingHotel = $('.user-bookings #hotel-'+booking.hotelId);
+                if(userBookingHotel.length == 0) {
+                    newUserBookingBox(booking);
+                } else {
+                    appendBookingToExistingHotel(booking);
+                }
+            }
+        },
+        error: function(err) {
+            console.log("err: "+err);
+        }
+    });
+}
+
+function newUserBookingBox(booking) {
+    let bookingBox = $(`
+        <div id="hotel-${booking.hotelId}" class="booking">
+            <div class="booked-hotel flex-content-space-between flex-align-center">
+                <span><i class="far fa-building"></i> ${booking.hotelName}</span>
+                <a class="deleteBooking"><i class="far fa-times-circle"></i></a>
+            </div>
+            <div class="booked-rooms flex-row flex-wrap">
+                <div id="room-${booking.roomId}">
+                    <div class="flex-content-space-between">
+                        <span>#${booking.roomId}</span>
+                        <span>${booking.roomType}</span>
+                        <span>${booking.roomPrice} <i class="fas fa-dollar-sign"></i></span>
+                    </div>
+                    <div class="room-datetime flex-content-space-between">
+                        <span class="date-from">${formatDate(new Date(booking.arrivalDate))}</span><span class="date-to">${formatDate(new Date(booking.departureDate))}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `);
+    $('.user-bookings').append(bookingBox);
+}
+
+function appendBookingToExistingHotel(booking) {
+    $(document)
+    .find('#hotel-'+booking.hotelId)
+    .children('.booked-rooms')
+    .append(`
+        <div id="room-${booking.roomId}">
+            <div class="flex-content-space-between">
+                <span>#${booking.roomId}</span>
+                <span>${booking.roomType}</span>
+                <span>${booking.roomPrice} <i class="fas fa-dollar-sign"></i></span>
+            </div>
+            <div class="room-datetime flex-content-space-between">
+                <span class="date-from">${formatDate(new Date(booking.arrivalDate))}</span><span class="date-to">${formatDate(new Date(booking.departureDate))}</span>
+            </div>
+        </div>
+    `);
+}
+
+function formatDate(date) {
+    // https://stackoverflow.com/a/23593099
+    var d = new Date(date),
+    month = '' + (d.getMonth() + 1),
+    day = '' + d.getDate(),
+    year = d.getFullYear();
+
+    if (month.length < 2)
+        month = '0' + month;
+    if (day.length < 2)
+        day = '0' + day;
+
+    return [year, month, day].join('-');
+}

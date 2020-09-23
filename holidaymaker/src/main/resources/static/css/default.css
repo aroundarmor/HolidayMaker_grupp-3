@@ -234,7 +234,6 @@ nav li {
     padding: 2px 8px;
     background: #fff;
     display: inline-block;
-    border: 1px solid #ddd;
     border-radius: 3px;
     margin: 3px;
 }
@@ -244,17 +243,29 @@ nav li {
     cursor: pointer;
 }
 
+.booked-rooms > div {
+    border: 1px solid #ddd;
+}
+
+.booked-rooms > div:not(:last-child) {
+    margin-bottom: 4px;
+}
+
+.room-datetime {
+    border-top:1px solid #ddd;
+}
+
 .date-from, .date-to {
     padding: 3px 10px;
     display: inline-block;
-    border: 1px solid #ddd;
+    /*border: 1px solid #ddd;*/
     border-radius: 3px;
-    background: #fff;
+    /*background: #fff;*/
 }
 
 .date-from::before,
 .date-to::before {
-    color: #0c59d0;
+    color: #5674a2;
     font-weight: bold;
 }
 

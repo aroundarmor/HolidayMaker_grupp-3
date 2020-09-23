@@ -28,8 +28,8 @@ public class Booking implements Serializable {
     @Id @GeneratedValue (strategy = GenerationType.IDENTITY)                private Integer bookingId;
     @Column(name="roomId")                                                  private Integer roomId;
     @Column(name="customer_id")                                             private Integer customerId;
-    @Column(name="arrival_date")                                            private Integer arrivalDate;
-    @Column(name="departure_date")                                          private Integer departureDate;
+    @Column(name="arrival_date")                                            private long arrivalDate;
+    @Column(name="departure_date")                                          private long departureDate;
     @Column(name="extra_bed", columnDefinition = "BOOL NOT NULL")           private boolean extraBed;
     @Column(name="two_meals", columnDefinition = "BOOL NOT NULL")           private boolean twoMeals;
     @Column(name="three_meals", columnDefinition = "BOOL NOT NULL")         private boolean threeMeals;
@@ -44,7 +44,7 @@ public class Booking implements Serializable {
     // private Room room;
 
     public Booking() { }
-    public Booking(int arrivalDate, int departureDate, Boolean extraBed, Boolean twoMeals, Boolean threeMeals, Boolean allInclusive)
+    public Booking(long arrivalDate, long departureDate, Boolean extraBed, Boolean twoMeals, Boolean threeMeals, Boolean allInclusive)
     {
         this.arrivalDate    = arrivalDate;
         this.departureDate  = departureDate;
@@ -59,19 +59,19 @@ public class Booking implements Serializable {
         return bookingId;
     }
 
-    public int getArrivalDate() {
+    public long getArrivalDate() {
         return arrivalDate;
     }
 
-    public void setArrivalDate(int arrivalDate) {
+    public void setArrivalDate(long arrivalDate) {
         this.arrivalDate = arrivalDate;
     }
 
-    public int getDepartureDate() {
+    public long getDepartureDate() {
         return departureDate;
     }
 
-    public void setDepartureDate(int departureDate) {
+    public void setDepartureDate(long departureDate) {
         this.departureDate = departureDate;
     }
 
