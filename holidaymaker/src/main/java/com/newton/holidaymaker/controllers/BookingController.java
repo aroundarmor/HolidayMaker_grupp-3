@@ -112,7 +112,6 @@ public class BookingController extends PageControllerEssentials {
 
     @GetMapping("/bookings/getUserBookings")
     public List<UserBooking> asd(Principal p) {
-
     	if(p == null)
     		return null;
 
@@ -122,34 +121,16 @@ public class BookingController extends PageControllerEssentials {
     	return rowMapUserBookings(objectList);
     }
 
-    //Implementera metod för att returnera alla bookings för ett givet customer_id
-    /*@GetMapping("/bookings/get/{customer_id}")
-    public List<Booking> getBookingsByCustomer(@PathVariable(value = "customer_id") Integer id ){
-    repository.findAll(id);
-    }*/
-
-    // @DeleteMapping("/bookings/{id}/delete-all")
-    // public String removeAllBookingsByCustomerId(@PathVariable(value="id") int id){
-    //     // List<Booking> bookingsOfThisUser = repository.findAllByCustomerId(id);
-    //     // System.out.println(Arrays.asList(bookingsOfThisUser));
-    //     int result = repository.deleteAllByCustomerId(id);
-    //     System.out.println(result);
-        
-    //     return "All bookings deleted";
-    // }
-
     @DeleteMapping("/bookings/deleteall/{hotelid}")
     public boolean removeAllBookingsByCustomerIdAndByHotelId(@PathVariable("hotelid") int hotelId, Principal p){
-
-        if(p == null){
-         return false;
-        }    
+        if(p == null)
+            return false;
 
         int customerId = userRepo.findByUsername(p.getName()).getCustomerId();
-        repository.deleteAllBookings(customerId, hotelId);
         
-        return true;
-    
-    }
+        roomRepo.updateRoomsAfterClusterDelete(customerId, hotelId);
+        repository.deleteAllBookings(customerId, hotelId);
 
+        return true;
+    }
 }
