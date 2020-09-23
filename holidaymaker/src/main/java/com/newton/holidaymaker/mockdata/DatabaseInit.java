@@ -99,9 +99,9 @@ public class DatabaseInit implements CommandLineRunner {
         List<Room> tomatoRooms = Arrays.asList(
             new Room("Single", 100d, tomato.getHotelID(), true),
             new Room("Double", 125d, tomato.getHotelID(), true),
-            new Room("Triple", 150d, tomato.getHotelID(), false),
-            new Room("Quad",   175d, tomato.getHotelID(), false),
-            new Room("King",   200d, tomato.getHotelID(), false),
+            new Room("Triple", 150d, tomato.getHotelID(), true),
+            new Room("Quad",   175d, tomato.getHotelID(), true),
+            new Room("King",   200d, tomato.getHotelID(), true),
             new Room("Queen",  250d, tomato.getHotelID(), false)
         );
 
@@ -144,7 +144,10 @@ public class DatabaseInit implements CommandLineRunner {
             new Booking(1, 3, 20210813, 20210814, true, false, false, true),
             new Booking(1, 6, 20210701, 20210703, true, false, false, true),
             new Booking(7, 7, 20210729, 20210730, true, false, false, true),
-            new Booking(7, 8, 20210805, 20210812, true, false, false, true)
+            new Booking(7, 8, 20210805, 20210812, true, false, false, true),
+            new Booking(7, 9, 20210805, 20210812, true, false, false, true),
+            new Booking(7, 10, 20210805, 20210812, true, false, false, true),
+            new Booking(7, 11, 20210805, 20210812, true, false, false, true)
         );
 
         if(bookingRepository.count() == 0)

@@ -2,6 +2,7 @@ package com.newton.holidaymaker.controllers;
 
 import java.security.Principal;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -95,15 +96,22 @@ public class BookingController extends PageControllerEssentials {
         System.out.println("Booking updated");
     }
 
-    @DeleteMapping("/bookings/delete/{id}")
-    public void deleteBooking(@PathVariable(value = "id") Integer id) {
-        repository.deleteById(id);
-        System.out.println("Booking deleted");
+    @DeleteMapping("/bookings/remove/{id}")
+    public boolean deleteBooking(@PathVariable(value = "id") Integer id) {
+
+        repository.deleteBookingRoom(id);
+
+        if(roomRepo.existsById(id) == true) {
+            Room r = roomRepo.findByRoomId(id);
+            r.setBooked(false);
+            roomRepo.save(r);
+        }
+
+        return true;
     }
 
     @GetMapping("/bookings/getUserBookings")
     public List<UserBooking> asd(Principal p) {
-
     	if(p == null)
     		return null;
 
@@ -113,10 +121,16 @@ public class BookingController extends PageControllerEssentials {
     	return rowMapUserBookings(objectList);
     }
 
-    //Implementera metod för att returnera alla bookings för ett givet customer_id
-    /*@GetMapping("/bookings/get/{customer_id}")
-    public List<Booking> getBookingsByCustomer(@PathVariable(value = "customer_id") Integer id ){
-    repository.findAll(id);
-    }*/
+    @DeleteMapping("/bookings/deleteall/{hotelid}")
+    public boolean removeAllBookingsByCustomerIdAndByHotelId(@PathVariable("hotelid") int hotelId, Principal p){
+        if(p == null)
+            return false;
 
+        int customerId = userRepo.findByUsername(p.getName()).getCustomerId();
+        
+        roomRepo.updateRoomsAfterClusterDelete(customerId, hotelId);
+        repository.deleteAllBookings(customerId, hotelId);
+
+        return true;
+    }
 }
