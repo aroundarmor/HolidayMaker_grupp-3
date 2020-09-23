@@ -41,4 +41,12 @@ public interface BookingRepository extends JpaRepository<Booking, Integer>{
     @Transactional
     @Query(value="DELETE FROM booking WHERE room_id = :roomId", nativeQuery = true)
     int deleteBookingRoom(@Param("roomId") int roomId);
+
+    // @Transactional
+    // int deleteAllByCustomerId(@Param("id")int id);
+
+    @Transactional
+    @Modifying
+    @Query(value="DELETE FROM booking WHERE booking.customer_id = :customerId AND room.room_id IN (SELECT room.room_id FROM room WHERE room.hotel_id = :hotelId)", nativeQuery = true)
+    int deleteAllBookings(@Param("customerId")int customerId, @Param("hotelId")int hotelId);
 }

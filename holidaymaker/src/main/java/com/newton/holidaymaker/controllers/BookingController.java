@@ -2,6 +2,7 @@ package com.newton.holidaymaker.controllers;
 
 import java.security.Principal;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -126,5 +127,29 @@ public class BookingController extends PageControllerEssentials {
     public List<Booking> getBookingsByCustomer(@PathVariable(value = "customer_id") Integer id ){
     repository.findAll(id);
     }*/
+
+    // @DeleteMapping("/bookings/{id}/delete-all")
+    // public String removeAllBookingsByCustomerId(@PathVariable(value="id") int id){
+    //     // List<Booking> bookingsOfThisUser = repository.findAllByCustomerId(id);
+    //     // System.out.println(Arrays.asList(bookingsOfThisUser));
+    //     int result = repository.deleteAllByCustomerId(id);
+    //     System.out.println(result);
+        
+    //     return "All bookings deleted";
+    // }
+
+    @DeleteMapping("/bookings/deleteall/{hotelid}")
+    public boolean removeAllBookingsByCustomerIdAndByHotelId(@PathVariable("hotelid") int hotelId, Principal p){
+
+        if(p == null){
+         return false;
+        }    
+
+        int customerId = userRepo.findByUsername(p.getName()).getCustomerId();
+        repository.deleteAllBookings(customerId, hotelId);
+        
+        return true;
+    
+    }
 
 }
