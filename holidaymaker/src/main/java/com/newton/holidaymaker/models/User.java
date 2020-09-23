@@ -79,10 +79,10 @@ public class User {
     public void setCustomerId(int id)               { this.customerId   = id;          }
     public void setRoles(String roles)              { this.roles        = roles;       }
     public void setPermissions(String permissions)  { this.permissions  = permissions; }
-    
-    public void setPhoneNumber(String phoneNumber)     
-    { 
-        
-        this.phoneNumber  = phoneNumber; 
+
+    public void setPhoneNumber(String phoneNumber)
+    {
+
+        this.phoneNumber  = phoneNumber;
     }
 }

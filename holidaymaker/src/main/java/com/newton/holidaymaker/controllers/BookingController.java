@@ -31,8 +31,8 @@ public class BookingController extends PageControllerEssentials {
 
     @Autowired
     private final BookingRepository repository;
-    
-    @Autowired 
+
+    @Autowired
     RoomRepository roomRepo;
 
     @Autowired
@@ -46,6 +46,10 @@ public class BookingController extends PageControllerEssentials {
     public List<Booking> getBookings() {
         System.out.println("Bookings retrieved");
         return repository.findAll();
+    }
+    @GetMapping("/bookings/{customerId}/allbookings")
+    public List<Booking> getAllBookingsByUserId(@PathVariable int customerId){
+        return repository.findAllByCustomerId(customerId);
     }
 
     @GetMapping("/bookings/{cid}")
@@ -62,11 +66,11 @@ public class BookingController extends PageControllerEssentials {
     		response.put("message", "invalidSession");
     		return response;
     	}
-        
+
     	int customerId = userRepo.findByUsername(principal.getName()).getCustomerId();
     	booking.setCustomerId(customerId);
         repository.save(booking);
-        
+
         // update room status 'isBooked' to true
         Room room = roomRepo.findByRoomId(booking.getRoomId());
         room.setBooked(true);
@@ -80,7 +84,7 @@ public class BookingController extends PageControllerEssentials {
     public void updateBooking(@RequestBody Booking booking, @PathVariable(value = "id") Integer id) {
         Booking updateTarget = repository.getOne(id);
         //updateTarget.setRoomId(booking.getRoomId());
-        //updateTarget.setCustomerId(booking.getCustomerId());
+        updateTarget.setCustomerId(booking.getCustomerId());
         updateTarget.setArrivalDate(booking.getArrivalDate());
         updateTarget.setDepartureDate(booking.getDepartureDate());
         updateTarget.setExtraBed(booking.getExtraBed());
@@ -102,7 +106,7 @@ public class BookingController extends PageControllerEssentials {
 
     	if(p == null)
     		return null;
-    	
+
     	int customerId = userRepo.findByUsername(p.getName()).getCustomerId();
     	List<Object[]> objectList = repository.getUserBookingsByCustomerId(customerId);
 

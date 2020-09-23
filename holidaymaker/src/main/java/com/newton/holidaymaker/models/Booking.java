@@ -20,7 +20,7 @@ import org.hibernate.annotations.OnDeleteAction;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 //OBS måste kolla att datumobjektet fungerar med datumkolumnen i databasen/Hanna
-//Kolumnerna för customer_id och room_id är bortkommaterade eftersom de är joinade med user respektive room.
+//Kolumnerna för customer_id och room_id skulle varit bortkommaterade eftersom de skulle vara joinade med user respektive room. /*, insertable=false, updatable=false*/
 
 @Entity
 @Table (name = "booking")
@@ -46,8 +46,9 @@ public class Booking implements Serializable {
     public Booking() { }
     public Booking(long arrivalDate, long departureDate, Boolean extraBed, Boolean twoMeals, Boolean threeMeals, Boolean allInclusive)
     {
-        this.arrivalDate    = arrivalDate;
-        this.departureDate  = departureDate;
+        this.customerId		= customerId;
+    	this.arrivalDate    = date;
+        this.departureDate  = date2;
         this.extraBed       = extraBed;
         this.twoMeals       = twoMeals;
         this.threeMeals     = threeMeals;
@@ -55,7 +56,7 @@ public class Booking implements Serializable {
 
     }
 
-    public int getId() {
+   	public int getId() {
         return bookingId;
     }
 

@@ -36,4 +36,6 @@ public interface BookingRepository extends JpaRepository<Booking, Integer>{
     "WHERE customer_id = :customer", nativeQuery = true)
     List<Object[]> getUserBookingsByCustomerId(@Param("customer") int customerId);
 
+	List<Booking> findAllByCustomerId(int customerId);
+
 }
