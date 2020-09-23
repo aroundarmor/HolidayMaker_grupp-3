@@ -22,13 +22,10 @@ accommodation.
 ![Example screenshot](./img/screenshot.png)
 
 ## Technologies
-* Git   -  version 2.20.1
-* Mysql -  5.5.5-10.4.11-MariaDB Homebrew
-* Java -   version 13.0.2
-* Html
-* Css
-* JavaScript
-* Jquery
+* Mysql 5.5
+* Java  13
+* Html, Css
+* JavaScript, Jquery
 * Springboot
 
 ## Setup
@@ -40,6 +37,7 @@ cd ~/desktop
 * $ cd folder
 * $ git clone https://github.com/musicollins/HolidayMaker_grupp-3.git
 * $ cd *HolidayMaker
+* $ cd holidaymaker
 * $ mvn spring-boot:run
 
 Open your browser and type http://localhost:8091
