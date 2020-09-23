@@ -44,7 +44,7 @@ Open your browser and type http://localhost:8091
 
 
 ## Code Examples
-Show examples of usage:
+Example of some controllers:
 ```
 @GetMapping("/bookings")
     public List<Booking> getBookings() {
@@ -61,6 +61,8 @@ Show examples of usage:
     }
   
   ```
+  
+  Example of mockdata:
   ```
    List<Room> cookieRooms = Arrays.asList(
             new Room("Single", 100d, cookie.getHotelID(), false),
