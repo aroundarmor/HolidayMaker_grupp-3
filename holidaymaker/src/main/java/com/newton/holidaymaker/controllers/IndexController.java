@@ -22,9 +22,6 @@ public class IndexController extends PageControllerEssentials implements PageCon
 	
 	@Autowired
 	RoomRepository roomRepository;
-	
-	@Autowired
-	BookingRepository bookingRepository;
 
     @GetMapping("/")
     public ModelAndView run(HttpServletRequest req, HttpServletResponse res, Principal principal) {
