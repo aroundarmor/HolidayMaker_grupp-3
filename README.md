@@ -19,7 +19,7 @@ You can log in and book an accommodation, and see / change Already booked
 accommodation.
 
 ## Screenshots
-![Example screenshot](./img/screenshot.png)
+![Example screenshot](https://github.com/musicollins/HolidayMaker_grupp-3/issues/38#issue-707644003)
 
 ## Technologies
 * Mysql 5.5
