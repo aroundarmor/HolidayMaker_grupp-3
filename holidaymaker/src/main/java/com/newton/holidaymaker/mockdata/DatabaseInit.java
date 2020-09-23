@@ -37,6 +37,7 @@ public class DatabaseInit implements CommandLineRunner {
     public void run(String... args) throws Exception {
         generateUsers();
         generateHotels();
+        generateBookings();
     }
 
     /**
@@ -101,24 +102,24 @@ public class DatabaseInit implements CommandLineRunner {
             new Room("Triple", 150d, tomato.getHotelID(), false),
             new Room("Quad",   175d, tomato.getHotelID(), false),
             new Room("King",   200d, tomato.getHotelID(), false),
-            new Room("Queen",  250d, tomato.getHotelID(), true)
+            new Room("Queen",  250d, tomato.getHotelID(), false)
         );
 
         // COOKIE HOTEL ROOMS
         List<Room> cookieRooms = Arrays.asList(
-            new Room("Single", 100d, cookie.getHotelID(), true),
-            new Room("Double", 125d, cookie.getHotelID(), true),
-            new Room("Triple", 150d, cookie.getHotelID(), true),
-            new Room("Quad",   175d, cookie.getHotelID(), true),
-            new Room("King",   200d, cookie.getHotelID(), true),
-            new Room("Queen",  250d, cookie.getHotelID(), true)
+            new Room("Single", 100d, cookie.getHotelID(), false),
+            new Room("Double", 125d, cookie.getHotelID(), false),
+            new Room("Triple", 150d, cookie.getHotelID(), false),
+            new Room("Quad",   175d, cookie.getHotelID(), false),
+            new Room("King",   200d, cookie.getHotelID(), false),
+            new Room("Queen",  250d, cookie.getHotelID(), false)
         );
 
         // PASTA HOTEL ROOMS
         List<Room> pastaRooms = Arrays.asList(
-            new Room("Single", 100d, pasta.getHotelID(), true),
+            new Room("Single", 100d, pasta.getHotelID(), false),
             new Room("Double", 125d, pasta.getHotelID(), false),
-            new Room("Triple", 150d, pasta.getHotelID(), true),
+            new Room("Triple", 150d, pasta.getHotelID(), false),
             new Room("Quad",   175d, pasta.getHotelID(), false),
             new Room("King",   200d, pasta.getHotelID(), false),
             new Room("Queen",  250d, pasta.getHotelID(), false)
@@ -134,16 +135,16 @@ public class DatabaseInit implements CommandLineRunner {
     
     /**
     *
-    * Generates sample booking - Linked to user 1 (if exists?) but no room as the code is now.
+    * Generates sample booking
     *
     * */
     public void generateBookings() {
 		List<Booking> bookings = Arrays.asList(
-            new Booking(1, 20210713, 20210716, true, false, false, true),
-            new Booking(1, 20210813, 20210814, true, false, false, true),
-            new Booking(1, 20210701, 20210703, true, false, false, true),
-            new Booking(1, 20210729, 20210730, true, false, false, true),
-            new Booking(1, 20210805, 20210812, true, false, false, true)
+            new Booking(1, 2, 20210713, 20210716, true, false, false, true),
+            new Booking(1, 3, 20210813, 20210814, true, false, false, true),
+            new Booking(1, 6, 20210701, 20210703, true, false, false, true),
+            new Booking(7, 7, 20210729, 20210730, true, false, false, true),
+            new Booking(7, 8, 20210805, 20210812, true, false, false, true)
         );
 
         if(bookingRepository.count() == 0)

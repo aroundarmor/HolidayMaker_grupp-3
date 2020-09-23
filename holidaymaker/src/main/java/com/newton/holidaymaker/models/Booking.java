@@ -46,14 +46,24 @@ public class Booking implements Serializable {
     public Booking() { }
     public Booking(long arrivalDate, long departureDate, Boolean extraBed, Boolean twoMeals, Boolean threeMeals, Boolean allInclusive)
     {
-        this.customerId		= customerId;
-    	this.arrivalDate    = date;
-        this.departureDate  = date2;
+        this.arrivalDate    = arrivalDate;
+        this.departureDate  = departureDate;
         this.extraBed       = extraBed;
         this.twoMeals       = twoMeals;
         this.threeMeals     = threeMeals;
         this.allInclusive   = allInclusive;
+    }
 
+    public Booking(int customerId, int roomId, long arrivalDate, long departureDate, Boolean extraBed, Boolean twoMeals, Boolean threeMeals, Boolean allInclusive)
+    {
+        this.customerId     = customerId;
+        this.roomId         = roomId;
+        this.arrivalDate    = arrivalDate;
+        this.departureDate  = departureDate;
+        this.extraBed       = extraBed;
+        this.twoMeals       = twoMeals;
+        this.threeMeals     = threeMeals;
+        this.allInclusive   = allInclusive;
     }
 
    	public int getId() {
