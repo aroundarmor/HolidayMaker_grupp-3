@@ -25,60 +25,64 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table (name = "booking")
 public class Booking implements Serializable {
-    @Id @GeneratedValue (strategy = GenerationType.IDENTITY)                	private int bookingId;
-    //@Column(name="room_id")                                               	private int roomId;
-    @Column(name="customer_id", columnDefinition = "INT NOT NULL")        	    private int customerId;
-    @Column(name="arrival_date", columnDefinition = "INT NOT NULL")   			private int arrivalDate;
-    @Column(name="departure_date", columnDefinition = "INT NOT NULL") 			private int departureDate;
-    @Column(name="extra_bed", columnDefinition = "BOOL NOT NULL")           	private boolean extraBed;
-    @Column(name="two_meals", columnDefinition = "BOOL NOT NULL")           	private boolean twoMeals;
-    @Column(name="three_meals", columnDefinition = "BOOL NOT NULL")         	private boolean threeMeals;
-    @Column(name="all_inclusive", columnDefinition = "BOOL NOT NULL")       	private boolean allInclusive;
+    @Id @GeneratedValue (strategy = GenerationType.IDENTITY)                private Integer bookingId;
+    @Column(name="roomId")                                                  private Integer roomId;
+    @Column(name="customer_id")                                             private Integer customerId;
+    @Column(name="arrival_date")                                            private long arrivalDate;
+    @Column(name="departure_date")                                          private long departureDate;
+    @Column(name="extra_bed", columnDefinition = "BOOL NOT NULL")           private boolean extraBed;
+    @Column(name="two_meals", columnDefinition = "BOOL NOT NULL")           private boolean twoMeals;
+    @Column(name="three_meals", columnDefinition = "BOOL NOT NULL")         private boolean threeMeals;
+    @Column(name="all_inclusive", columnDefinition = "BOOL NOT NULL")       private boolean allInclusive;
 
-    /*@ManyToOne
-    @JoinColumn(name="customer_id", nullable=false)
-    private User user;*/
-    
-    @ManyToOne
-    @JoinColumn(name="roomId", nullable=false)
-    private Room room;
+    // @ManyToOne
+    // @JoinColumn(name="customer_id", nullable=false)
+    // private User user;
+
+    // @ManyToOne
+    // @JoinColumn(name="roomId", nullable=false)
+    // private Room room;
 
     public Booking() { }
-    public Booking(int customerId, int date, int date2, boolean extraBed, boolean twoMeals, boolean threeMeals, boolean allInclusive)
+    public Booking(long arrivalDate, long departureDate, Boolean extraBed, Boolean twoMeals, Boolean threeMeals, Boolean allInclusive)
     {
-        this.customerId		= customerId;
-    	this.arrivalDate    = date;
-        this.departureDate  = date2;
+        this.arrivalDate    = arrivalDate;
+        this.departureDate  = departureDate;
         this.extraBed       = extraBed;
         this.twoMeals       = twoMeals;
         this.threeMeals     = threeMeals;
         this.allInclusive   = allInclusive;
+    }
 
+    public Booking(int customerId, int roomId, long arrivalDate, long departureDate, Boolean extraBed, Boolean twoMeals, Boolean threeMeals, Boolean allInclusive)
+    {
+        this.customerId     = customerId;
+        this.roomId         = roomId;
+        this.arrivalDate    = arrivalDate;
+        this.departureDate  = departureDate;
+        this.extraBed       = extraBed;
+        this.twoMeals       = twoMeals;
+        this.threeMeals     = threeMeals;
+        this.allInclusive   = allInclusive;
     }
 
    	public int getId() {
         return bookingId;
     }
 
-    public int getCustomerId() {
-		return customerId;
-	}
-	public void setCustomerId(int customerId) {
-		this.customerId = customerId;
-	}
-	public int getArrivalDate() {
+    public long getArrivalDate() {
         return arrivalDate;
     }
 
-    public void setArrivalDate(int arrivalDate) {
+    public void setArrivalDate(long arrivalDate) {
         this.arrivalDate = arrivalDate;
     }
 
-    public int getDepartureDate() {
+    public long getDepartureDate() {
         return departureDate;
     }
 
-    public void setDepartureDate(int departureDate) {
+    public void setDepartureDate(long departureDate) {
         this.departureDate = departureDate;
     }
 
@@ -112,6 +116,22 @@ public class Booking implements Serializable {
 
     public void setAllInclusive(Boolean allInclusive) {
         this.allInclusive = allInclusive;
+    }
+
+    public int getCustomerId() {
+    	return this.customerId;
+    }
+
+    public void setCustomerId(Integer customerId) {
+    	this.customerId = customerId;
+    }
+
+    public int getRoomId() {
+    	return this.roomId;
+    }
+
+    public void setRoomId(Integer roomId) {
+    	this.roomId = roomId;
     }
 
 }

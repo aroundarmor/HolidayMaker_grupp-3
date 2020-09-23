@@ -26,9 +26,9 @@ public class Room {
         @ManyToOne
         @JoinColumn(name = "hotelId", insertable = false, updatable = false)
         private Hotel hotels;
-        
-        @OneToMany(mappedBy = "room")
-        private Set<Booking> roomBookings;
+
+        // @OneToMany(mappedBy = "room")
+        // private Set<Booking> roomBookings;
      
         public Room() { }
         public Room(String roomType, double roomPrice, int hotelId,/*int bookingId, */ boolean isBooked) {

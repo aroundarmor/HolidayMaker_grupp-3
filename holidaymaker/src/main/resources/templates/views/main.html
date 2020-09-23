@@ -5,95 +5,121 @@
     <div class="left-container">
         <div class="bookings-container">
             <div class="bookings-header">My Bookings</div>
-            <div class="bookings-body">
-                <div class="booking">
-                    <div class="booked-hotel flex-content-space-between flex-align-center">
-                        <span><i class="far fa-building"></i> Hotelname very long hehe</span>
-                        <a class="deleteBooking"><i class="far fa-times-circle"></i></a>
-                    </div>
-                    <div class="booked-rooms flex-column flex-wrap">
-                        <span>1</span>
-                        <span>2</span>
-                        <span>3</span>
-                        <span>4</span>
-                        <span>5</span>
-                        <span>6</span>
-                        <span>7</span>
-                        <span>8</span>
-                        <span>9</span>
-                    </div>
-                    <div class="booked-duration flex-content-space-between">
-                        <span class="date-from">Jan 1 '18</span>
-                        <span class="date-to">Jan 5 '18</span>
-                    </div>
-                </div>
+            <div class="bookings-body user-bookings">
+                
             </div>
         </div>
     </div>
     <div class="right-container">
-        <div class="right-primary-container">
-            <form id="filterForm">
-                <div class="search-filter-container flex-row">
-                    <div class="search-filter-header">Search Filters</div>
-                    <div class="search-filter-body flex-column">
-                        <div class="search-filter-box">
-                            <div class="filter-title">Hotel</div>
-                            <div class="filter-content">
-                                <div class="flex-row">
-                                    <label for="hotelCountry">Country:</label>
-                                    <select class="hotelCountry" name="hotelCountry">
-                                        <option value="none" selected="true">-- choose --</option>
-                                        <option th:each="country: ${availableCountries}" th:text="${country}" th:value="${country}"></option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- <div class="search-filter-box">
-                            <div class="filter-title">Room</div>
-                            <div class="filter-content">
-                                <div class="flex-row">
-                                    <div class="filter-label">Price</div>
-                                    <select class="roomPriceOrder" name="roomPriceOrder">
-                                        <option value="none" selected="true">-- choose ---</option>
-                                        <option value="asc">Cheapest First</option>
-                                        <option value="desc">Expensive First</option>
-                                    </select>
-                                </div>
-                                <div class="flex-row">
-                                    <div class="filter-label">Type</div>
-                                    <select class="roomType" name="roomType">
-                                        <option value="none" selected="true">-- choose ---</option>
-                                        <option th:each="roomType: ${availableRoomTypes}" th:text="${roomType}" th:value="${roomType}"></option>
-                                    </select>
-                                </div>
-                                <div class="flex-row">
-                                    <div class="filter-label">Availability</div>
-                                    <select class="roomAvailability" name="roomAvailability">
-                                        <option value="none" selected="true">-- choose ---</option>
-                                        <option value="available">Available</option>
-                                        <option value="taken">Taken</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div> -->
-                        <!--div class="search-filter-box">
-                            <div class="filter-title">Duration</div>
-                            <div class="filter-content">
-                                <div class="flex-row">
-                                    <div class="filter-label">Date & Time</div>
-                                    <div>
-                                        <input type="text" name="dateFrom" placeholder="from">
-                                        <input type="text" name="dateTo" placeholder="to">
+        <div class="right-primary-container flex-column">
+            <div class="filter-form-container">
+                <form id="filterForm">
+                    <div class="search-filter-container flex-row">
+                        <div class="search-filter-header">Search Filters</div>
+                        <div class="search-filter-body flex-column">
+                            <div class="search-filter-box">
+                                <div class="filter-title">Hotel</div>
+                                <div class="filter-content">
+                                    <div class="flex-row">
+                                        <label for="hotelCountry">Country:</label>
+                                        <select class="hotelCountry" name="hotelCountry">
+                                            <option value="none" selected="true">-- choose --</option>
+                                            <option th:each="country: ${availableCountries}" th:text="${country}" th:value="${country}"></option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
-                        </div-->
+                            <!-- <div class="search-filter-box">
+                                <div class="filter-title">Room</div>
+                                <div class="filter-content">
+                                    <div class="flex-row">
+                                        <div class="filter-label">Price</div>
+                                        <select class="roomPriceOrder" name="roomPriceOrder">
+                                            <option value="none" selected="true">-- choose ---</option>
+                                            <option value="asc">Cheapest First</option>
+                                            <option value="desc">Expensive First</option>
+                                        </select>
+                                    </div>
+                                    <div class="flex-row">
+                                        <div class="filter-label">Type</div>
+                                        <select class="roomType" name="roomType">
+                                            <option value="none" selected="true">-- choose ---</option>
+                                            <option th:each="roomType: ${availableRoomTypes}" th:text="${roomType}" th:value="${roomType}"></option>
+                                        </select>
+                                    </div>
+                                    <div class="flex-row">
+                                        <div class="filter-label">Availability</div>
+                                        <select class="roomAvailability" name="roomAvailability">
+                                            <option value="none" selected="true">-- choose ---</option>
+                                            <option value="available">Available</option>
+                                            <option value="taken">Taken</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div> -->
+                            <!--div class="search-filter-box">
+                                <div class="filter-title">Duration</div>
+                                <div class="filter-content">
+                                    <div class="flex-row">
+                                        <div class="filter-label">Date & Time</div>
+                                        <div>
+                                            <input type="text" name="dateFrom" placeholder="from">
+                                            <input type="text" name="dateTo" placeholder="to">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div-->
+                        </div>
+                        <!-- <div class="filter-footer">
+                            <a id="searchFilterButton" class="button button-default button-medium button-grow">Fetch Results</a>
+                        </div> -->
                     </div>
-                    <div class="filter-footer">
-                        <a id="searchFilterButton" class="button button-default button-medium button-grow">Fetch Results</a>
+                </form>
+            </div>
+            <div class="create-booking-contrainer">
+                <div class="bookings-header">
+                    New Booking
+                </div>
+                <div class="bookings-body">
+                    <div class="selected-room">
+                        <div class="new-booking-status"></div>
+                        <div class="selected-room-info flex-content-space-between flex-align-center">
+                            <span>Hotel Name</span><span>Room #1</span>
+                        </div>
+                        <div class="selected-room-extras">
+                            <form id="book-room-form" action="index.html" method="post">
+                                <input type="hidden" name="roomId" value="">
+                                <input type="hidden" name="hotelId" value="">
+                                <div class="form-group flex-row">
+                                    <input id="arrivalDate" type="text" name="arrivalDate" placeholder="from e.g: 2020-01-25">
+                                    <input id="departureDate" type="text" name="departureDate" placeholder="to e.g: 2020-02-13">
+                                </div>
+                                <div class="form-group">
+                                    <div>
+                                        <input id="extraBed" type="checkbox" name="extraBed" value="1">
+                                        <span>Extra bed</span>
+                                    </div>
+                                    <div class="">
+                                        <input id="twoMeals" type="checkbox" name="twoMeals" value="2">
+                                        <span>Two meals</span>
+                                    </div>
+                                    <div class="">
+                                        <input id="threeMeals" type="checkbox" name="threeMeals" value="3">
+                                        <span>Three meals</span>
+                                    </div>
+                                    <div class="">
+                                        <input id="all" type="checkbox" name="allInclusive" value="4">
+                                        <span>All</span>
+                                    </div>
+                                </div>
+                                <div class="form-group flex">
+                                    <button class="button button-info button-medium button-grow" type="submit">Book room</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </form>
+            </div>
         </div>
         <div class="right-secondary-container">
             <div class="filter-result-container flex-column">
@@ -108,7 +134,7 @@
                 <div class="result-rooms">
                     <div class="result-title flex-content-space-between">
                         <span>Rooms</span>
-                        <div class="flex-column flex-align-center">
+                        <div class="flex-column flex-align-center sort-buttons" data-latest-action="asc">
                             <span style="font-size:12px;">Sort By Price</span>
                             <a class="room-sort sort-asc" data-hotel-id="" data-action="asc"><i class="fas fa-arrow-up"></i></a>
                             <a class="room-sort sort-desc" data-hotel-id="" data-action="desc"><i class="fas fa-arrow-down"></i></a>

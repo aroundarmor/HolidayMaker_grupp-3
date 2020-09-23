@@ -22,9 +22,6 @@ public class IndexController extends PageControllerEssentials implements PageCon
 	
 	@Autowired
 	RoomRepository roomRepository;
-	
-	@Autowired
-	BookingRepository bookingRepository;
 
     @GetMapping("/")
     public ModelAndView run(HttpServletRequest req, HttpServletResponse res, Principal principal) {
@@ -34,7 +31,6 @@ public class IndexController extends PageControllerEssentials implements PageCon
         // This will be used to display hotel-countries that are available in the database.
         mv.addObject("availableCountries", hotelRepository.findAllCountries());
         mv.addObject("availableRoomTypes", roomRepository.findAllRoomTypes());
-        mv.addObject("myBookings", bookingRepository.findAll());
 
         if(principal != null)
             mv.addObject("username", principal.getName());

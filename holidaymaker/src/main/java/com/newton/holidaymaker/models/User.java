@@ -21,7 +21,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="customer_id") private int customerId;
-    @Column(name="phone_no")    private int phoneNumber;
+    @Column(name="phone_no")    private String phoneNumber;
     @Column(name="first_name")  private String firstname;
     @Column(name="last_name")   private String lastname;
     @Column(name="email")       private String email;
@@ -30,11 +30,11 @@ public class User {
     @Column(name="roles")       private String roles = "USER";
     @Column(name="permissions") private String permissions = "USER_READ";
 
-    /*@OneToMany(mappedBy = "user")
-    private Set<Booking> usersBookings;*/
+    // @OneToMany(mappedBy = "user")
+    // private Set<Booking> usersBookings;
 
     public User() { }
-    public User(String firstname, String lastname, int phoneNumber, String email, String username, String password, String roles, String permissions) {
+    public User(String firstname, String lastname, String phoneNumber, String email, String username, String password, String roles, String permissions) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.phoneNumber = phoneNumber;
@@ -47,7 +47,7 @@ public class User {
 
     // Getters
     public int getCustomerId()      { return customerId;  }
-    public int getPhoneNumber()     { return phoneNumber; }
+    public String getPhoneNumber()     { return phoneNumber; }
     public String getFirstname()    { return firstname;   }
     public String getLastname()     { return lastname;    }
     public String getUsername()     { return username;    }
@@ -75,10 +75,14 @@ public class User {
     public void setLastname(String lastname)        { this.lastname     = lastname;    }
     public void setUsername(String username)        { this.username     = username;    }
     public void setEmail(String email)              { this.email        = email;       }
-    public void setPhoneNumber(int phoneNumber)     { this.phoneNumber  = phoneNumber; }
     public void setPassword(String password)        { this.password     = password;    }
     public void setCustomerId(int id)               { this.customerId   = id;          }
     public void setRoles(String roles)              { this.roles        = roles;       }
     public void setPermissions(String permissions)  { this.permissions  = permissions; }
 
+    public void setPhoneNumber(String phoneNumber)
+    {
+
+        this.phoneNumber  = phoneNumber;
+    }
 }

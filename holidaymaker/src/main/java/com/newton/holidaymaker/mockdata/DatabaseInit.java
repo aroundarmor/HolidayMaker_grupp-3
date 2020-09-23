@@ -37,6 +37,7 @@ public class DatabaseInit implements CommandLineRunner {
     public void run(String... args) throws Exception {
         generateUsers();
         generateHotels();
+        generateBookings();
     }
 
     /**
@@ -46,14 +47,14 @@ public class DatabaseInit implements CommandLineRunner {
     * */
     public void generateUsers() {
         List<User> users = Arrays.asList(
-            new User("Rafael",  "Milanes",   1234, "ra@gmail.com",       "Raf",       encoder.encode("111"), "ADMIN","HOTEL_WRITE,HOTEL_READ,BOOKING_READ,BOOKING_WRITE,USER_READ,USER_WRITE,ROOM_READ,ROOM_WRITE"),
-            new User("John",    "Smith",     1234, "johnny@gmail.com",   "John",      encoder.encode("112"), "USER", "USER_READ"),
-            new User("Ernest",  "Hemingway", 3245, "ernest@gmail.com",   "Ernest",    encoder.encode("113"), "USER", "USER_READ"),
-            new User("Donald",  "Duck",      1111, "donald@duck.com",    "donduck",   encoder.encode("120"), "USER", "USER_READ"),
-            new User("Bugs",    "Bunny",     1112, "bugs@bunny.com",     "bugsbunny", encoder.encode("121"), "USER", "USER_READ"),
-            new User("Cookie",  "Monster",   1113, "cookie@monster.com", "como1",     encoder.encode("122"), "USER", "USER_READ"),
-            new User("Pepe",    "Greenfrog", 1113, "pepe@reee.com",      "pepe",      encoder.encode("123"), "USER", "USER_READ"),
-            new User("Racecar", "McQueen",   1114, "idk@mail.com",       "rcar",      encoder.encode("124"), "USER", "USER_READ")
+            new User("Rafael",  "Milanes",   "1234", "ra@gmail.com",       "Raf",       encoder.encode("111"), "ADMIN","HOTEL_WRITE,HOTEL_READ,BOOKING_READ,BOOKING_WRITE,USER_READ,USER_WRITE,ROOM_READ,ROOM_WRITE"),
+            new User("John",    "Smith",     "1234", "johnny@gmail.com",   "John",      encoder.encode("112"), "USER", "USER_READ"),
+            new User("Ernest",  "Hemingway", "3245", "ernest@gmail.com",   "Ernest",    encoder.encode("113"), "USER", "USER_READ"),
+            new User("Donald",  "Duck",      "1111", "donald@duck.com",    "donduck",   encoder.encode("120"), "USER", "USER_READ"),
+            new User("Bugs",    "Bunny",     "1112", "bugs@bunny.com",     "bugsbunny", encoder.encode("121"), "USER", "USER_READ"),
+            new User("Cookie",  "Monster",   "1113", "cookie@monster.com", "como1",     encoder.encode("122"), "USER", "USER_READ"),
+            new User("Pepe",    "Greenfrog", "1113", "pepe@reee.com",      "pepe",      encoder.encode("123"), "USER", "USER_READ"),
+            new User("Racecar", "McQueen",   "1114", "idk@mail.com",       "rcar",      encoder.encode("124"), "USER", "USER_READ")
         );
 
         if(userRepository.count() == 0)
@@ -101,24 +102,24 @@ public class DatabaseInit implements CommandLineRunner {
             new Room("Triple", 150d, tomato.getHotelID(), false),
             new Room("Quad",   175d, tomato.getHotelID(), false),
             new Room("King",   200d, tomato.getHotelID(), false),
-            new Room("Queen",  250d, tomato.getHotelID(), true)
+            new Room("Queen",  250d, tomato.getHotelID(), false)
         );
 
         // COOKIE HOTEL ROOMS
         List<Room> cookieRooms = Arrays.asList(
-            new Room("Single", 100d, cookie.getHotelID(), true),
-            new Room("Double", 125d, cookie.getHotelID(), true),
-            new Room("Triple", 150d, cookie.getHotelID(), true),
-            new Room("Quad",   175d, cookie.getHotelID(), true),
-            new Room("King",   200d, cookie.getHotelID(), true),
-            new Room("Queen",  250d, cookie.getHotelID(), true)
+            new Room("Single", 100d, cookie.getHotelID(), false),
+            new Room("Double", 125d, cookie.getHotelID(), false),
+            new Room("Triple", 150d, cookie.getHotelID(), false),
+            new Room("Quad",   175d, cookie.getHotelID(), false),
+            new Room("King",   200d, cookie.getHotelID(), false),
+            new Room("Queen",  250d, cookie.getHotelID(), false)
         );
 
         // PASTA HOTEL ROOMS
         List<Room> pastaRooms = Arrays.asList(
-            new Room("Single", 100d, pasta.getHotelID(), true),
+            new Room("Single", 100d, pasta.getHotelID(), false),
             new Room("Double", 125d, pasta.getHotelID(), false),
-            new Room("Triple", 150d, pasta.getHotelID(), true),
+            new Room("Triple", 150d, pasta.getHotelID(), false),
             new Room("Quad",   175d, pasta.getHotelID(), false),
             new Room("King",   200d, pasta.getHotelID(), false),
             new Room("Queen",  250d, pasta.getHotelID(), false)
@@ -134,16 +135,16 @@ public class DatabaseInit implements CommandLineRunner {
     
     /**
     *
-    * Generates sample booking - Linked to user 1 (if exists?) but no room as the code is now.
+    * Generates sample booking
     *
     * */
     public void generateBookings() {
 		List<Booking> bookings = Arrays.asList(
-            new Booking(1, 20210713, 20210716, true, false, false, true),
-            new Booking(1, 20210813, 20210814, true, false, false, true),
-            new Booking(1, 20210701, 20210703, true, false, false, true),
-            new Booking(1, 20210729, 20210730, true, false, false, true),
-            new Booking(1, 20210805, 20210812, true, false, false, true)
+            new Booking(1, 2, 20210713, 20210716, true, false, false, true),
+            new Booking(1, 3, 20210813, 20210814, true, false, false, true),
+            new Booking(1, 6, 20210701, 20210703, true, false, false, true),
+            new Booking(7, 7, 20210729, 20210730, true, false, false, true),
+            new Booking(7, 8, 20210805, 20210812, true, false, false, true)
         );
 
         if(bookingRepository.count() == 0)

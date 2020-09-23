@@ -7,7 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @ComponentScan(basePackages = "com.newton.holidaymaker")
-@EntityScan(basePackages = {"com.newton.holidaymaker.models"})
+@EntityScan(basePackages = {"com.newton.holidaymaker.models","com.newton.holidaymaker.dto"})
 public class HolidaymakerApplication {
 
 	public static void main(String[] args) {

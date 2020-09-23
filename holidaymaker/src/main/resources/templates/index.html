@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="/css/buttons.css">
         <link rel="stylesheet" th:if="${pageCss != null}" th:href="${pageCss}">
 
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">
         <link rel="stylesheet"
               href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
               integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc"
@@ -17,6 +18,8 @@
         <script src="/js/constants.js" charset="utf-8"></script>
         <script src="/js/customFunctions.js" charset="utf-8"></script>
         <script src="/js/ajax.js" charset="utf-8"></script>
+        <script src="/js/vendor/moment.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
     </head>
     <body>
         <div th:replace="'views/'+${page}"/>
