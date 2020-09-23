@@ -287,6 +287,7 @@ function resetBookingForm() {
 }
 
 function fetchUserBookings() {
+    $('.user-bookings').html('');
     $.ajax({
         url:'/bookings/getUserBookings',
         type:'get',
@@ -314,17 +315,23 @@ function newUserBookingBox(booking) {
         <div id="hotel-${booking.hotelId}" class="booking">
             <div class="booked-hotel flex-content-space-between flex-align-center">
                 <span><i class="far fa-building"></i> ${booking.hotelName}</span>
-                <a class="deleteBooking"><i class="far fa-times-circle"></i></a>
+                <a class="deleteClusterBooking"><i class="far fa-times-circle"></i></a>
             </div>
-            <div class="booked-rooms flex-row flex-wrap">
-                <div id="room-${booking.roomId}">
-                    <div class="flex-content-space-between">
-                        <span>#${booking.roomId}</span>
-                        <span>${booking.roomType}</span>
-                        <span>${booking.roomPrice} <i class="fas fa-dollar-sign"></i></span>
+            <div class="booked-rooms">
+                <div id="room-${booking.roomId}" class="room flex-column">
+                    <div class="booked-room-primary flex-row">
+                        <a class="deleteRoomBooking button button-small button-danger flex-grow flex-align-center" data-room-id="${booking.roomId}"><i class="fas fa-times"></i></a>
                     </div>
-                    <div class="room-datetime flex-content-space-between">
-                        <span class="date-from">${formatDate(new Date(booking.arrivalDate))}</span><span class="date-to">${formatDate(new Date(booking.departureDate))}</span>
+                    <div class="booked-room-secondary flex-row">
+                        <div class="flex-content-space-between">
+                            <span>#${booking.roomId}</span>
+                            <span>${booking.roomType}</span>
+                            <span>${booking.roomPrice} <i class="fas fa-dollar-sign"></i></span>
+                        </div>
+                        <div class="room-datetime flex-content-space-between">
+                            <span class="date-from">${formatDate(new Date(booking.arrivalDate))}</span>
+                            <span class="date-to">${formatDate(new Date(booking.departureDate))}</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -338,17 +345,39 @@ function appendBookingToExistingHotel(booking) {
     .find('#hotel-'+booking.hotelId)
     .children('.booked-rooms')
     .append(`
-        <div id="room-${booking.roomId}">
-            <div class="flex-content-space-between">
-                <span>#${booking.roomId}</span>
-                <span>${booking.roomType}</span>
-                <span>${booking.roomPrice} <i class="fas fa-dollar-sign"></i></span>
+        <div id="room-${booking.roomId}" class="room flex-column">
+            <div class="booked-room-primary flex-row">
+                <a class="deleteRoomBooking button button-small button-danger flex-grow flex-align-center" data-room-id="${booking.roomId}"><i class="fas fa-times"></i></a>
             </div>
-            <div class="room-datetime flex-content-space-between">
-                <span class="date-from">${formatDate(new Date(booking.arrivalDate))}</span><span class="date-to">${formatDate(new Date(booking.departureDate))}</span>
+            <div class="booked-room-secondary flex-row">
+                <div class="flex-content-space-between">
+                    <span>#${booking.roomId}</span>
+                    <span>${booking.roomType}</span>
+                    <span>${booking.roomPrice} <i class="fas fa-dollar-sign"></i></span>
+                </div>
+                <div class="room-datetime flex-content-space-between">
+                    <span class="date-from">${formatDate(new Date(booking.arrivalDate))}</span>
+                    <span class="date-to">${formatDate(new Date(booking.departureDate))}</span>
+                </div>
             </div>
         </div>
     `);
+}
+
+function deleteRoomFromBookings(roomId) {
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            url:'/bookings/remove/'+roomId,
+            type:'delete',
+            dataType:'json',
+            success: function(response) {
+                resolve();
+            },
+            error: function(err) {
+                reject(err);
+            }
+        });
+    });
 }
 
 function formatDate(date) {

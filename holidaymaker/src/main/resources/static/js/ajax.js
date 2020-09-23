@@ -2,6 +2,15 @@ $(document).ready(function() {
 
     fetchUserBookings();
 
+    $('.user-bookings').on('click', '.booking > .booked-rooms > div > .booked-room-primary > a.deleteRoomBooking', function() {
+        let proceedDeletion = confirm("Are you sure you want to remove this room?");
+        if(proceedDeletion) {
+            deleteRoomFromBookings($(this).attr('data-room-id'))
+            .then(() => fetchUserBookings())
+            .catch((err) => console.log("err: "+err));
+        }
+    });
+
     new Pikaday({ field: $('#arrivalDate')[0] });
     new Pikaday({ field: $('#departureDate')[0] });
 

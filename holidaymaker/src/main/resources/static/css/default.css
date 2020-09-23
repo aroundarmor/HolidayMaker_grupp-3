@@ -423,3 +423,7 @@ a.hotel {
 
 .flex-row    { flex-direction: column; }
 .flex-column { flex-direction: row; }
+
+.hidden {
+    display: none !important;
+}

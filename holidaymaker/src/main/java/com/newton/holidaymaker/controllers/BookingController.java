@@ -95,10 +95,18 @@ public class BookingController extends PageControllerEssentials {
         System.out.println("Booking updated");
     }
 
-    @DeleteMapping("/bookings/delete/{id}")
-    public void deleteBooking(@PathVariable(value = "id") Integer id) {
-        repository.deleteById(id);
-        System.out.println("Booking deleted");
+    @DeleteMapping("/bookings/remove/{id}")
+    public boolean deleteBooking(@PathVariable(value = "id") Integer id) {
+
+        repository.deleteBookingRoom(id);
+
+        if(roomRepo.existsById(id) == true) {
+            Room r = roomRepo.findByRoomId(id);
+            r.setBooked(false);
+            roomRepo.save(r);
+        }
+
+        return true;
     }
 
     @GetMapping("/bookings/getUserBookings")
