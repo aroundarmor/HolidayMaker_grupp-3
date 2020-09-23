@@ -9,22 +9,41 @@ FullStack Application hotel management system. Newton project.
 * [Setup](#setup)
 * [Features](#features)
 * [Status](#status)
-* [Inspiration](#inspiration)
-* [Contact](#contact)
+
 
 ## General info
-Add more general information about project. What the purpose of the project is? Motivation?
+Holidaymakers should be a website where customers can book
+holiday accommodation in a modern and simple way.
+You can do complex searches for vacant accommodation based on several choices.
+You can log in and book an accommodation, and see / change Already booked
+accommodation.
 
 ## Screenshots
 ![Example screenshot](./img/screenshot.png)
 
 ## Technologies
-* Tech 1 - version 1.0
-* Tech 2 - version 2.0
-* Tech 3 - version 3.0
+* Git   -  version 2.20.1
+* Mysql -  5.5.5-10.4.11-MariaDB Homebrew
+* Java -   version 13.0.2
+* Html
+* Css
+* JavaScript
+* Jquery
+* Springboot
 
 ## Setup
 Describe how to install / setup your local environement / add link to demo version.
+
+Run your project by using terminal or commandline:
+cd ~/desktop
+* $ mkdir folder
+* $ cd folder
+* $ git clone https://github.com/musicollins/HolidayMaker_grupp-3.git
+* $ cd *HolidayMaker
+* $ mvn spring-boot:run
+
+Open your browser and type http://localhost:8091
+
 
 ## Code Examples
 Show examples of usage:
@@ -32,19 +51,13 @@ Show examples of usage:
 
 ## Features
 List of features ready and TODOs for future development
-* Awesome feature 1
-* Awesome feature 2
-* Awesome feature 3
-
-To-do list:
-* Wow improvement to be done 1
-* Wow improvement to be done 2
+*  Booking feature
+*  Change booking feature
+*  Search filtration feature
+*  Delete booking feature
 
 ## Status
-Project is: _in progress_, _finished_, _no longer continue_ and why?
+Project is:  _finished_
 
-## Inspiration
-Add here credits. Project inspired by..., based on...
 
-## Contact
-Created by [@flynerdpl](https://www.flynerd.pl/) - feel free to contact me!
+
