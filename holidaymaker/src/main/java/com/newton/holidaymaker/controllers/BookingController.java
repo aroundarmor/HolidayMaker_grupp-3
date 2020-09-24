@@ -68,7 +68,16 @@ public class BookingController extends PageControllerEssentials {
     		return response;
     	}
 
-    	int customerId = userRepo.findByUsername(principal.getName()).getCustomerId();
+        int customerId = userRepo.findByUsername(principal.getName()).getCustomerId();
+
+        // make sure the booking doesn't already exist.
+        int countBookings = repository.bookingExistsByRoomAndCustomerId(booking.getRoomId(), customerId);
+        System.out.println((countBookings > 0) + " " + countBookings);
+        if(countBookings > 0) {
+            response.put("message","exists");
+            return response;
+        }
+
     	booking.setCustomerId(customerId);
         repository.save(booking);
 

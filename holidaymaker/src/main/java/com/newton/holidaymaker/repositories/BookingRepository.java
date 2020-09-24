@@ -15,6 +15,9 @@ import com.newton.holidaymaker.models.Booking;
 public interface BookingRepository extends JpaRepository<Booking, Integer>{
 	List<Booking> findAllByCustomerId(int customerId);
 
+    @Query(value="SELECT COUNT(*) FROM booking WHERE booking.room_id = :roomId AND booking.customer_id = :customerId", nativeQuery = true)
+    int bookingExistsByRoomAndCustomerId(@Param("roomId") int roomId, @Param("customerId") int customerId);
+
     @Query(value="SELECT "+
     "hotel.hotel_name as hotelName, "+
     "hotel.hotelid as hotelId, "+

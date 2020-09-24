@@ -47,7 +47,6 @@ $(document).ready(function() {
             return;
         }
 
-        // convert dates to integer
         const arrival   = new Date($('#arrivalDate').val()).getTime();
         const departure = new Date($('#departureDate').val()).getTime();
 
@@ -56,7 +55,6 @@ $(document).ready(function() {
         const threeMeals = $('input[name="threeMeals"]').val()   == 0 ? false:true;
         const all        = $('input[name="allInclusive"]').val() == 0 ? false:true;
 
-        // put integer values of dates into JSON object
         let formData = {};
         formData['roomId'] = parseInt($('input[name="roomId"]').val());
         formData['arrivalDate'] = arrival;
@@ -73,6 +71,8 @@ $(document).ready(function() {
 
             if(response.message === 'invalidSession') {
                 $('.new-booking-status').append(newAlertBox('warning', 'You need to be signed in.').hide().fadeIn());
+            } else if(response.message === 'exists') {
+                $('.new-booking-status').append(newAlertBox('warning', 'You have already booked this room.').hide().fadeIn());
             } else if (response.message === 'success') {
                 $('.new-booking-status').append(newAlertBox('success', 'Booking successful.').hide().fadeIn());
 
