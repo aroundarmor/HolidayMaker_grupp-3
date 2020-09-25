@@ -8,7 +8,6 @@ FullStack Application hotel management system. Newton project.
 * [Technologies](#technologies)
 * [Setup](#setup)
 * [Features](#features)
-* [Status](#status)
 
 
 ## Screenshots
