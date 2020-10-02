@@ -18,10 +18,10 @@ FullStack Application hotel management system. Newton project.
 Following technologies are being used in this project or contribute to some extent in project. The documentations are given below :
 * HTML        - [Documentation](https://devdocs.io/html/) 
 * CSS         - [Documentation](https://developer.mozilla.org/en-US/docs/Web/CSS)
-* Java        - [Documentation](https://docs.oracle.com/en/java/)   Version >= 8
+* Java        - [Documentation](https://docs.oracle.com/en/java/)
 * JavaScript  - [Documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 * JQuery      - [Documentation](https://api.jquery.com/)
-* Mysql       - [Documentation](https://dev.mysql.com/doc/)   Version >= 5.5
+* Mysql       - [Documentation](https://dev.mysql.com/doc/)
 * SpringBoot  - [Documentation](https://docs.spring.io/spring-boot/docs/current/reference/html/)
 
 ## Setup
